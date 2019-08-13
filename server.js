@@ -8,6 +8,13 @@ const profile = require("./routes/api/profile");
 
 const app = express();
 
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
+
 //databse configuration
 const db = require("./config/keys").mongoURI;
 
@@ -20,21 +27,18 @@ mongoose
   })
   .catch(err => console.log(err));
 
-app.get("/", (req, res, next) => {
-  res.send("jhlk");
-});
+//passw=port middle ware
+
+app.use(passport.initialize());
+
+//passport config
+
+require("./config/passport")(passport);
 
 //use routes
 
 app.use("/api/users", users);
 app.use("/api/profile", profile);
-
-// app.use(
-//   bodyParser.urlencoded({
-//     extended: false
-//   })
-// );
-// app.use(bodyParser.json());
 
 const port = 5000 || process.env.PORT;
 app.listen(port, () => console.log(`server sunnin oon prt ${port}`));
