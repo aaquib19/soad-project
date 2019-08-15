@@ -5,3 +5,7 @@
   ![](https://img.shields.io/badge/Express.js-4.17.1-ce085a.svg)
   ![MongoDB](https://img.shields.io/badge/MongoDB-MongoDB-green)
 #
+
+
+## Files, folders and naming conventions
+1. client folder is for clientside. It is the front-end of out project 
