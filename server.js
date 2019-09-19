@@ -41,4 +41,4 @@ app.use("/api/users", users);
 app.use("/api/profile", profile);
 
 const port = 5000 || process.env.PORT;
-app.listen(port, () => console.log(`server sunnin oon prt ${port}`));
+app.listen(port, () => console.log(`server is running on port ${port}`));

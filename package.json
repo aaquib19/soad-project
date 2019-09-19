@@ -25,6 +25,8 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
+    "client": "0.0.1",
+    "create-react-app": "^3.1.1",
     "nodemon": "^1.19.1"
   }
 }
