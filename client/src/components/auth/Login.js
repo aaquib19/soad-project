@@ -1,39 +1,35 @@
 import React, { Component, Fragment } from "react";
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import TextField from '@material-ui/core/TextField';
-import { green, blue } from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button';
-
-
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import TextField from "@material-ui/core/TextField";
+import { green, blue } from "@material-ui/core/colors";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
   },
   margin: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   extendedIcon: {
-    marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1)
   },
 
-  input:{
-      height:'45px',
-      width:'100%'
+  input: {
+    height: "45px",
+    width: "100%"
   }
 }));
 
-
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-  },
+    primary: blue
+  }
 });
-
 
 export default function RegistrationForm() {
   const classes = useStyles();
@@ -80,11 +76,15 @@ export default function RegistrationForm() {
             className: classes.input
           }}
         />
-        <Button variant="contained" size="medium"  color="primary" className={classes.margin}>
+        <Button
+          variant="contained"
+          size="medium"
+          color="primary"
+          className={classes.margin}
+        >
           Medium
         </Button>
       </ThemeProvider>
-      
     </form>
   );
 }
