@@ -1,3 +1,6 @@
 FROM node:10.16.3
-
-CMD ["/bin/bash"]
+WORKDIR /app
+COPY package.json ./app
+RUN npm install 
+COPY . ./app
+CMD ["npm" , "run","dev"]
