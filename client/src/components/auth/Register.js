@@ -82,7 +82,7 @@ class RegistrationForm extends Component {
     } 
     
     
-    else if(e.target.value.length >= 5 || e.target.value==''){
+    else if(e.target.value.length >= 5 || e.target.value===''){
       this.setState ({
         username_error: false,
       });
@@ -100,7 +100,7 @@ class RegistrationForm extends Component {
       email: e.target.value,
     });
 
-    if (EmailValidator.validate (e.target.value) || e.target.value == '') {
+    if (EmailValidator.validate (e.target.value) || e.target.value === '') {
       this.setState ({emailIsValid: true});
     } else {
       this.setState ({emailIsValid: false});

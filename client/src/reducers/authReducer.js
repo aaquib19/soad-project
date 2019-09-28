@@ -1,20 +1,50 @@
-import { SET_CURRENT_USER } from "../../actions/types";
-import isEmpty from "../../validation/is-empty";
+import {REGISTRATION, LOGIN} from '../actions/types';
 
 const initialState = {
+  isRegistered: false,
+  userData: {},
   isAuthenticated: false,
-  user: {}
+  token: '',
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
-    case SET_CURRENT_USER:
+    case REGISTRATION:
+      // console.log("in reducer", action.payload, "isRegistered ", action.isRegistered)
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.payload),
-        user: action.payload
+        isRegistered: action.isRegistered,
+        userData: action.payload,
       };
+    case LOGIN:
+      return {
+        ...state,
+        isAuthenticated: action.payload.success,
+        token: action.payload.token,
+      };
+
     default:
       return state;
   }
 }
+
+// import { SET_CURRENT_USER } from "../../actions/types";
+// import isEmpty from "../../validation/is-empty";
+
+// const initialState = {
+//   isAuthenticated: false,
+//   user: {}
+// };
+
+// export default function(state = initialState, action) {
+//   switch (action.type) {
+//     case SET_CURRENT_USER:
+//       return {
+//         ...state,
+//         isAuthenticated: !isEmpty(action.payload),
+//         user: action.payload
+//       };
+//     default:
+//       return state;
+//   }
+// }
