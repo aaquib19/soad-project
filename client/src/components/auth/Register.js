@@ -21,6 +21,7 @@ const useStyles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '25%',
   },
   margin: {
     margin: theme.spacing (1),
@@ -32,6 +33,7 @@ const useStyles = {
   input: {
     height: '45px',
     width: '100%',
+    backgroundColor: 'white',
   },
 };
 
@@ -39,19 +41,16 @@ class RegistrationForm extends Component {
   onSubmitRegistration = e => {
     if (this.state.username.length < 5) {
       this.setState ({username_error: true});
-    }  
-    
-    else if (this.state.password !== this.state.confirm_password) {
+    } else if (this.state.password !== this.state.confirm_password) {
       this.setState ({
         error_msg_passwd: true,
       });
-    } 
-    // else if (this.state.password === this.state.confirm_password) {
-    //   this.setState ({
-    //     error_msg_passwd: false,
-    //   });
-    // } 
-    else {
+    } else {
+      // else if (this.state.password === this.state.confirm_password) {
+      //   this.setState ({
+      //     error_msg_passwd: false,
+      //   });
+      // }
       let userData = {
         name: this.state.username,
         email: this.state.email,
@@ -74,15 +73,11 @@ class RegistrationForm extends Component {
   };
 
   onChange_username = e => {
-
     if (e.target.value.length < 5) {
       this.setState ({
         username_error: true,
       });
-    } 
-    
-    
-    else if(e.target.value.length >= 5 || e.target.value===''){
+    } else if (e.target.value.length >= 5 || e.target.value === '') {
       this.setState ({
         username_error: false,
       });
@@ -91,11 +86,9 @@ class RegistrationForm extends Component {
     this.setState ({
       username: e.target.value,
     });
-
   };
 
   onChange_email = e => {
-
     this.setState ({
       email: e.target.value,
     });
@@ -128,7 +121,7 @@ class RegistrationForm extends Component {
     }
 
     return (
-      <form className={classes.root} noValidate>
+      <form className={classes.root} noValidate style={{margin:'1%'}}>
         <ThemeProvider theme={theme}>
           <TextField
             className={classes.margin}
@@ -200,7 +193,7 @@ class RegistrationForm extends Component {
             className={classes.margin}
             onClick={this.onSubmitRegistration}
           >
-            Submit
+            Register
           </Button>
         </ThemeProvider>
       </form>

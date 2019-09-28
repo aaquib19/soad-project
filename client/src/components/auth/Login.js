@@ -20,6 +20,7 @@ const useStyles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    width:"25%"
   },
   margin: {
     margin: theme.spacing (1),
@@ -31,6 +32,7 @@ const useStyles = {
   input: {
     height: '45px',
     width: '100%',
+    backgroundColor:'white'
   },
 };
 
@@ -74,7 +76,7 @@ class LoginForm extends Component {
     }
 
     return (
-      <form className={classes.root} noValidate>
+      <form className={classes.root} noValidate style={{margin:"1%"}}>
         <ThemeProvider theme={theme}>
           
           <TextField
@@ -113,7 +115,7 @@ class LoginForm extends Component {
             className={classes.margin}
             onClick={this.onSubmitLogin}
           >
-            Submit
+            Login
           </Button>
         </ThemeProvider>
       </form>
