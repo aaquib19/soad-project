@@ -37,6 +37,11 @@ const useStyles = {
 };
 
 class LoginForm extends Component {
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/profile");
+    }
+  }
   onSubmitLogin = e => {
     let userData = {
       email: this.state.email,
@@ -125,6 +130,8 @@ const mapStateToProps = state => {
   return {
     isAuthenticated: state.registration.isAuthenticated,
     // userToken: state.registration.token,
+    auth: state.registration,
+
     errors: state.errors
   };
 };

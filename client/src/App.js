@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser } from "./actions/authAction";
+import { setCurrentUser, logoutUser } from "./actions/authAction";
 
 //check for teken
 if (localStorage.Token) {
@@ -20,6 +20,17 @@ if (localStorage.Token) {
   const decoded = jwt_decode(localStorage.Token);
 
   store.dispatch(setCurrentUser(decoded));
+
+  //check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    store.dispatch(logoutUser());
+    // store.dispatch(clearCurrentProfile());
+
+    //todo  clear current profile
+    //redirect to login
+    window.location.href = "/login";
+  }
 } else {
   console.log("no token");
 }

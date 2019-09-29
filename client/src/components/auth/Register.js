@@ -38,6 +38,11 @@ const useStyles = {
 };
 
 class RegistrationForm extends Component {
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/profile");
+    }
+  }
   onSubmitRegistration = e => {
     if (this.state.username.length < 5) {
       this.setState({ username_error: true });
@@ -203,6 +208,9 @@ class RegistrationForm extends Component {
 
 const mapStateToProps = state => {
   return {
+    auth: state.auth,
+    errors: state.errors,
+
     isRegistered: state.registration.isRegistered,
     userData: state.registration.userData
   };
