@@ -1,14 +1,42 @@
 import React, { Component, Fragment } from "react";
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider, withStyles } from "@material-ui/styles";
-import TextField from "@material-ui/core/TextField";
-import { green, blue } from "@material-ui/core/colors";
-import Button from "@material-ui/core/Button";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+
 import { RegisterUser } from "../../actions/authAction";
 import * as EmailValidator from "email-validator";
 
+import { green, blue } from "@material-ui/core/colors";
+// import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { LoginUser } from "../../actions/authAction";
+// import React from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Whizingo
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
 const theme = createMuiTheme({
   palette: {
     primary: blue
@@ -21,19 +49,42 @@ const useStyles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: "25%"
+    height: "55vh"
   },
   margin: {
     margin: theme.spacing(1)
   },
+  margin1: { margin: theme.spacing(0.5) },
   extendedIcon: {
     marginRight: theme.spacing(1)
   },
 
   input: {
     height: "45px",
-    width: "100%",
-    backgroundColor: "white"
+    width: "100%"
+  },
+  image: {
+    backgroundImage: "url(https://source.unsplash.com/collection/8706966)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  },
+  paper: {
+    margin: theme.spacing(8, 4),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(2)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2)
   }
 };
 
@@ -125,7 +176,7 @@ class RegistrationForm extends Component {
     });
   };
 
-  render() {
+   render() {
     const { classes } = this.props;
     if (this.props.isRegistered) {
       console.log("User is registered successfully!!");
@@ -134,85 +185,118 @@ class RegistrationForm extends Component {
     }
 
     return (
-      <form className={classes.root} noValidate style={{ margin: "1%" }}>
-        <ThemeProvider theme={theme}>
-          <TextField
-            className={classes.margin}
-            label="Name"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            InputProps={{
-              className: classes.input
-            }}
-            onChange={this.onChange_username}
-            value={this.state.username}
-            error={this.state.username_error}
-            helperText={
-              this.state.username_error === true
-                ? "at least five characters required "
-                : null
-            }
-          />
-          <TextField
-            className={classes.margin}
-            label="Email"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            InputProps={{
-              className: classes.input
-            }}
-            type="email"
-            value={this.state.email}
-            onChange={this.onChange_email}
-            error={!this.state.emailIsValid}
-            helperText={
-              this.state.emailIsValid === false ? "Enter a valid email" : null
-            }
-          />
-          <TextField
-            className={classes.margin}
-            label="Password"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            type="password"
-            InputProps={{
-              className: classes.input
-            }}
-            value={this.state.password}
-            onChange={this.onChange_password}
-          />
-          <TextField
-            className={classes.margin}
-            label="Confirm Password"
-            variant="outlined"
-            id="mui-theme-provider-outlined-input"
-            type="password"
-            InputProps={{
-              className: classes.input
-            }}
-            value={this.state.confirm_password}
-            onChange={this.onChange_confirmpassword}
-            error={this.state.error_msg_passwd}
-            helperText={
-              this.state.error_msg_passwd === true
-                ? "Both passwords are not same"
-                : null
-            }
-          />
-          <Button
-            variant="contained"
-            size="medium"
-            color="primary"
-            className={classes.margin}
-            onClick={this.onSubmitRegistration}
-          >
-            Register
-          </Button>
-        </ThemeProvider>
-      </form>
+      <Grid container component="main" className={classes.image}>
+        {/* <CssBaseline /> */}
+        {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h6" className={classes.margin}>
+              Sign Up
+            </Typography>
+            <form className={classes.root} noValidate>
+              <ThemeProvider theme={theme}>
+                <TextField
+                  className={classes.margin1}
+                  label="Name"
+                  variant="outlined"
+                  id="mui-theme-provider-outlined-input"
+                  InputProps={{
+                    className: classes.input
+                  }}
+                  onChange={this.onChange_username}
+                  value={this.state.username}
+                  error={this.state.username_error}
+                  helperText={
+                    this.state.username_error === true
+                      ? "at least five characters required "
+                      : null
+                  }
+                />
+                <TextField
+                  className={classes.margin1}
+                  label="Email"
+                  variant="outlined"
+                  id="mui-theme-provider-outlined-input"
+                  InputProps={{
+                    className: classes.input
+                  }}
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange_email}
+                  error={!this.state.emailIsValid}
+                  helperText={
+                    this.state.emailIsValid === false
+                      ? "Enter a valid email"
+                      : null
+                  }
+                />
+                <TextField
+                  className={classes.margin1}
+                  label="Password"
+                  variant="outlined"
+                  id="mui-theme-provider-outlined-input"
+                  type="password"
+                  InputProps={{
+                    className: classes.input
+                  }}
+                  value={this.state.password}
+                  onChange={this.onChange_password}
+                />
+                <TextField
+                  className={classes.margin1}
+                  label="Confirm Password"
+                  variant="outlined"
+                  id="mui-theme-provider-outlined-input"
+                  type="password"
+                  InputProps={{
+                    className: classes.input
+                  }}
+                  value={this.state.confirm_password}
+                  onChange={this.onChange_confirmpassword}
+                  error={this.state.error_msg_passwd}
+                  helperText={
+                    this.state.error_msg_passwd === true
+                      ? "Both passwords are not same"
+                      : null
+                  }
+                />
+                <Button
+                  variant="contained"
+                  size="medium"
+                  color="primary"
+                  className={classes.submit}
+                  onClick={this.onSubmitRegistration}
+                >
+                  Submit
+                </Button>
+                <Grid container spacing={4}>
+                  <Grid item xs>
+                    <div href="#" variant="body2">
+                      Already have an account ?
+                    </div>
+                  </Grid>
+                  <Grid item>
+                    <Link href="/login" variant="body2">
+                      {"Sign In"}
+                    </Link>
+                  </Grid>
+                </Grid>
+              </ThemeProvider>
+            </form>
+
+            <Box mt={5}>
+              <Copyright />
+            </Box>
+          </div>
+        </Grid>
+      </Grid>
     );
   }
 }
+
 RegistrationForm.propTypes = {
   RegisterUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
