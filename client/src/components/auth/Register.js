@@ -39,6 +39,8 @@ const useStyles = {
 
 class RegistrationForm extends Component {
   componentDidMount() {
+    console.log("hello");
+    console.log(this.props.auth);
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/profile");
     }
@@ -219,9 +221,9 @@ RegistrationForm.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    auth: state.auth,
+    auth: state.registration,
     errors: state.errors,
-
+    // isAuthenticated: state.registration.isAuthenticated,
     isRegistered: state.registration.isRegistered,
     userData: state.registration.userData
   };
