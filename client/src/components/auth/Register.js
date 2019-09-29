@@ -43,6 +43,12 @@ class RegistrationForm extends Component {
       this.props.history.push("/profile");
     }
   }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onSubmitRegistration = e => {
     if (this.state.username.length < 5) {
       this.setState({ username_error: true });
@@ -205,6 +211,11 @@ class RegistrationForm extends Component {
     );
   }
 }
+RegistrationForm.propTypes = {
+  RegisterUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => {
   return {

@@ -39,7 +39,17 @@ const useStyles = {
 class LoginForm extends Component {
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
+      console.log("push profile page");
       this.props.history.push("/profile");
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/profile");
+    }
+
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
     }
   }
   onSubmitLogin = e => {
@@ -125,6 +135,11 @@ class LoginForm extends Component {
     );
   }
 }
+// LoginForm.propTypes = {
+//   LoginUser: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
 
 const mapStateToProps = state => {
   return {
