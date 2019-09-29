@@ -1,26 +1,28 @@
-import {REGISTRATION, LOGIN} from '../actions/types';
+import { REGISTRATION, LOGIN } from "../actions/types";
+import isEmpty from "../validation/is-empty";
 
 const initialState = {
   isRegistered: false,
-  userData: {},
   isAuthenticated: false,
-  token: '',
+  userData: {}
+  // token: ""
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case REGISTRATION:
       // console.log("in reducer", action.payload, "isRegistered ", action.isRegistered)
       return {
         ...state,
         isRegistered: action.isRegistered,
-        userData: action.payload,
+        userData: action.payload
       };
     case LOGIN:
       return {
         ...state,
-        isAuthenticated: action.payload.success,
-        token: action.payload.token,
+        isAuthenticated: !isEmpty(action.payload),
+        userData: action.payload
+        // token: action.payload.token
       };
 
     default:
