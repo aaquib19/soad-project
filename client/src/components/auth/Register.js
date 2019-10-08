@@ -23,7 +23,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-
+import { Redirect } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -176,12 +176,17 @@ class RegistrationForm extends Component {
     });
   };
 
-   render() {
+  render() {
     const { classes } = this.props;
     if (this.props.isRegistered) {
       console.log("User is registered successfully!!");
     } else {
       console.log("Registration failed!!", this.props);
+    }
+
+    const redirectToReferrer = this.props.isRegistered;
+    if (redirectToReferrer === true) {
+      return <Redirect to="/login" />;
     }
 
     return (
@@ -263,6 +268,7 @@ class RegistrationForm extends Component {
                       : null
                   }
                 />
+                {/* <Link href="/login"> */}
                 <Button
                   variant="contained"
                   size="medium"
@@ -272,6 +278,7 @@ class RegistrationForm extends Component {
                 >
                   Submit
                 </Button>
+                {/* </Link> */}
                 <Grid container spacing={4}>
                   <Grid item xs>
                     <div href="#" variant="body2">

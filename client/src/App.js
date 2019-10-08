@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authAction";
+import Success from "./components/layout/success";
 
 //check for teken
 if (localStorage.Token) {
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/landing" component={LandingPage} />
             <Route path="/register" component={Registration} />
             <Route path="/login" component={Login} />
+            <Route path="/success" component={Success} />
             {/* <Footer></Footer> */}
           </div>
         </Router>

@@ -20,6 +20,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
+import { Redirect } from "react-router-dom";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -135,6 +136,11 @@ class LoginForm extends Component {
       console.log("Authentication Failed!!", this.props);
     }
 
+    const redirectToReferrer = this.props.isAuthenticated;
+    if (redirectToReferrer === true) {
+      return <Redirect to="/success" />;
+    }
+
     return (
       <Grid container component="main" className={classes.image}>
         {/* <CssBaseline /> */}
@@ -176,10 +182,17 @@ class LoginForm extends Component {
                   InputProps={{
                     className: classes.input
                   }}
+                  error={this.props.errors.password | this.props.errors.email}
+                  helperText={
+                    this.props.errors.password | this.props.errors.email
+                      ? "User does not exist"
+                      : null
+                  }
                   value={this.state.password}
                   onChange={this.onChange_password}
                 />
 
+                {/* <Link href="/success"> */}
                 <Button
                   variant="contained"
                   size="medium"
@@ -189,6 +202,7 @@ class LoginForm extends Component {
                 >
                   Submit
                 </Button>
+                {/* </Link> */}
                 <Grid container spacing={4}>
                   <Grid item xs>
                     <Link href="#" variant="body2">
