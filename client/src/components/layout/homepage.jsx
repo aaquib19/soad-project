@@ -4,6 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Posts from "./posts";
 import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider, withStyles } from "@material-ui/styles";
+import NavBar from "./Navbar";
 
 const style = {
   height: "100px",
@@ -33,25 +34,28 @@ class Homepage extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className="row">
-        <div className="col-lg-2">
-          <div className="position-fixed"></div>
+      <React.Fragment>
+        <NavBar />
+        <div className="row">
+          <div className="col-lg-2">
+            <div className="position-fixed"></div>
+          </div>
+          <div className="col-6">
+            <div className="row"></div>
+            <InfiniteScroll
+              dataLength={this.state.items.length}
+              next={this.fetchMoreData}
+              hasMore={true}
+              loader={<h4>Loading...</h4>}
+            >
+              {this.state.items.map((i, index) => (
+                <div style={style} key={index} className={classes.image}></div>
+              ))}
+            </InfiniteScroll>
+          </div>
+          <div className="col-3"></div>
         </div>
-        <div className="col-6">
-          <div className="row"></div>
-          <InfiniteScroll
-            dataLength={this.state.items.length}
-            next={this.fetchMoreData}
-            hasMore={true}
-            loader={<h4>Loading...</h4>}
-          >
-            {this.state.items.map((i, index) => (
-              <div style={style} key={index} className={classes.image}></div>
-            ))}
-          </InfiniteScroll>
-        </div>
-        <div className="col-3"></div>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -243,15 +243,15 @@ export default function NavBar(props) {
     >
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={4}>
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+        <IconButton aria-label="show 11 new notifications">
+          <Badge badgeContent={11}>
             <NotificationsIcon />
           </Badge>
         </IconButton>
@@ -262,7 +262,6 @@ export default function NavBar(props) {
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="inherit"
         >
           <AccountCircle />
         </IconButton>
@@ -279,6 +278,7 @@ export default function NavBar(props) {
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open
           })}
+          color="secondary"
         >
           <Toolbar>
             <IconButton
@@ -368,6 +368,7 @@ export default function NavBar(props) {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
+
       <Drawer
         variant="permanent"
         className={clsx(classes.drawer, {
@@ -424,6 +425,7 @@ export default function NavBar(props) {
           )}
         </List>
       </Drawer>
+
       {renderMobileMenu}
       {renderMenu}
     </div>
