@@ -21,6 +21,21 @@ const UserSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  dob: {
+    type: Date
+  },
+  freinds: {
+    type: Array //[freindid, firendid2]
+  },
+  lastlogin: {
+    type: String
+  },
+  notifications: {
+    type: Array
+  },
+  chat_rooms: {
+    type: Array
   }
 });
 
