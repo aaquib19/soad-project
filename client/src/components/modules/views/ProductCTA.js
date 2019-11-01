@@ -7,6 +7,7 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import dots from "./productCTAImageDots.png";
 
 const styles = theme => ({
   root: {
@@ -20,7 +21,7 @@ const styles = theme => ({
   card: {
     display: "flex",
     justifyContent: "center",
-    backgroundColor: "black",
+    backgroundColor: "#625d5d",
     padding: theme.spacing(8, 3)
   },
   cardContent: {
@@ -44,7 +45,7 @@ const styles = theme => ({
     right: 0,
     bottom: 0,
     width: "100%",
-    background: "url(/static/onepirate/productCTAImageDots.png)"
+    background: { dots }
   },
   image: {
     position: "absolute",
@@ -78,20 +79,19 @@ function ProductCTA(props) {
           <div className={classes.card}>
             <form onSubmit={handleSubmit} className={classes.cardContent}>
               <Typography variant="h2" component="h2" gutterBottom>
-                Receive offers
+                Receive Notifications
               </Typography>
               <Typography variant="h5">
-                Taste the holidays of the everyday close to home.
+                Know when your loved ones has uploaded a picture.
               </Typography>
               <TextField
                 noBorder
-                classes="wilson"
                 className={classes.textField}
                 placeholder="Your email"
               />
               <Button
                 type="submit"
-                color="primary"
+                color="white"
                 variant="contained"
                 className={classes.button}
               >
@@ -104,7 +104,7 @@ function ProductCTA(props) {
           <Hidden smDown>
             <div className={classes.imageDots} />
             <img
-              src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750&q=80"
+              src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
               alt="call to action"
               className={classes.image}
             />

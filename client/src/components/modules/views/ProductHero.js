@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import ProductHeroLayout from "./ProductHeroLayout";
 
 const backgroundImage =
-  "https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80";
+  "https://images.unsplash.com/photo-1502444330042-d1a1ddf9bb5b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80";
 
 const styles = theme => ({
   background: {
@@ -41,7 +41,7 @@ function ProductHero(props) {
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Connect With People
       </Typography>
       <Typography
         color="inherit"
@@ -49,7 +49,7 @@ function ProductHero(props) {
         variant="h5"
         className={classes.h5}
       >
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        Find people with the similar interests as of yours.
       </Typography>
       <Button
         color="secondary"
@@ -57,7 +57,7 @@ function ProductHero(props) {
         size="large"
         className={classes.button}
         component="a"
-        href="/premium-themes/onepirate/sign-up/"
+        href="/register"
       >
         Register
       </Button>

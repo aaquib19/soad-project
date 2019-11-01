@@ -70,12 +70,13 @@ const styles = theme => ({
   },
   imageTitle: {
     position: "relative",
+    color: "#ffffff",
     padding: `${theme.spacing(2)}px ${theme.spacing(4)}px 14px`
   },
   imageMarked: {
     height: 3,
     width: 18,
-    background: theme.palette.common.white,
+    background: "#ffffff",
     position: "absolute",
     bottom: -2,
     left: "calc(50% - 9px)",
@@ -89,64 +90,71 @@ function ProductCategories(props) {
   const images = [
     {
       url:
-        "https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400&q=80",
-      title: "Snorkeling",
-      width: "40%"
+        "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      title: "Recommendations",
+      width: "40%",
+      color: "white"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400&q=80",
-      title: "Massage",
+        "https://images.unsplash.com/photo-1513522995478-184e5eb4112b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+      title: "Feed",
       width: "20%"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80",
-      title: "Hiking",
+        "https://images.unsplash.com/photo-1455514155824-09e1b14cef47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1009&q=80",
+      title: "Posts",
       width: "40%"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400&q=80",
-      title: "Tour",
+        "https://images.unsplash.com/photo-1555663173-830f65a7329a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80",
+      title: "Share",
       width: "38%"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1523309996740-d5315f9cc28b?auto=format&fit=crop&w=400&q=80",
-      title: "Gastronomy",
+        "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80",
+      title: "friends",
       width: "38%"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=400&q=80",
-      title: "Shopping",
+        "https://images.unsplash.com/photo-1519337718347-749509f114a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+      title: "ChatRoom",
       width: "24%"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1506941433945-99a2aa4bd50a?auto=format&fit=crop&w=400&q=80",
-      title: "Walking",
+        "https://images.unsplash.com/photo-1470754260170-299cad39501f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+      title: "Groups",
       width: "40%"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&w=400&q=80",
-      title: "Fitness",
+        "https://images.unsplash.com/photo-1513118172236-00b7cc57e1fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
+      title: "Pages",
       width: "20%"
     },
     {
       url:
-        "https://images.unsplash.com/photo-1518136247453-74e7b5265980?auto=format&fit=crop&w=400&q=80",
-      title: "Reading",
+        "https://images.unsplash.com/photo-1521716250348-c4ae4ff1df43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80",
+      title: "Blog",
       width: "40%"
     }
   ];
 
   return (
     <Container className={classes.root} component="section">
-      <Typography variant="h4" marked="center" align="center" component="h2">
-        For all tastes and all desires
+      <Typography
+        variant="h4"
+        marked="center"
+        align="center"
+        component="h2"
+        style={{ textDecorationLine: "underline" }}
+      >
+        Explore
       </Typography>
       <div className={classes.images}>
         {images.map(image => (

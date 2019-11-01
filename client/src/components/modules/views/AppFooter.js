@@ -5,13 +5,15 @@ import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import facebook from "./appFooterFacebook.png";
+import twitter from "./appFooterTwitter.png";
 
 function Copyright() {
   return (
     <React.Fragment>
       {"© "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Whizingo
       </Link>{" "}
       {new Date().getFullYear()}
     </React.Fragment>
@@ -21,7 +23,7 @@ function Copyright() {
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
-    backgroundColor: "black"
+    backgroundColor: "#fff5f8;"
   },
   container: {
     marginTop: theme.spacing(8),
@@ -40,10 +42,10 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "black",
+    backgroundColor: "#fff5f8;",
     marginRight: theme.spacing(1),
     "&:hover": {
-      backgroundColor: "black"
+      backgroundColor: "#fff5f8;"
     }
   },
   list: {
@@ -89,19 +91,13 @@ export default function AppFooter() {
             >
               <Grid item className={classes.icons}>
                 <a href="https://material-ui.com/" className={classes.icon}>
-                  <img
-                    src="/static/themes/onepirate/appFooterFacebook.png"
-                    alt="Facebook"
-                  />
+                  <img src={facebook} alt="Facebook" />
                 </a>
                 <a
                   href="https://twitter.com/MaterialUI"
                   className={classes.icon}
                 >
-                  <img
-                    src="/static/themes/onepirate/appFooterTwitter.png"
-                    alt="Twitter"
-                  />
+                  <img src={twitter} alt="Twitter" />
                 </a>
               </Grid>
               <Grid item>
@@ -139,35 +135,6 @@ export default function AppFooter() {
                 </option>
               ))}
             </TextField>
-          </Grid>
-          <Grid item>
-            <Typography variant="caption">
-              {"Icons made by "}
-              <Link
-                href="https://www.freepik.com"
-                rel="nofollow"
-                title="Freepik"
-              >
-                Freepik
-              </Link>
-              {" from "}
-              <Link
-                href="https://www.flaticon.com"
-                rel="nofollow"
-                title="Flaticon"
-              >
-                www.flaticon.com
-              </Link>
-              {" is licensed by "}
-              <Link
-                href="https://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CC 3.0 BY
-              </Link>
-            </Typography>
           </Grid>
         </Grid>
       </Container>

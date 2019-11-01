@@ -4,12 +4,16 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import logo from "./productCurvyLines.png";
+import productValues1 from "./productValues1.svg";
+import productValues2 from "./productValues2.svg";
+import productValues3 from "./productValues3.svg";
 
 const styles = theme => ({
   root: {
     display: "flex",
     overflow: "hidden",
-    backgroundColor: theme.palette.secondary.light
+    backgroundColor: "#fff5f8"
   },
   container: {
     marginTop: theme.spacing(15),
@@ -43,63 +47,53 @@ function ProductValues(props) {
   return (
     <section className={classes.root}>
       <Container className={classes.container}>
-        <img
-          src="/static/themes/onepirate/productCurvyLines.png"
-          className={classes.curvyLines}
-          alt="curvy lines"
-        />
+        <img src={logo} className={classes.curvyLines} alt="curvy lines" />
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
               <img
                 className={classes.image}
-                src="/static/themes/onepirate/productValues1.svg"
+                src={productValues1}
                 alt="suitcase"
               />
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                Connect with people
               </Typography>
               <Typography variant="h5">
                 {
-                  "From the latest trendy boutique hotel to the iconic palace with XXL pool"
+                  "We help you connect with your friends or complete strangers based on your interests."
                 }
-                {
-                  ", go for a mini-vacation just a few subway stops away from your home."
-                }
+                {" Become friends with them and make friends for life."}
               </Typography>
             </div>
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues2.svg"
-                alt="graph"
-              />
+              <img className={classes.image} src={productValues2} alt="graph" />
               <Typography variant="h6" className={classes.title}>
-                New experiences
+                ChatRoom
               </Typography>
               <Typography variant="h5">
                 {
-                  "Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… "
+                  "Go in our Chatroom, add your interests and find someone just like you with the similar interests "
                 }
-                {"your Sundays will not be alike."}
+                {" and talk to them as much as you like."}
               </Typography>
             </div>
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues3.svg"
-                alt="clock"
-              />
+              <img className={classes.image} src={productValues3} alt="clock" />
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                Recommendations
               </Typography>
               <Typography variant="h5">
-                {"By registering, you will access specially negotiated rates "}
-                {"that you will not find anywhere else."}
+                {
+                  "Based on your interests, our recommendations system will suggest you suitable groups, pages and other people. "
+                }
+                {
+                  "This will make it easy for you to find new people and make friends."
+                }
               </Typography>
             </div>
           </Grid>
