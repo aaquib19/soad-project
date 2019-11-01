@@ -44,11 +44,11 @@ class App extends Component {
         <Router>
           <div className="App">
             {/* <Navbar></Navbar> */}
+            <Route exact path="/register" component={Registration} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/success" component={Homepage} />
+            <Route exact path="/" component={Landing} />
 
-            <Route path="/register" component={Registration} />
-            <Route path="/login" component={Login} />
-            <Route path="/success" component={Homepage} />
-            <Route path="/" component={Landing} />
             {/* <Footer></Footer> */}
           </div>
         </Router>
