@@ -45,10 +45,10 @@ class App extends Component {
           <div className="App">
             <NavBar />
             {/* <Navbar></Navbar> */}
-            <Route path="/register" component={Registration} />
-            <Route path="/login" component={Login} />
-            <Route path="/success" component={Homepage} />
-            <Route path="/" component={Landing} />
+            <Route exact path="/register" component={Registration} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/success" component={Homepage} />
+            <Route exact path="/" component={Landing} />
 
             {/* <Footer></Footer> */}
           </div>
