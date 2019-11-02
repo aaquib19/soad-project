@@ -25,10 +25,12 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "react": "^16.11.0",
+    "react-images-upload": "^1.2.7",
     "react-infinite-scroll-component": "^4.5.3",
     "validator": "^11.1.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.11.2",
     "client": "0.0.1",
     "create-react-app": "^3.1.1",
     "html-loader": "^0.5.5",

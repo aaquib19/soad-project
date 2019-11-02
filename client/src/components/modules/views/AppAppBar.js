@@ -71,6 +71,7 @@ function AppAppBar(props) {
               underline="none"
               className={classes.title}
               to="null"
+              style={{ color: "#ffffff" }}
             >
               {"Whizingo"}
             </Link>
