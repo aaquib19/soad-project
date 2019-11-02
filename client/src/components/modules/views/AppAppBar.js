@@ -8,29 +8,31 @@ import Toolbar from "@material-ui/core/Toolbar";
 import { createMuiTheme } from "@material-ui/core/styles";
 import grey from "@material-ui/core/colors/grey";
 import { ThemeProvider } from "@material-ui/styles";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 
 const theme = createMuiTheme({
   palette: {
     primary: grey,
     secondary: {
-      main: "#e91e63"
+      main: "#e0e0e0"
     }
   }
 });
 
 const styles = theme => ({
   title: {
-    color: "#fce4ec",
+    color: "#d7ccc8",
     fontSize: 24
   },
   toolbar: {
     justifyContent: "space-between"
   },
   left: {
+    color: "#d7ccc8",
     flex: 1
   },
   leftLinkActive: {
-    color: "#fce4ec"
+    color: "#ffffff"
   },
   right: {
     flex: 1,
@@ -39,12 +41,13 @@ const styles = theme => ({
   },
   rightLink: {
     fontSize: 16,
-    color: "#fce4ec",
+    color: "#ffffff",
     marginLeft: theme.spacing(3)
   },
   linkSecondary: {
     color: "#fce4ec"
-  }
+  },
+  body: { backgroundColor: "transparent" }
 });
 
 function AppAppBar(props) {
@@ -53,13 +56,19 @@ function AppAppBar(props) {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <AppBar position="fixed" color="secondary">
+        <AppBar
+          position="fixed"
+          color="primary"
+          style={{
+            background: useScrollTrigger() ? "#616161" : "transparent"
+          }}
+          // className={classes.body}
+        >
           <Toolbar className={classes.toolbar}>
             <div className={classes.left} />
             <Link
-              variant="h6"
+              variant="h4"
               underline="none"
-              color="textPrimary"
               className={classes.title}
               to="null"
             >
@@ -67,9 +76,9 @@ function AppAppBar(props) {
             </Link>
             <div className={classes.right}>
               <Link
-                color="textPrimary"
                 variant="h6"
                 underline="none"
+                color="textPrimary"
                 className={classes.rightLink}
                 href="/login"
               >
