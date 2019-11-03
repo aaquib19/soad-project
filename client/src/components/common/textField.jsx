@@ -22,11 +22,10 @@ const useStyles = makeStyles(theme => ({
     height: 60
   }
 }));
-
-export default function BasicTextFields() {
+const BasicTextFields = ({ placeholder, label }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState("Controlled");
-
+  // const { placeholder } = this.props;
   const handleChange = event => {
     setValue(event.target.value);
   };
@@ -36,8 +35,8 @@ export default function BasicTextFields() {
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
           id="outlined-textarea"
-          label="Write Something"
-          placeholder=""
+          label={label}
+          placeholder={placeholder}
           multiline
           className={classes.textField}
           margin="normal"
@@ -59,4 +58,5 @@ export default function BasicTextFields() {
       </form>
     </Grid>
   );
-}
+};
+export default BasicTextFields;

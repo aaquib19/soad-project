@@ -12,10 +12,13 @@ import IconLabelButtons from "../common/button";
 import CustomizedDialogs from "../common/dialog";
 import ResponsiveDialog from "../common/dialog";
 import { Link } from "@material-ui/core/Link";
+import CheckboxListSecondary from "./../common/friendList";
+import VirtualizedList from "./../common/friendList";
+import AlignItemsList from "./../common/people";
 
 const style = {
   height: "600px",
-  width: "70%",
+  width: "80%",
   border: "1px solid green",
   margin: "2rem",
   overflow: "auto"
@@ -24,12 +27,31 @@ const style = {
 
 const style1 = {
   backgroundColor: "#f5f5f5",
-  height: "235px",
+  height: "245px",
   width: "80%",
-  border: "2px solid black",
+  border: "1px solid black",
   margin: "2rem",
   overflow: "auto"
 };
+const style2 = {
+  backgroundColor: "#f5f5f5",
+  height: "100%",
+  width: "100%",
+  border: "1px solid black",
+  overflow: "auto",
+  paddingTop: "10px",
+  position: "fixed"
+};
+const style3 = {
+  backgroundColor: "#f5f5f5",
+  height: "100%",
+  width: "100%",
+  border: "1px solid black",
+  overflow: "auto",
+  paddingTop: "50px",
+  position: "fixed"
+};
+
 const useStyles = {
   image: {
     backgroundImage: "url(https://source.unsplash.com/random)",
@@ -59,12 +81,12 @@ class Homepage extends Component {
           <br />
 
           <div className="row">
-            <div className="col-lg-2">
+            <div className="col-lg-1">
               <div className="position-fixed"></div>
             </div>
             <div className="col-6">
               <div style={style1}>
-                <BasicTextField />
+                <BasicTextField placeholder="" label="Write Something" />
                 <div style={{ padding: "1rem", float: "left" }}>
                   <ResponsiveDialog />
                 </div>
@@ -117,20 +139,33 @@ class Homepage extends Component {
                             Like
                           </i>
                         </button>
-                        {"   "}
+                        {"       "}
                         <button className="btn btn-danger">
                           <i class="fa fa-heart" aria-hidden="true">
                             {" "}
                             Comment
                           </i>
                         </button>
+                        <BasicTextField
+                          placeholder="Write a Comment"
+                          label=""
+                        />
                       </div>
                     </div>
                   </div>
                 ))}
               </InfiniteScroll>
             </div>
-            <div className="col-3"></div>
+            <div className="col-sm-3">
+              <div style={style2}>
+                <AlignItemsList />
+              </div>
+            </div>
+            <div className="col-sm-2">
+              <div style={style2}>
+                <VirtualizedList />
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>
