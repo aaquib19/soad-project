@@ -25,18 +25,45 @@ const UserSchema = new Schema({
   dob: {
     type: Date
   },
-  freinds: {
-    type: Array //[freindid, firendid2]
-  },
+  freinds: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+      }
+    }
+  ],
+  pending: [
+    //outgoing request
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+      }
+    }
+  ],
+  waiting: [
+    //incoming request
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+      }
+    }
+  ],
   lastlogin: {
     type: String
   },
-  notifications: {
-    type: Array
-  },
-  chat_rooms: {
-    type: Array
-  }
+  notifications: [
+    {
+      type: String
+    }
+  ]
+  // chat_rooms: [
+  //   {
+  //     type: String
+  //   }
+  // ]
 });
 
 module.exports = User = mongoose.model("users", UserSchema);
