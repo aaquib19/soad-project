@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Registration from "./components/auth/Register";
@@ -9,10 +9,10 @@ import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authAction";
-import Success from "./components/layout/success";
+
 import Homepage from "./components/layout/homepage";
-import NavBar from "./components/layout/Navbar";
 import Landing from "./components/landing";
+import Profile from "./components/layout/Timeline/profile";
 
 //check for teken
 if (localStorage.Token) {
@@ -46,6 +46,7 @@ class App extends Component {
             {/* <Navbar></Navbar> */}
             <Route exact path="/register" component={Registration} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={Profile} />
             <Route exact path="/success" component={Homepage} />
             <Route exact path="/" component={Landing} />
 
