@@ -13,6 +13,9 @@ import { setCurrentUser, logoutUser } from "./actions/authAction";
 import Homepage from "./components/layout/homepage";
 import Landing from "./components/landing";
 import Profile from "./components/layout/Timeline/profile";
+import Friends from "./components/layout/Timeline/friends";
+import EditProfile from "./components/layout/Timeline/editProfile";
+import Settings from "./components/layout/Timeline/accountSettings";
 
 //check for teken
 if (localStorage.Token) {
@@ -46,7 +49,10 @@ class App extends Component {
             {/* <Navbar></Navbar> */}
             <Route exact path="/register" component={Registration} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profile/settings" component={Settings} />
+            <Route exact path="/profile/edit" component={EditProfile} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/friends" component={Friends} />
             <Route exact path="/success" component={Homepage} />
             <Route exact path="/" component={Landing} />
 

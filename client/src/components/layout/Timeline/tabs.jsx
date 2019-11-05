@@ -38,7 +38,7 @@ export default function CenteredTabs() {
           <Tab label="friends" />
         </Link>
         <Link to="/posts" style={{ color: "white" }}>
-          <Tab label="Posts" />
+          <Tab label="Album" />
         </Link>
       </Tabs>
     </Paper>

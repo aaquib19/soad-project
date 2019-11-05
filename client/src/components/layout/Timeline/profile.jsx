@@ -9,7 +9,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { Timeline, Event } from "react-timeline-scribble";
 import VirtualizedList from "./../../common/friendList";
-import NavBar from "../Navbar";
+import NavBar1 from "./nav";
+import FolderList from "./lists";
 
 const style = {
   height: "600px",
@@ -44,16 +45,31 @@ class Profile extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar1 />
         <br />
         <br />
         <br />
         <div className="row">
-          <div className="col-1"></div>
+          <div className="col-2">
+            {" "}
+            <div
+              style={{
+                width: "80%",
+                marginTop: "3rem",
+                marginLeft: "1rem"
+              }}
+            >
+              <FolderList />
+            </div>
+          </div>
 
           <div
-            className="col-9"
-            style={{ backgroundColor: "#eeeeee", zIndex: "-2" }}
+            className="col-8"
+            style={{
+              borderRadius: "40px",
+              backgroundColor: "#eeeeee",
+              zIndex: "-2"
+            }}
           >
             <img
               src="https://source.unsplash.com/collection/190727/470x300"
@@ -78,7 +94,8 @@ class Profile extends Component {
                 left: 0,
                 height: "500px",
                 width: "100%",
-                position: "absolute"
+                position: "absolute",
+                borderRadius: "40px"
               }}
             />
 

@@ -15,6 +15,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { Redirect } from "react-router-dom";
+import NavBar1 from "../layout/Timeline/nav";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -136,88 +137,101 @@ class LoginForm extends Component {
     }
 
     return (
-      <Grid container component="main" className={classes.image}>
-        {/* <CssBaseline /> */}
-        <Grid item xs={false} sm={4} md={7} className={classes.image} />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
-            <form className={classes.root} noValidate>
-              <ThemeProvider theme={theme}>
-                <TextField
-                  className={classes.margin}
-                  label="Email"
-                  variant="outlined"
-                  id="mui-theme-provider-outlined-input"
-                  InputProps={{
-                    className: classes.input
-                  }}
-                  type="email"
-                  value={this.state.email}
-                  onChange={this.onChange_email}
-                  error={!this.state.emailIsValid}
-                  helperText={
-                    this.state.emailIsValid === false
-                      ? "Enter a valid email"
-                      : null
-                  }
-                />
-                <TextField
-                  className={classes.margin}
-                  label="Password"
-                  variant="outlined"
-                  id="mui-theme-provider-outlined-input"
-                  type="password"
-                  InputProps={{
-                    className: classes.input
-                  }}
-                  error={this.props.errors.password | this.props.errors.email}
-                  helperText={
-                    this.props.errors.password | this.props.errors.email
-                      ? "User does not exist"
-                      : null
-                  }
-                  value={this.state.password}
-                  onChange={this.onChange_password}
-                />
+      <React.Fragment>
+        <NavBar1 />
+        <br />
+        <br />
+        <Grid container component="main" className={classes.image}>
+          {/* <CssBaseline /> */}
+          <Grid item xs={false} sm={4} md={7} className={classes.image} />
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={5}
+            component={Paper}
+            elevation={6}
+            square
+          >
+            <div className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+              <form className={classes.root} noValidate>
+                <ThemeProvider theme={theme}>
+                  <TextField
+                    className={classes.margin}
+                    label="Email"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    InputProps={{
+                      className: classes.input
+                    }}
+                    type="email"
+                    value={this.state.email}
+                    onChange={this.onChange_email}
+                    error={!this.state.emailIsValid}
+                    helperText={
+                      this.state.emailIsValid === false
+                        ? "Enter a valid email"
+                        : null
+                    }
+                  />
+                  <TextField
+                    className={classes.margin}
+                    label="Password"
+                    variant="outlined"
+                    id="mui-theme-provider-outlined-input"
+                    type="password"
+                    InputProps={{
+                      className: classes.input
+                    }}
+                    error={this.props.errors.password | this.props.errors.email}
+                    helperText={
+                      this.props.errors.password | this.props.errors.email
+                        ? "User does not exist"
+                        : null
+                    }
+                    value={this.state.password}
+                    onChange={this.onChange_password}
+                  />
 
-                {/* <Link href="/success"> */}
-                <Button
-                  variant="contained"
-                  size="medium"
-                  color="primary"
-                  className={classes.submit}
-                  onClick={this.onSubmitLogin}
-                >
-                  Submit
-                </Button>
-                {/* </Link> */}
-                <Grid container spacing={4}>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
+                  {/* <Link href="/success"> */}
+                  <Button
+                    variant="contained"
+                    size="medium"
+                    color="secondary"
+                    className={classes.submit}
+                    onClick={this.onSubmitLogin}
+                  >
+                    Submit
+                  </Button>
+                  {/* </Link> */}
+                  <Grid container spacing={4}>
+                    <Grid item xs>
+                      <Link href="#" variant="body2">
+                        Forgot password?
+                      </Link>
+                    </Grid>
+                    <Grid item>
+                      <Link href="/register" variant="body2">
+                        {"Don't have an account? Sign Up"}
+                      </Link>
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <Link href="/register" variant="body2">
-                      {"Don't have an account? Sign Up"}
-                    </Link>
-                  </Grid>
-                </Grid>
-              </ThemeProvider>
-            </form>
+                </ThemeProvider>
+              </form>
 
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </div>
+              <Box mt={5}>
+                <Copyright />
+              </Box>
+            </div>
+          </Grid>
         </Grid>
-      </Grid>
+      </React.Fragment>
     );
   }
 }
