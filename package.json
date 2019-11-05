@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "gravatar": "^1.8.0",
@@ -27,6 +28,8 @@
     "react": "^16.11.0",
     "react-images-upload": "^1.2.7",
     "react-infinite-scroll-component": "^4.5.3",
+    "react-timeline-scribble": "^1.0.14",
+    "react-vertical-timeline-component": "^2.5.0",
     "react-window": "^1.8.5",
     "validator": "^11.1.0"
   },

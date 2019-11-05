@@ -9,7 +9,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import PropTypes from "prop-types";
 import clsx from "clsx";
@@ -120,9 +120,7 @@ const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1
   },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
+
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {

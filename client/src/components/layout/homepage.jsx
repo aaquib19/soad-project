@@ -1,18 +1,10 @@
 import React, { Component } from "react";
-import SideList from "./sideList";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Posts from "./posts";
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider, withStyles } from "@material-ui/styles";
+import { withStyles } from "@material-ui/styles";
 import NavBar from "./Navbar";
-import Divider from "@material-ui/core/Divider";
 
 import BasicTextField from "./../common/textField";
-import IconLabelButtons from "../common/button";
-import CustomizedDialogs from "../common/dialog";
 import ResponsiveDialog from "../common/dialog";
-import { Link } from "@material-ui/core/Link";
-import CheckboxListSecondary from "./../common/friendList";
 import VirtualizedList from "./../common/friendList";
 import AlignItemsList from "./../common/people";
 
@@ -21,7 +13,8 @@ const style = {
   width: "80%",
   border: "1px solid green",
   margin: "2rem",
-  overflow: "auto"
+  overflow: "auto",
+  borderRadius: "5%"
   // padding: "4rem"
 };
 
@@ -40,15 +33,6 @@ const style2 = {
   border: "1px solid black",
   overflow: "auto",
   paddingTop: "10px",
-  position: "fixed"
-};
-const style3 = {
-  backgroundColor: "#f5f5f5",
-  height: "100%",
-  width: "100%",
-  border: "1px solid black",
-  overflow: "auto",
-  paddingTop: "50px",
   position: "fixed"
 };
 
@@ -72,7 +56,6 @@ class Homepage extends Component {
     }, 1000);
   };
   render() {
-    const { classes } = this.props;
     return (
       <React.Fragment>
         <div style={{ backgroundColor: "#e0e0e0" }}>
