@@ -20,7 +20,7 @@ class Friends extends Component {
           <div
             className="col-3"
             style={{
-              marginTop: "3rem",
+              marginTop: "2rem",
               marginLeft: "2rem",
               backgroundImage:
                 "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
@@ -84,7 +84,8 @@ class Friends extends Component {
           <div
             className="col-6"
             style={{
-              zIndex: "-2",
+              marginTop: "2rem",
+              zIndex: "-1",
               backgroundImage:
                 "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
             }}
@@ -199,6 +200,7 @@ class Friends extends Component {
           <div
             className="col-2"
             style={{
+              marginTop: "2rem",
               width: "100%",
               backgroundImage:
                 "linear-gradient(to left, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
