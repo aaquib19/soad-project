@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
 import Registration from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
@@ -49,21 +54,24 @@ class App extends Component {
         <Router>
           <div className="App">
             {/* <Navbar></Navbar> */}
-            <Route exact path="/register" component={Registration} />
-            <Route exact path="/login" component={Login} />
-            <Route
-              exact
-              path="/profile/passwordChange"
-              component={ChangePassword}
-            />
-            <Route exact path="/profile/settings" component={Settings} />
-            <Route exact path="/profile/edit" component={EditProfile} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/friends" component={Friends} />
-            <Route exact path="/success" component={Homepage} />
-            <Route exact path="/not-found" component={ErrorPage} />
-            <Route exact path="/" component={Landing} />
-            // <Redirect to="/not-found" />
+            <Switch>
+              <Route exact path="/register" component={Registration} />
+              <Route exact path="/login" component={Login} />
+              <Route
+                exact
+                path="/profile/passwordChange"
+                component={ChangePassword}
+              />
+              <Route exact path="/profile/settings" component={Settings} />
+              <Route exact path="/profile/edit" component={EditProfile} />
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/friends" component={Friends} />
+              <Route exact path="/success" component={Homepage} />
+              <Route exact path="/landing" component={Landing} />
+              <Route path="/not-found" component={ErrorPage} />
+              <Redirect from="/" exact to="/landing" />
+              <Redirect to="/not-found" />
+            </Switch>
             {/* <Footer></Footer> */}
           </div>
         </Router>

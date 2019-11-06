@@ -89,7 +89,7 @@ class RegistrationForm extends Component {
     console.log("hello");
     console.log(this.props.auth);
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/profile");
+      this.props.history.push("/success");
     }
   }
   componentWillReceiveProps(nextProps) {
