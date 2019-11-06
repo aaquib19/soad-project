@@ -9,10 +9,10 @@ import VirtualizedList from "./../common/friendList";
 import AlignItemsList from "./../common/people";
 
 const style = {
-  height: "600px",
-  width: "80%",
-  border: "1px solid green",
-  margin: "2rem",
+  height: "584px",
+  width: "60%",
+  border: "1px solid white",
+  margin: "1rem",
   overflow: "auto",
   borderRadius: "5%"
   // padding: "4rem"
@@ -20,17 +20,22 @@ const style = {
 
 const style1 = {
   backgroundColor: "#f5f5f5",
+  backgroundImage:
+    "linear-gradient(to right top,#ddd3d5, #e2dadb, #e7e1e2, #ece9e9, #f1f0f0)",
   height: "245px",
   width: "80%",
-  border: "1px solid black",
+  borderRadius: "15px",
   margin: "2rem",
   overflow: "auto"
 };
 const style2 = {
+  backgroundImage:
+    "linear-gradient(to left  , #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
+
   backgroundColor: "#f5f5f5",
   height: "100%",
   width: "100%",
-  border: "1px solid black",
+
   overflow: "auto",
   paddingTop: "10px",
   position: "fixed"
@@ -58,7 +63,12 @@ class Homepage extends Component {
   render() {
     return (
       <React.Fragment>
-        <div style={{ backgroundColor: "#e0e0e0" }}>
+        <div
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
+          }}
+        >
           <NavBar />
           <br />
           <br />

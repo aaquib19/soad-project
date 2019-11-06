@@ -13,19 +13,20 @@ import NavBar1 from "./nav";
 import FolderList from "./lists";
 
 const style = {
-  height: "600px",
+  height: "585px",
   width: "90%",
-  border: "1px solid black",
+  border: "1px solid",
   margin: "2rem",
   overflow: "auto",
   borderRadius: "5%"
   // padding: "4rem"
 };
 const style2 = {
-  backgroundColor: "#f5f5f5",
+  backgroundImage:
+    "linear-gradient(to left, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
   height: "100%",
   width: "100%",
-  border: "1px solid black",
+  border: "1px solid white",
   overflow: "auto",
   paddingTop: "10px",
   position: "fixed"
@@ -54,9 +55,11 @@ class Profile extends Component {
             {" "}
             <div
               style={{
-                width: "80%",
+                width: "14%",
                 marginTop: "3rem",
-                marginLeft: "1rem"
+
+                position: "fixed",
+                backgroundColor: "transparent"
               }}
             >
               <FolderList />
@@ -67,7 +70,9 @@ class Profile extends Component {
             className="col-8"
             style={{
               borderRadius: "40px",
-              backgroundColor: "#eeeeee",
+              backgroundImage:
+                "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
+
               zIndex: "-2"
             }}
           >
@@ -94,8 +99,7 @@ class Profile extends Component {
                 left: 0,
                 height: "500px",
                 width: "100%",
-                position: "absolute",
-                borderRadius: "40px"
+                position: "absolute"
               }}
             />
 

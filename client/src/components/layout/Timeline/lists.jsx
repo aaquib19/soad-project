@@ -11,6 +11,7 @@ import DynamicFeedIcon from "@material-ui/icons/DynamicFeed";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,7 +32,9 @@ export default function FolderList() {
             <DynamicFeedIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Timeline" />
+        <Link to="/profile" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Timeline" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -40,7 +43,9 @@ export default function FolderList() {
             <AccountCircleIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Profile" />
+        <Link to="/profile/edit" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Profile" />
+        </Link>
       </ListItem>{" "}
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -49,7 +54,9 @@ export default function FolderList() {
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Posts" />
+        <Link to="/posts" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Posts" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -58,7 +65,9 @@ export default function FolderList() {
             <PeopleAltIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Recommendations" />
+        <Link to="/recommendations" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Recommendations" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -67,7 +76,9 @@ export default function FolderList() {
             <PeopleAltIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Friends" />
+        <Link to="/friends" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Friends" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -76,7 +87,9 @@ export default function FolderList() {
             <PeopleAltIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Messeges" />
+        <Link to="/messeges" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Messeges" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -85,7 +98,9 @@ export default function FolderList() {
             <PeopleAltIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="ChatRoom" />
+        <Link to="/chatroom" style={{ color: "#DC3545" }}>
+          <ListItemText primary="ChatRoom" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -94,7 +109,9 @@ export default function FolderList() {
             <VideoCallIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Videos" />
+        <Link to="/videos" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Videos" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
     </List>

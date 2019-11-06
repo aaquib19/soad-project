@@ -33,7 +33,8 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles(theme => ({
   root: {
     "&:focus": {
-      backgroundColor: theme.palette.secondary.main,
+      backgroundImage:
+        "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: theme.palette.common.black
       }

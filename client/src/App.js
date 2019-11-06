@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Registration from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
@@ -16,6 +16,8 @@ import Profile from "./components/layout/Timeline/profile";
 import Friends from "./components/layout/Timeline/friends";
 import EditProfile from "./components/layout/Timeline/editProfile";
 import Settings from "./components/layout/Timeline/accountSettings";
+import ChangePassword from "./components/layout/Timeline/passwordChange";
+import ErrorPage from "./components/layout/errorPage";
 
 //check for teken
 if (localStorage.Token) {
@@ -49,13 +51,19 @@ class App extends Component {
             {/* <Navbar></Navbar> */}
             <Route exact path="/register" component={Registration} />
             <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/profile/passwordChange"
+              component={ChangePassword}
+            />
             <Route exact path="/profile/settings" component={Settings} />
             <Route exact path="/profile/edit" component={EditProfile} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/friends" component={Friends} />
             <Route exact path="/success" component={Homepage} />
+            <Route exact path="/not-found" component={ErrorPage} />
             <Route exact path="/" component={Landing} />
-
+            // <Redirect to="/not-found" />
             {/* <Footer></Footer> */}
           </div>
         </Router>

@@ -19,14 +19,19 @@ class Friends extends Component {
         <div className="row">
           <div
             className="col-3"
-            style={{ marginTop: "3rem", marginLeft: "4rem" }}
+            style={{
+              marginTop: "3rem",
+              marginLeft: "2rem",
+              backgroundImage:
+                "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
+            }}
           >
             <div
               style={{
                 height: "33%",
                 width: "95%",
                 backgroundImage:
-                  "linear-gradient(to right, #e8408f, #e6337a, #e22865, #dc1f51, #d41b3c)"
+                  "linear-gradient(to left, #e36d9f, #d45980, #c24761, #ad3744, #972929)"
               }}
             >
               <img
@@ -46,11 +51,11 @@ class Friends extends Component {
               />
               <h3
                 style={{
+                  fontFamily: "serif",
                   paddingTop: "2rem",
-                  paddingLeft: "8rem",
-                  fontFamily: "Sans-Serif",
-
-                  color: "#fff"
+                  paddingLeft: "7rem",
+                  fontWeight: "bold",
+                  color: "black"
                 }}
               >
                 Wilson Patro
@@ -60,7 +65,7 @@ class Friends extends Component {
                   paddingLeft: "7rem",
                   fontWeight: "bold",
                   fontFamily: "Serif",
-                  color: "#ddd"
+                  color: "black"
                 }}
               >
                 <PeopleOutlineIcon /> 500 Friends
@@ -76,7 +81,14 @@ class Friends extends Component {
               <FolderList />
             </div>
           </div>
-          <div className="col-6">
+          <div
+            className="col-6"
+            style={{
+              zIndex: "-2",
+              backgroundImage:
+                "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
+            }}
+          >
             <h1
               style={{
                 textAlign: "left",
@@ -98,7 +110,7 @@ class Friends extends Component {
                     width: "5rem",
                     color: "white",
                     marginTop: "9rem",
-                    marginLeft: "1rem",
+                    marginLeft: "4rem",
                     position: "absolute",
                     left: 0,
                     borderRadius: "50%",
@@ -113,6 +125,7 @@ class Friends extends Component {
                     zIndex: "-1",
                     left: 1,
                     height: "200px",
+                    marginLeft: "3rem",
                     width: "300px"
                   }}
                 />
@@ -121,6 +134,7 @@ class Friends extends Component {
                     left: 0,
                     textAlign: "left",
                     marginTop: "15rem",
+                    marginLeft: "3rem",
                     fontFamily: "Sans-Serif"
                   }}
                 >
@@ -130,12 +144,12 @@ class Friends extends Component {
               <div
                 style={{
                   marginTop: "14rem",
-                  marginLeft: "1rem"
+                  marginLeft: "2rem"
                 }}
               >
                 <CustomizedMenus />
               </div>
-              <div className="col-3" style={{ marginLeft: "3rem" }}>
+              <div className="col-3" style={{ marginLeft: "5rem" }}>
                 <img
                   src="https://source.unsplash.com/collection/190727/470x300"
                   alt=""
@@ -175,15 +189,21 @@ class Friends extends Component {
               </div>
               <div
                 style={{
-                  marginTop: "14rem",
-                  marginLeft: "1rem"
+                  marginTop: "14rem"
                 }}
               >
                 <CustomizedMenus />
               </div>
             </div>
           </div>
-          <div className="col-2">
+          <div
+            className="col-2"
+            style={{
+              width: "100%",
+              backgroundImage:
+                "linear-gradient(to left, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
+            }}
+          >
             <div
               style={{
                 width: "100%",
@@ -193,6 +213,14 @@ class Friends extends Component {
               <AlignItemsList1 />
             </div>
           </div>
+          <div
+            className="col-1"
+            style={{
+              width: "100%",
+              backgroundImage:
+                "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
+            }}
+          ></div>
         </div>
       </React.Fragment>
     );

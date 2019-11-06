@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap",
     backgroundImage:
-      "linear-gradient(to left, #f4a3b3, #f5b7c0, #f5cace, #f4ddde, #f1f0f0)",
+      "linear-gradient(to right, #e5c5cd, #e5abb9, #e38fa5, #e07390, #db547b)",
     borderRadius: "2%"
   },
   textField: {
@@ -95,7 +95,7 @@ export default function EditForm() {
             style={{ marginLeft: "1rem", width: "54rem" }}
           />
         </div>
-        <div style={{ width: "100%", marginTop: "3rem" }}>
+        <div style={{ width: "100%", marginTop: "3rem", marginBottom: "3rem" }}>
           <button className="btn btn-danger btn-block">Submit</button>
         </div>
       </form>

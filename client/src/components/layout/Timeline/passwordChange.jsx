@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import VirtualizedList from "./../../common/friendList";
 import NavBar1 from "./nav";
-import FolderList from "./lists";
+
 import CenteredTabs from "./tabs";
 import FolderList1 from "./editProfileSideBar";
-import EditForm from "./editform";
+import EditForm1 from "./passwordChangeForm";
 
-class EditProfile extends Component {
+class ChangePassword extends Component {
   state = {};
   render() {
     return (
@@ -55,7 +54,8 @@ class EditProfile extends Component {
                 left: 0,
                 height: "500px",
                 width: "100%",
-                position: "absolute"
+                position: "absolute",
+                borderRadius: "40px"
               }}
             />
 
@@ -68,8 +68,7 @@ class EditProfile extends Component {
                 left: 0,
                 textAlign: "left",
                 marginTop: "9rem",
-                marginLeft: "1rem",
-                fontFamily: "Times, Times New Roman, serif"
+                marginLeft: "1rem"
               }}
             >
               Wilson Patro
@@ -83,10 +82,12 @@ class EditProfile extends Component {
                   color: "#626262"
                 }}
               >
-                Edit Basic Info
+                Change Password
               </h2>
             </div>
-            <EditForm />
+            <div>
+              <EditForm1 />
+            </div>
           </div>
         </div>
       </React.Fragment>
@@ -94,4 +95,4 @@ class EditProfile extends Component {
   }
 }
 
-export default EditProfile;
+export default ChangePassword;

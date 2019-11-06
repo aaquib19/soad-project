@@ -13,7 +13,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    backgroundImage:
+      "linear-gradient(to left, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
   },
   inline: {
     display: "inline"
@@ -25,14 +27,27 @@ export default function AlignItemsList1() {
 
   return (
     <List className={classes.root}>
-      <h5 style={{ paddingTop: "10px", float: "left" }}> Wanna Follow ?</h5>
+      <h5
+        style={{
+          paddingTop: "10px",
+          float: "left",
+          fontFamily: "serif",
+          fontWeight: "bold",
+          marginLeft: "1rem"
+        }}
+      >
+        {" "}
+        Wanna Follow ?
+      </h5>
       <Link
         to="/recommendations"
         style={{
           paddingTop: "10px",
           paddingLeft: "2.3rem",
           float: "left",
-          fontSize: "17px"
+          fontSize: "17px",
+          color: "#DC3545",
+          fontWeight: "bold"
         }}
       >
         See All

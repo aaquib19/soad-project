@@ -10,13 +10,14 @@ import Divider from "@material-ui/core/Divider";
 import DynamicFeedIcon from "@material-ui/icons/DynamicFeed";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
-import VideoCallIcon from "@material-ui/icons/VideoCall";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: "20px"
   }
 }));
 
@@ -31,7 +32,9 @@ export default function FolderList1() {
             <DynamicFeedIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Timeline" />
+        <Link to="/profile" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Timeline" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -40,7 +43,12 @@ export default function FolderList1() {
             <AccountCircleIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Edit Basic Info" />
+        <Link to="/profile/edit">
+          <ListItemText
+            primary="Edit Basic Info"
+            style={{ color: "#DC3545" }}
+          />
+        </Link>
       </ListItem>{" "}
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -48,8 +56,10 @@ export default function FolderList1() {
           <Avatar>
             <PeopleAltIcon />
           </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Education and Work" />
+        </ListItemAvatar>{" "}
+        <Link to="/profile/education" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Education and Work" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -57,8 +67,10 @@ export default function FolderList1() {
           <Avatar>
             <ImageIcon />
           </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Edit Interests" />
+        </ListItemAvatar>{" "}
+        <Link to="/profile/interests" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Edit Interests" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -66,8 +78,10 @@ export default function FolderList1() {
           <Avatar>
             <PeopleAltIcon />
           </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Account Settings" />
+        </ListItemAvatar>{" "}
+        <Link to="/profile/settings" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Account Settings" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
@@ -75,8 +89,10 @@ export default function FolderList1() {
           <Avatar>
             <PeopleAltIcon />
           </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Change Password" />
+        </ListItemAvatar>{" "}
+        <Link to="/profile/passwordChange" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Change Password" />
+        </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
     </List>
