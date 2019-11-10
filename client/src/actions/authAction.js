@@ -28,6 +28,7 @@ export const RegisterUser = user_data => dispatch => {
 
 // Set logged in user
 export const setCurrentUser = decoded => {
+  localStorage.setItem("name", decoded.name);
   return {
     type: LOGIN,
     payload: decoded

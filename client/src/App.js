@@ -6,6 +6,10 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
+// chatroom
+import Chat from './components/chatroom/Chat/Chat';
+import Join from './components/chatroom/Join/Join';
+//--------------------------chatroom
 import Registration from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
@@ -62,6 +66,10 @@ class App extends Component {
                 path="/profile/passwordChange"
                 component={ChangePassword}
               />
+              {/* chat router */}
+              <Route path="/chatroom" exact component={Join} />
+              <Route path="/chatroom/chat" component={Chat} />
+              {/* -------chat router */}
               <Route exact path="/profile/settings" component={Settings} />
               <Route exact path="/profile/edit" component={EditProfile} />
               <Route exact path="/profile" component={Profile} />
