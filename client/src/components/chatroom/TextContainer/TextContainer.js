@@ -17,14 +17,14 @@ const TextContainer = ({ users }) => (
           <div>
             <h2>People currently chatting:</h2>
             <div className="activeContainer">
-              <h3>
+              <p>
                 {users.map(({name}) => (
                   <div key={name} className="activeItem">
                     {name}
                     <img alt="Online Icon" src={onlineIcon}/>
                   </div>
                 ))}
-              </h3>
+              </p>
             </div>
           </div>
         )
