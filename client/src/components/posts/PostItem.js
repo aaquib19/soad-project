@@ -8,8 +8,25 @@ import { deletePost, addLike, removeLike } from "../../actions/postActions";
 class PostItem extends Component {
   onDeleteClick(id) {
     console.log(id);
+    this.props.deletePost(id);
+  }
+  onLikeClick(id) {
+    this.props.addLike(id);
   }
 
+  onUnlikeClick(id) {
+    this.props.removeLike(id);
+  }
+
+  findUserLike(likes) {
+    const { auth } = this.props;
+
+    if (likes.filter(like => like.user === auth.user.id).length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   render() {
     // console.log(this.props);
     const { post, auth, showActions } = this.props;
@@ -26,21 +43,32 @@ class PostItem extends Component {
           </div>
           <div className="col-md-10">
             <p className="lead">{post.text}</p>
-            <button type="button">
-              like
-              <span>{post.likes.length}</span>
-            </button>
-            <button type="button">
-              <i />
-            </button>
-            <Link to={`/post/${post._id}`}>comments</Link>
-            {post.user === auth.userData.id ? (
-              <button
-                onClick={this.onDeleteClick.bind(this, post._id)}
-                type="button"
-              >
-                delete post
-              </button>
+
+            {showActions ? (
+              <span>
+                <button
+                  onClick={this.onLikeClick.bind(this, post._id)}
+                  type="button"
+                >
+                  like
+                  <span>{post.likes.length}</span>
+                </button>
+                <button
+                  onClick={this.onUnlikeClick.bind(this, post._id)}
+                  type="button"
+                >
+                  unlike
+                </button>
+                <Link to={`/post/${post._id}`}>comments</Link>
+                {post.user === auth.userData.id ? (
+                  <button
+                    onClick={this.onDeleteClick.bind(this, post._id)}
+                    type="button"
+                  >
+                    delete post
+                  </button>
+                ) : null}
+              </span>
             ) : null}
           </div>
         </div>
@@ -54,9 +82,9 @@ PostItem.defaultProps = {
 };
 
 PostItem.propTypes = {
-  // deletePost: PropTypes.func.isRequired,
-  // addLike: PropTypes.func.isRequired,
-  // removeLike: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };

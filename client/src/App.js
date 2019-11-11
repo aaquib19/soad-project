@@ -28,6 +28,7 @@ import Settings from "./components/layout/Timeline/accountSettings";
 import ChangePassword from "./components/layout/Timeline/passwordChange";
 import ErrorPage from "./components/layout/errorPage";
 import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 //check for teken
 if (localStorage.Token) {
   console.log(localStorage.Token);
@@ -78,6 +79,7 @@ class App extends Component {
               <Route exact path="/success" component={Homepage} />
               <Route exact path="/landing" component={Landing} />
               <Route exact path="/feed" component={Posts} />
+              <Route exact path="/post/:id" component={Post} />
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />
