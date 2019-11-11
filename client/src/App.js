@@ -7,8 +7,8 @@ import {
   Switch
 } from "react-router-dom";
 // chatroom
-import Chat from './components/chatroom/Chat/Chat';
-import Join from './components/chatroom/Join/Join';
+import Chat from "./components/chatroom/Chat/Chat";
+import Join from "./components/chatroom/Join/Join";
 //--------------------------chatroom
 import Registration from "./components/auth/Register";
 import Login from "./components/auth/Login";
@@ -27,7 +27,7 @@ import EditProfile from "./components/layout/Timeline/editProfile";
 import Settings from "./components/layout/Timeline/accountSettings";
 import ChangePassword from "./components/layout/Timeline/passwordChange";
 import ErrorPage from "./components/layout/errorPage";
-
+import Posts from "./components/posts/Posts";
 //check for teken
 if (localStorage.Token) {
   console.log(localStorage.Token);
@@ -51,6 +51,7 @@ if (localStorage.Token) {
 } else {
   console.log("no token");
 }
+
 class App extends Component {
   render() {
     return (
@@ -76,6 +77,7 @@ class App extends Component {
               <Route exact path="/friends" component={Friends} />
               <Route exact path="/success" component={Homepage} />
               <Route exact path="/landing" component={Landing} />
+              <Route exact path="/feed" component={Posts} />
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />
