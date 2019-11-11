@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 550
+    width: 350
   },
   bigAvatar: {
     margin: 10,
@@ -22,22 +22,17 @@ const useStyles = makeStyles(theme => ({
     height: 60
   }
 }));
-
-export default function BasicTextFields() {
+const BasicTextFields = ({ placeholder, label }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState("Controlled");
-
-  const handleChange = event => {
-    setValue(event.target.value);
-  };
 
   return (
     <Grid>
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
+          backgroundColor="#fff"
           id="outlined-textarea"
-          label="Write Something"
-          placeholder=""
+          label={label}
+          placeholder={placeholder}
           multiline
           className={classes.textField}
           margin="normal"
@@ -59,4 +54,5 @@ export default function BasicTextFields() {
       </form>
     </Grid>
   );
-}
+};
+export default BasicTextFields;

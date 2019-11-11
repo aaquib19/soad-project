@@ -1,35 +1,46 @@
 import React, { Component } from "react";
-import SideList from "./sideList";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Posts from "./posts";
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider, withStyles } from "@material-ui/styles";
+import { withStyles } from "@material-ui/styles";
 import NavBar from "./Navbar";
-import Divider from "@material-ui/core/Divider";
 
 import BasicTextField from "./../common/textField";
-import IconLabelButtons from "../common/button";
-import CustomizedDialogs from "../common/dialog";
 import ResponsiveDialog from "../common/dialog";
-import { Link } from "@material-ui/core/Link";
+import VirtualizedList from "./../common/friendList";
+import AlignItemsList from "./../common/people";
 
 const style = {
-  height: "600px",
-  width: "70%",
-  border: "1px solid green",
-  margin: "2rem",
-  overflow: "auto"
+  height: "584px",
+  width: "60%",
+  border: "1px solid white",
+  margin: "1rem",
+  overflow: "auto",
+  borderRadius: "5%"
   // padding: "4rem"
 };
 
 const style1 = {
   backgroundColor: "#f5f5f5",
-  height: "235px",
+  backgroundImage:
+    "linear-gradient(to right top,#ddd3d5, #e2dadb, #e7e1e2, #ece9e9, #f1f0f0)",
+  height: "245px",
   width: "80%",
-  border: "2px solid black",
+  borderRadius: "15px",
   margin: "2rem",
   overflow: "auto"
 };
+const style2 = {
+  backgroundImage:
+    "linear-gradient(to left  , #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
+
+  backgroundColor: "#f5f5f5",
+  height: "100%",
+  width: "100%",
+
+  overflow: "auto",
+  paddingTop: "10px",
+  position: "fixed"
+};
+
 const useStyles = {
   image: {
     backgroundImage: "url(https://source.unsplash.com/random)",
@@ -50,21 +61,25 @@ class Homepage extends Component {
     }, 1000);
   };
   render() {
-    const { classes } = this.props;
     return (
       <React.Fragment>
-        <div style={{ backgroundColor: "#e0e0e0" }}>
+        <div
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
+          }}
+        >
           <NavBar />
           <br />
           <br />
 
           <div className="row">
-            <div className="col-lg-2">
+            <div className="col-lg-1">
               <div className="position-fixed"></div>
             </div>
             <div className="col-6">
               <div style={style1}>
-                <BasicTextField />
+                <BasicTextField placeholder="" label="Write Something" />
                 <div style={{ padding: "1rem", float: "left" }}>
                   <ResponsiveDialog />
                 </div>
@@ -117,20 +132,33 @@ class Homepage extends Component {
                             Like
                           </i>
                         </button>
-                        {"   "}
+                        {"       "}
                         <button className="btn btn-danger">
                           <i class="fa fa-heart" aria-hidden="true">
                             {" "}
                             Comment
                           </i>
                         </button>
+                        <BasicTextField
+                          placeholder="Write a Comment"
+                          label=""
+                        />
                       </div>
                     </div>
                   </div>
                 ))}
               </InfiniteScroll>
             </div>
-            <div className="col-3"></div>
+            <div className="col-sm-3">
+              <div style={style2}>
+                <AlignItemsList />
+              </div>
+            </div>
+            <div className="col-sm-2">
+              <div style={style2}>
+                <VirtualizedList />
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>

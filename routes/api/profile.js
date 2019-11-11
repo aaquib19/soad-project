@@ -300,6 +300,12 @@ router.delete(
   }
 );
 
+router.get("/getUsers", (req, res) => {
+  console.log(req.headers);
+  return res.status(200).send("happy")
+})
+
+
 // @route   DELETE api/profile
 // @desc    Delete user and profile
 // @access  Private
@@ -314,5 +320,6 @@ router.delete(
     });
   }
 );
+
 
 module.exports = router;

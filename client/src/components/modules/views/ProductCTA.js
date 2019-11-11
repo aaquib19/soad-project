@@ -61,15 +61,11 @@ const styles = theme => ({
 function ProductCTA(props) {
   const { classes } = props;
   console.log("props is ", props);
-  const [open, setOpen] = React.useState(false);
+  const [setOpen] = React.useState(false);
 
   const handleSubmit = event => {
     event.preventDefault();
     setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   return (
