@@ -26,12 +26,12 @@ class PostItem extends Component {
           </div>
           <div className="col-md-10">
             <p className="lead">{post.text}</p>
-            <button type="button" className="btn btn-light mr-1">
-              <i className="text-info fas fa-thumbs-up" />
-              <span className="badge badge-light">{post.likes.length}</span>
+            <button type="button">
+              like
+              <span>{post.likes.length}</span>
             </button>
-            <button type="button" className="btn btn-light mr-1">
-              <i className="text-secondary fas fa-thumbs-down" />
+            <button type="button">
+              <i />
             </button>
             <Link to={`/post/${post._id}`}>comments</Link>
             {post.user === auth.userData.id ? (
