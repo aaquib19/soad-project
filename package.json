@@ -46,6 +46,6 @@
     "client": "0.0.1",
     "create-react-app": "^3.1.1",
     "html-loader": "^0.5.5",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.4"
   }
 }
