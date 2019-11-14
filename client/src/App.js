@@ -32,6 +32,7 @@ import Post from "./components/post/Post";
 import Dashboard from "./components/dashboard/Dashboard";
 import { clearCurrentProfile } from "./actions/profileActions";
 import PrivateRoute from "./components/common/PrivateRoute";
+import CreateProfile from "./components/create-profile/CreateProfile";
 
 //check for teken
 if (localStorage.Token) {
@@ -84,9 +85,13 @@ class App extends Component {
               <Route exact path="/landing" component={Landing} />
               <Route exact path="/feed" component={Posts} />
               <Route exact path="/post/:id" component={Post} />
-              <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              </Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />
