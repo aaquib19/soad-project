@@ -139,8 +139,20 @@ router.post(
       profileFields.githubusername = req.body.githubusername;
     // Skills - Spilt into array
     if (typeof req.body.skills !== "undefined") {
-      profileFields.skills = req.body.skills.split(",");
+      // profileFields.skills = req.body.skills.split(",");
+      let newArr = req.body.skills.split(",");
+      let arr = [];
+      console.log(newArr);
+      for (var index in newArr) {
+        // newArr[index] = newArr[index].split(" ");
+        newArr[index] = newArr[index].trim();
+        newArr[index] = newArr[index].split(/\s+/);
+        console.log(newArr);
+        // arr.push(newArr[index]);
+      }
+      profileFields.skills = newArr;
     }
+
     // Social (optional fields)
     profileFields.social = {};
     if (req.body.youtube) profileFields.social.youtube = req.body.youtube;
@@ -299,6 +311,11 @@ router.delete(
       .catch(err => res.status(404).json(err));
   }
 );
+
+router.get("/getUsers", (req, res) => {
+  console.log(req.headers);
+  return res.status(200).send("happy");
+});
 
 // @route   DELETE api/profile
 // @desc    Delete user and profile

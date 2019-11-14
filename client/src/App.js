@@ -6,6 +6,10 @@ import {
   Redirect,
   Switch
 } from "react-router-dom";
+// chatroom
+import Chat from "./components/chatroom/Chat/Chat";
+import Join from "./components/chatroom/Join/Join";
+//--------------------------chatroom
 import Registration from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
@@ -23,7 +27,8 @@ import EditProfile from "./components/layout/Timeline/editProfile";
 import Settings from "./components/layout/Timeline/accountSettings";
 import ChangePassword from "./components/layout/Timeline/passwordChange";
 import ErrorPage from "./components/layout/errorPage";
-
+import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 //check for teken
 if (localStorage.Token) {
   console.log(localStorage.Token);
@@ -47,6 +52,7 @@ if (localStorage.Token) {
 } else {
   console.log("no token");
 }
+
 class App extends Component {
   render() {
     return (
@@ -62,12 +68,18 @@ class App extends Component {
                 path="/profile/passwordChange"
                 component={ChangePassword}
               />
+              {/* chat router */}
+              <Route path="/chatroom" exact component={Join} />
+              <Route path="/chatroom/chat" component={Chat} />
+              {/* -------chat router */}
               <Route exact path="/profile/settings" component={Settings} />
               <Route exact path="/profile/edit" component={EditProfile} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/friends" component={Friends} />
               <Route exact path="/success" component={Homepage} />
               <Route exact path="/landing" component={Landing} />
+              <Route exact path="/feed" component={Posts} />
+              <Route exact path="/post/:id" component={Post} />
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />

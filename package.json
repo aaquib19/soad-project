@@ -38,6 +38,7 @@
     "react-timeline-scribble": "^1.0.14",
     "react-vertical-timeline-component": "^2.5.0",
     "react-window": "^1.8.5",
+    "socket.io": "^2.2.0",
     "validator": "^11.1.0"
   },
   "devDependencies": {
@@ -45,6 +46,6 @@
     "client": "0.0.1",
     "create-react-app": "^3.1.1",
     "html-loader": "^0.5.5",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.4"
   }
 }
