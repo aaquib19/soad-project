@@ -8,7 +8,9 @@ import AlignItemsList from "./../../common/people";
 import AlignItemsList1 from "./recommend";
 import NavBar1 from "./nav";
 class Friends extends Component {
-  state = {};
+  state = {
+    friend: ["Wilson Patro", "AAquib Niaz", "Bittu Ray", "Rahul Prasad"]
+  };
   render() {
     return (
       <React.Fragment>
@@ -85,7 +87,7 @@ class Friends extends Component {
             className="col-6"
             style={{
               marginTop: "2rem",
-              zIndex: "-1",
+
               backgroundImage:
                 "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
             }}
@@ -101,101 +103,103 @@ class Friends extends Component {
             >
               Friends List
             </h1>
-            <div className="row" style={{ marginTop: "3rem" }}>
-              <div className="col-3">
-                <img
-                  src="https://source.unsplash.com/collection/190727/470x300"
-                  alt=""
+            {this.state.friend.map((friend1, index) => (
+              <div className="row" style={{ marginTop: "3rem" }}>
+                <div className="col-3">
+                  <img
+                    src="https://source.unsplash.com/collection/190727/470x300"
+                    alt=""
+                    style={{
+                      height: "5rem",
+                      width: "5rem",
+                      color: "white",
+                      marginTop: "9rem",
+                      marginLeft: "4rem",
+                      position: "absolute",
+                      left: 0,
+                      borderRadius: "50%",
+                      border: "5px solid #fff"
+                    }}
+                  />
+                  <img
+                    src="https://source.unsplash.com/random"
+                    alt=".."
+                    style={{
+                      position: "absolute",
+                      zIndex: "-3",
+                      left: 1,
+                      height: "200px",
+                      marginLeft: "3rem",
+                      width: "300px"
+                    }}
+                  />
+                  <h5
+                    style={{
+                      left: 0,
+                      textAlign: "left",
+                      marginTop: "15rem",
+                      marginLeft: "3rem",
+                      fontFamily: "Sans-Serif"
+                    }}
+                  >
+                    {friend1}
+                  </h5>
+                </div>
+                <div
                   style={{
-                    height: "5rem",
-                    width: "5rem",
-                    color: "white",
-                    marginTop: "9rem",
-                    marginLeft: "4rem",
-                    position: "absolute",
-                    left: 0,
-                    borderRadius: "50%",
-                    border: "5px solid #fff"
-                  }}
-                />
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=".."
-                  style={{
-                    position: "absolute",
-                    zIndex: "-1",
-                    left: 1,
-                    height: "200px",
-                    marginLeft: "3rem",
-                    width: "300px"
-                  }}
-                />
-                <h5
-                  style={{
-                    left: 0,
-                    textAlign: "left",
-                    marginTop: "15rem",
-                    marginLeft: "3rem",
-                    fontFamily: "Sans-Serif"
-                  }}
-                >
-                  Wilson Patro
-                </h5>
-              </div>
-              <div
-                style={{
-                  marginTop: "14rem",
-                  marginLeft: "2rem"
-                }}
-              >
-                <CustomizedMenus />
-              </div>
-              <div className="col-3" style={{ marginLeft: "5rem" }}>
-                <img
-                  src="https://source.unsplash.com/collection/190727/470x300"
-                  alt=""
-                  style={{
-                    height: "5rem",
-                    width: "5rem",
-                    color: "white",
-                    marginTop: "9rem",
-                    marginLeft: "1rem",
-                    position: "absolute",
-                    left: 0,
-                    borderRadius: "50%",
-                    border: "5px solid #fff"
-                  }}
-                />
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=".."
-                  style={{
-                    position: "absolute",
-                    zIndex: "-1",
-                    left: 1,
-                    height: "200px",
-                    width: "300px"
-                  }}
-                />
-                <h5
-                  style={{
-                    left: 0,
-                    textAlign: "left",
-                    marginTop: "15rem",
-                    fontFamily: "Sans-Serif"
+                    marginTop: "14rem",
+                    marginLeft: "2rem"
                   }}
                 >
-                  Wilson Patro
-                </h5>
+                  <CustomizedMenus />
+                </div>
+                <div className="col-3" style={{ marginLeft: "5rem" }}>
+                  <img
+                    src="https://source.unsplash.com/collection/190727/470x300"
+                    alt=""
+                    style={{
+                      height: "5rem",
+                      width: "5rem",
+                      color: "white",
+                      marginTop: "9rem",
+                      marginLeft: "1rem",
+                      position: "absolute",
+                      left: 0,
+                      borderRadius: "50%",
+                      border: "5px solid #fff"
+                    }}
+                  />
+                  <img
+                    src="https://source.unsplash.com/random"
+                    alt=".."
+                    style={{
+                      position: "absolute",
+                      zIndex: "-1",
+                      left: 1,
+                      height: "200px",
+                      width: "300px"
+                    }}
+                  />
+                  <h5
+                    style={{
+                      left: 0,
+                      textAlign: "left",
+                      marginTop: "15rem",
+                      fontFamily: "Sans-Serif"
+                    }}
+                  >
+                    {friend1}
+                  </h5>
+                </div>
+                <div
+                  style={{
+                    marginTop: "14rem"
+                  }}
+                >
+                  <CustomizedMenus />
+                </div>
               </div>
-              <div
-                style={{
-                  marginTop: "14rem"
-                }}
-              >
-                <CustomizedMenus />
-              </div>
-            </div>
+            ))}
           </div>
           <div
             className="col-2"

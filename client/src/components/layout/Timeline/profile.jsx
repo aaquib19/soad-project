@@ -73,7 +73,7 @@ class Profile extends Component {
               backgroundImage:
                 "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
 
-              zIndex: "-2"
+              zIndex: "+2"
             }}
           >
             <img
