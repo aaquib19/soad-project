@@ -29,6 +29,8 @@ import ChangePassword from "./components/layout/Timeline/passwordChange";
 import ErrorPage from "./components/layout/errorPage";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
+import Dashboard from "./components/dashboard/Dashboard";
+import { clearCurrentProfile } from "./actions/profileActions";
 //check for teken
 if (localStorage.Token) {
   console.log(localStorage.Token);
@@ -43,7 +45,7 @@ if (localStorage.Token) {
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     store.dispatch(logoutUser());
-    // store.dispatch(clearCurrentProfile());
+    store.dispatch(clearCurrentProfile());
 
     //todo  clear current profile
     //redirect to login
@@ -80,6 +82,8 @@ class App extends Component {
               <Route exact path="/landing" component={Landing} />
               <Route exact path="/feed" component={Posts} />
               <Route exact path="/post/:id" component={Post} />
+              <Route exact path="/dashboard" component={Dashboard} />
+
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />
