@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import VirtualizedList from "./../../common/friendList";
+import VirtualizedList from "../../common/friendList";
 import NavBar1 from "./nav";
 import FolderList from "./lists";
 import CenteredTabs from "./tabs";

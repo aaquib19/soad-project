@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function AlignItemsList1() {
   const classes = useStyles();
-
+  const people = ["wilson", "Bittu", "Aaquib", "Rahul"];
   return (
     <List className={classes.root}>
       <h5
@@ -52,50 +52,31 @@ export default function AlignItemsList1() {
       >
         See All
       </Link>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="User Name"
-          secondary={
-            <React.Fragment>
-              <br />
-              <button className="btn btn-sm btn-danger">Add Friend</button>{" "}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="User Name"
-          secondary={
-            <React.Fragment>
-              <br />
-              <button className="btn btn-sm btn-danger">Add Friend</button>{" "}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="User Name"
-          secondary={
-            <React.Fragment>
-              <br />
-              <button className="btn btn-sm btn-danger">Add Friend</button>{" "}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
+      {people.map((friend1, index) => (
+        <React.Fragment>
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar
+                alt="Remy Sharp"
+                src="https://source.unsplash.com/random"
+              />
+            </ListItemAvatar>
+            <ListItemText
+              primary={friend1}
+              secondary={
+                <React.Fragment>
+                  <br />
+                  <button className="btn btn-sm btn-danger">
+                    Add Friend
+                  </button>{" "}
+                </React.Fragment>
+              }
+              key={index}
+            />
+          </ListItem>
+          <Divider variant="inset" component="li" />
+        </React.Fragment>
+      ))}
     </List>
   );
 }

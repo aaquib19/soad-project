@@ -109,7 +109,7 @@ class Homepage extends Component {
                 hasMore={true}
                 loader={<h4>Loading...</h4>}
               >
-                {this.state.items.map((i, index) => (
+                {this.state.items.map(index => (
                   <div style={style} key={index}>
                     <div className="card text-left">
                       <div className="card-header">
