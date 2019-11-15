@@ -51,6 +51,15 @@ const UserSchema = new Schema({
       }
     }
   ],
+  recommendations: [
+    //recommendations of friend
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+      }
+    }
+  ],
   lastlogin: {
     type: String
   },
