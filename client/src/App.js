@@ -76,8 +76,8 @@ class App extends Component {
                 component={ChangePassword}
               />
               {/* chat router */}
-              <Route path="/chatroom" exact component={Join} />
-              <Route path="/chatroom/chat" component={Chat} />
+              {/* <Route path="/chatroom" exact component={Join} /> */}
+              {/* <Route path="/chatroom/chat" component={Chat} /> */}
               {/* -------chat router */}
               <Route exact path="/profile/settings" component={Settings} />
               <Route exact path="/profile/edit" component={EditProfile1} />
@@ -87,6 +87,18 @@ class App extends Component {
               <Route exact path="/landing" component={Landing} />
               <Route exact path="/feed" component={Posts} />
               <Route exact path="/post/:id" component={Post} />
+              <PrivateRoute
+                exact
+                path="/chatroom"
+                component={Join}
+              /> 
+              <PrivateRoute
+              exact
+              path="/chatroom/chat"
+              component={Chat}
+            />
+
+
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
