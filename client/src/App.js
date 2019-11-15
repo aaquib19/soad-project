@@ -23,7 +23,7 @@ import Homepage from "./components/layout/homepage";
 import Landing from "./components/landing";
 import Profile from "./components/layout/Timeline/profile";
 import Friends from "./components/layout/Timeline/friends";
-import EditProfile from "./components/layout/Timeline/editProfile";
+import EditProfile1 from "./components/layout/Timeline/editProfile";
 import Settings from "./components/layout/Timeline/accountSettings";
 import ChangePassword from "./components/layout/Timeline/passwordChange";
 import ErrorPage from "./components/layout/errorPage";
@@ -33,7 +33,9 @@ import Dashboard from "./components/dashboard/Dashboard";
 import { clearCurrentProfile } from "./actions/profileActions";
 import PrivateRoute from "./components/common/PrivateRoute";
 import CreateProfile from "./components/create-profile/CreateProfile";
-
+import EditProfile from "./components/edit-profile/EditProfile";
+import AddExperience from "./components/add-credentials/AddExperience";
+import AddEducation from "./components/add-credentials/AddEducation";
 //check for teken
 if (localStorage.Token) {
   console.log(localStorage.Token);
@@ -78,7 +80,7 @@ class App extends Component {
               <Route path="/chatroom/chat" component={Chat} />
               {/* -------chat router */}
               <Route exact path="/profile/settings" component={Settings} />
-              <Route exact path="/profile/edit" component={EditProfile} />
+              <Route exact path="/profile/edit" component={EditProfile1} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/friends" component={Friends} />
               <Route exact path="/success" component={Homepage} />
@@ -86,11 +88,25 @@ class App extends Component {
               <Route exact path="/feed" component={Posts} />
               <Route exact path="/post/:id" component={Post} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-
               <PrivateRoute
                 exact
                 path="/create-profile"
                 component={CreateProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              />
+              <PrivateRoute
+                exact
+                path="/add-experience"
+                component={AddExperience}
+              />{" "}
+              <PrivateRoute
+                exact
+                path="/add-education"
+                component={AddEducation}
               />
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
