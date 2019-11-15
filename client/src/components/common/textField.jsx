@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     height: 60
   }
 }));
-const BasicTextFields = ({ placeholder, label }) => {
+const BasicTextFields = ({ placeholder, label, value, onChange }) => {
   const classes = useStyles();
 
   return (

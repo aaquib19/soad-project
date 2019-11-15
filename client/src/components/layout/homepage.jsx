@@ -7,6 +7,7 @@ import BasicTextField from "./../common/textField";
 import ResponsiveDialog from "../common/dialog";
 import VirtualizedList from "./../common/friendList";
 import AlignItemsList from "./../common/people";
+import PostForm from "../posts/PostForm";
 
 const style = {
   height: "584px",
@@ -79,7 +80,8 @@ class Homepage extends Component {
             </div>
             <div className="col-6">
               <div style={style1}>
-                <BasicTextField placeholder="" label="Write Something" />
+                <PostForm />
+
                 <div style={{ padding: "1rem", float: "left" }}>
                   <ResponsiveDialog />
                 </div>
