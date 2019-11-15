@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import BasicTextFields from "./../common/textField";
+import TextField from "@material-ui/core/TextField";
 class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class PostForm extends Component {
     console.log(userData);
     const newPost = {
       text: this.state.text,
-      name: userData.firstName,
+      name: userData.name,
       avatar: userData.avatar
     };
     console.log(newPost);
@@ -37,6 +39,7 @@ class PostForm extends Component {
   }
 
   onChange(e) {
+    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   }
   render() {
@@ -46,17 +49,18 @@ class PostForm extends Component {
       <div>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <TextAreaFieldGroup
+            <BasicTextFields
               placeholder="Create a post"
               name="text"
+              label="Write Something"
               value={this.state.text}
               onChange={this.onChange}
-              error={errors.text}
+              // error={errors.text}
             />
           </div>
-          {errors.text}
-          <button type="submit" className="btn btn-dark">
-            Submit
+
+          <button type="submit" className="btn btn-secondary btn-lg btn-block">
+            <i class="fa fa-upload"> Post</i>
           </button>
         </form>{" "}
       </div>

@@ -6,7 +6,7 @@ import CenteredTabs from "./tabs";
 import FolderList1 from "./editProfileSideBar";
 import EditForm from "./editform";
 
-class EditProfile extends Component {
+class EditProfile1 extends Component {
   state = {};
   render() {
     return (
@@ -94,4 +94,4 @@ class EditProfile extends Component {
   }
 }
 
-export default EditProfile;
+export default EditProfile1;

@@ -23,7 +23,7 @@ import Homepage from "./components/layout/homepage";
 import Landing from "./components/landing";
 import Profile from "./components/layout/Timeline/profile";
 import Friends from "./components/layout/Timeline/friends";
-// import EditProfile from "./components/layout/Timeline/editProfile";
+import EditProfile1 from "./components/layout/Timeline/editProfile";
 import Settings from "./components/layout/Timeline/accountSettings";
 import ChangePassword from "./components/layout/Timeline/passwordChange";
 import ErrorPage from "./components/layout/errorPage";
@@ -76,17 +76,29 @@ class App extends Component {
                 component={ChangePassword}
               />
               {/* chat router */}
-              <Route path="/chatroom" exact component={Join} />
-              <Route path="/chatroom/chat" component={Chat} />
+              {/* <Route path="/chatroom" exact component={Join} /> */}
+              {/* <Route path="/chatroom/chat" component={Chat} /> */}
               {/* -------chat router */}
               <Route exact path="/profile/settings" component={Settings} />
-              <Route exact path="/profile/edit" component={EditProfile} />
+              <Route exact path="/profile/edit" component={EditProfile1} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/friends" component={Friends} />
               <Route exact path="/success" component={Homepage} />
               <Route exact path="/landing" component={Landing} />
               <Route exact path="/feed" component={Posts} />
               <Route exact path="/post/:id" component={Post} />
+              <PrivateRoute
+                exact
+                path="/chatroom"
+                component={Join}
+              /> 
+              <PrivateRoute
+              exact
+              path="/chatroom/chat"
+              component={Chat}
+            />
+
+
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact

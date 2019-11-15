@@ -9,6 +9,7 @@ import InputGroup from "../common/InputGroup";
 import { createProfile, getCurrentProfile } from "../../actions/profileActions";
 // import createProfile from "../../actions/profileActions";
 import isEmpty from "../../validation/is-empty";
+import TextField from "@material-ui/core/TextField";
 // createProfile;
 class CreateProfile extends Component {
   constructor(props) {
@@ -197,7 +198,8 @@ class CreateProfile extends Component {
         <p>Let's get some information to make your profile stand out</p>
         <small>* = required fields</small>
         <form onSubmit={this.onSubmit}>
-          <TextFieldGroup
+          <TextField
+            id="outlined-textarea"
             placeholder="* Profile Handle"
             name="handle"
             value={this.state.handle}
@@ -205,6 +207,7 @@ class CreateProfile extends Component {
             error={errors.handle}
             info="A unique handle for your profile URL. Your full name, company name, nickname"
           />
+          <hr />
           <SelectListGroup
             placeholder="Status"
             name="status"
@@ -214,7 +217,9 @@ class CreateProfile extends Component {
             error={errors.status}
             info="Give us an idea of where you are at in your career"
           />
-          <TextFieldGroup
+          <hr />
+
+          <TextField
             placeholder="Company"
             name="company"
             value={this.state.company}
@@ -222,7 +227,9 @@ class CreateProfile extends Component {
             error={errors.company}
             info="Could be your own company or one you work for"
           />
-          <TextFieldGroup
+          <hr />
+
+          <TextField
             placeholder="Website"
             name="website"
             value={this.state.website}
@@ -230,7 +237,9 @@ class CreateProfile extends Component {
             error={errors.website}
             info="Could be your own website or a company one"
           />
-          <TextFieldGroup
+          <hr />
+
+          <TextField
             placeholder="Location"
             name="location"
             value={this.state.location}
@@ -238,7 +247,9 @@ class CreateProfile extends Component {
             error={errors.location}
             info="City or city & state suggested (eg. Boston, MA)"
           />
-          <TextFieldGroup
+          <hr />
+
+          <TextField
             placeholder="* Skills"
             name="skills"
             value={this.state.skills}
@@ -247,7 +258,9 @@ class CreateProfile extends Component {
             info="Please use comma separated values (eg.
                     HTML,CSS,JavaScript,PHP"
           />
-          <TextFieldGroup
+          <hr />
+
+          <TextField
             placeholder="Github Username"
             name="githubusername"
             value={this.state.githubusername}
@@ -255,7 +268,10 @@ class CreateProfile extends Component {
             error={errors.githubusername}
             info="If you want your latest repos and a Github link, include your username"
           />
-          <TextAreaFieldGroup
+          <hr />
+
+          <TextField
+            id="outlined-textarea"
             placeholder="Short Bio"
             name="bio"
             value={this.state.bio}
@@ -263,9 +279,12 @@ class CreateProfile extends Component {
             error={errors.bio}
             info="Tell us a little about yourself"
           />
+          <hr />
+
           <div>
             <button
               type="button"
+              className="btn btn-danger btn-block"
               onClick={() => {
                 this.setState(prevState => ({
                   displaySocialInputs: !prevState.displaySocialInputs

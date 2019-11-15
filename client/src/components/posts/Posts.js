@@ -20,12 +20,7 @@ class Posts extends Component {
     } else {
       postContent = <PostFeed posts={posts}></PostFeed>;
     }
-    return (
-      <div>
-        <PostFrom></PostFrom>
-        {postContent}
-      </div>
-    );
+    return <div>{postContent}</div>;
   }
 }
 
@@ -38,7 +33,4 @@ const mapStateToProps = state => ({
   post: state.post
 });
 
-export default connect(
-  mapStateToProps,
-  { getPosts }
-)(Posts);
+export default connect(mapStateToProps, { getPosts })(Posts);

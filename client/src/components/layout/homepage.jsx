@@ -7,7 +7,8 @@ import BasicTextField from "./../common/textField";
 import ResponsiveDialog from "../common/dialog";
 import VirtualizedList from "./../common/friendList";
 import AlignItemsList from "./../common/people";
-
+import PostForm from "../posts/PostForm";
+import Posts from "../posts/Posts";
 const style = {
   height: "584px",
   width: "60%",
@@ -79,7 +80,8 @@ class Homepage extends Component {
             </div>
             <div className="col-6">
               <div style={style1}>
-                <BasicTextField placeholder="" label="Write Something" />
+                <PostForm />
+
                 <div style={{ padding: "1rem", float: "left" }}>
                   <ResponsiveDialog />
                 </div>
@@ -96,13 +98,8 @@ class Homepage extends Component {
                 <br />
                 <br />
                 <br />
-                <div style={{ padding: "1rem", float: "left", width: "100%" }}>
-                  <button className="btn btn-secondary btn-lg btn-block">
-                    <i class="fa fa-upload"> Post</i>
-                  </button>
-                </div>
               </div>
-
+              <Posts></Posts>
               <InfiniteScroll
                 dataLength={this.state.items.length}
                 next={this.fetchMoreData}
