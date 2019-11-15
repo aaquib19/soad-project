@@ -96,7 +96,7 @@ export default function EditForm() {
           />
         </div>
         <div style={{ width: "100%", marginTop: "3rem", marginBottom: "3rem" }}>
-          <button className="btn btn-danger btn-block">Submit</button>
+          <button className="btn btn-block">Submit</button>
         </div>
       </form>
     </div>

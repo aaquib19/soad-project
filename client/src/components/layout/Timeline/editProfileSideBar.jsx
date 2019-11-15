@@ -43,7 +43,7 @@ export default function FolderList1() {
             <AccountCircleIcon />
           </Avatar>
         </ListItemAvatar>
-        <Link to="/profile/edit">
+        <Link to="/edit-profile">
           <ListItemText
             primary="Edit Basic Info"
             style={{ color: "#DC3545" }}
@@ -57,7 +57,7 @@ export default function FolderList1() {
             <PeopleAltIcon />
           </Avatar>
         </ListItemAvatar>{" "}
-        <Link to="/profile/education" style={{ color: "#DC3545" }}>
+        <Link to="/add-education" style={{ color: "#DC3545" }}>
           <ListItemText primary="Education and Work" />
         </Link>
       </ListItem>
@@ -68,8 +68,8 @@ export default function FolderList1() {
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>{" "}
-        <Link to="/profile/interests" style={{ color: "#DC3545" }}>
-          <ListItemText primary="Edit Interests" />
+        <Link to="/add-experience" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Add Experience" />
         </Link>
       </ListItem>
       <Divider variant="inset" component="li" />

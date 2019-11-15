@@ -22,37 +22,37 @@ const useStyles = makeStyles(theme => ({
     height: 60
   }
 }));
-const BasicTextFields = ({ placeholder, label }) => {
+const BasicTextFields = ({ placeholder, name, label, value, onChange }) => {
   const classes = useStyles();
 
   return (
-    <Grid>
-      <form className={classes.container} noValidate autoComplete="off">
-        <TextField
-          backgroundColor="#fff"
-          id="outlined-textarea"
-          label={label}
-          placeholder={placeholder}
-          multiline
-          className={classes.textField}
-          margin="normal"
-          variant="outlined"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                {" "}
-                <Avatar
-                  alt="Remy Sharp"
-                  src={avt}
-                  className={classes.bigAvatar}
-                  positiion="fixed"
-                />
-              </InputAdornment>
-            )
-          }}
-        />
-      </form>
-    </Grid>
+    <TextField
+      backgroundColor="#fff"
+      id="outlined-textarea"
+      label={label}
+      placeholder={placeholder}
+      name={name}
+      value={value}
+      onChange={onChange}
+      multiline
+      className={classes.textField}
+      margin="normal"
+      variant="outlined"
+      value={value}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            {" "}
+            <Avatar
+              alt="Remy Sharp"
+              src={avt}
+              className={classes.bigAvatar}
+              positiion="fixed"
+            />
+          </InputAdornment>
+        )
+      }}
+    />
   );
 };
 export default BasicTextFields;

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import BasicTextFields from "./textField";
 
 const TextAreaFieldGroup = ({
   name,
@@ -11,14 +12,13 @@ const TextAreaFieldGroup = ({
 }) => {
   return (
     <div>
-      <textarea
+      <BasicTextFields
         placeholder={placeholder}
-        name={name}
-        value={value}
         onChange={onChange}
-      />
-      {info}
+        value={value}
+      ></BasicTextFields>
       {error}
+      {info}
     </div>
   );
 };
