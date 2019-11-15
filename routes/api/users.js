@@ -96,6 +96,7 @@ router.post("/login", (req, res, next) => {
         const paylod = {
           id: user._id,
           name: user.name,
+	  email: user.email,
           avatar: user.avatar
         };
         //sign token

@@ -85,13 +85,13 @@ class App extends Component {
               <Route exact path="/landing" component={Landing} />
               <Route exact path="/feed" component={Posts} />
               <Route exact path="/post/:id" component={Post} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
 
-              <PrivateRoute
+              {/* <PrivateRoute
                 exact
                 path="/create-profile"
                 component={CreateProfile}
-              />
+              /> */}
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />
