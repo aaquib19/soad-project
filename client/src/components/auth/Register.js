@@ -333,7 +333,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { RegisterUser }
-)(withStyles(useStyles)(RegistrationForm));
+export default connect(mapStateToProps, { RegisterUser })(
+  withStyles(useStyles)(RegistrationForm)
+);

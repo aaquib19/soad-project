@@ -133,7 +133,7 @@ class LoginForm extends Component {
 
     const redirectToReferrer = this.props.isAuthenticated;
     if (redirectToReferrer === true) {
-      return <Redirect to="/success" />;
+      return <Redirect to="/dashboard" />;
     }
 
     return (
@@ -251,7 +251,6 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { LoginUser }
-)(withStyles(useStyles)(LoginForm));
+export default connect(mapStateToProps, { LoginUser })(
+  withStyles(useStyles)(LoginForm)
+);
