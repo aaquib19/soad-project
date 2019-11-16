@@ -85,8 +85,10 @@ class App extends Component {
               <Route exact path="/friends" component={Friends} />
               {/* <Route exact path="/success" component={Homepage} /> */}
               <Route exact path="/landing" component={Landing} />
-              <Route exact path="/feed" component={Posts} />
-              <Route exact path="/post/:id" component={Post} />
+              {/* <Route exact path="/feed" component={Posts} /> */}
+              {/* <Route exact path="/post/:id" component={Post} /> */}
+              <PrivateRoute exact path="/feed" component={Posts} />
+              <PrivateRoute exact path="/post/:id" component={Post} />
               <PrivateRoute exact path="/success" component={Homepage} />
               <PrivateRoute exact path="/chatroom" component={Join} />
               <PrivateRoute exact path="/chatroom/chat" component={Chat} />
