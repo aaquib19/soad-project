@@ -33,6 +33,8 @@ import MailIcon from "@material-ui/icons/Mail";
 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { logoutUser } from "../../actions/authAction";
+import { clearCurrentProfile } from "../../actions/profileActions";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -193,6 +195,13 @@ const NavBar = props => {
     setOpen(false);
   };
 
+  const onLogoutClick = e => {
+    e.preventDefault();
+    console.log("hello");
+    props.clearCurrentProfile();
+    props.logoutUser();
+  };
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -232,7 +241,7 @@ const NavBar = props => {
       </Link>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={onLogoutClick.bind(this)}>Logout</MenuItem>
     </Menu>
   );
 
@@ -421,11 +430,13 @@ const NavBar = props => {
 };
 
 NavBar.propTypes = {
-  // logoutUser: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   auth: state.registration
 });
-export default connect(mapStateToProps, null)(NavBar);
+export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
+  NavBar
+);
