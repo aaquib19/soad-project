@@ -70,23 +70,33 @@ class App extends Component {
             <Switch>
               <Route exact path="/register" component={Registration} />
               <Route exact path="/login" component={Login} />
-              <Route
+              <Route exact path="/landing" component={Landing} />
+              {/* <Route
+                exact
+                path="/profile/passwordChange"
+                component={ChangePassword}
+              /> */}
+              <PrivateRoute
                 exact
                 path="/profile/passwordChange"
                 component={ChangePassword}
               />
-              {/* chat router */}
-              {/* <Route path="/chatroom" exact component={Join} /> */}
-              {/* <Route path="/chatroom/chat" component={Chat} /> */}
-              {/* -------chat router */}
-              <Route exact path="/profile/settings" component={Settings} />
+              {/* <Route exact path="/profile/settings" component={Settings} />
               <Route exact path="/profile/edit" component={EditProfile1} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/friends" component={Friends} />
-              {/* <Route exact path="/success" component={Homepage} /> */}
-              <Route exact path="/landing" component={Landing} />
-              {/* <Route exact path="/feed" component={Posts} /> */}
-              {/* <Route exact path="/post/:id" component={Post} /> */}
+              <Route exact path="/friends" component={Friends} /> */}
+              <PrivateRoute
+                exact
+                path="/profile/settings"
+                component={Settings}
+              />
+              <PrivateRoute
+                exact
+                path="/profile/edit"
+                component={EditProfile1}
+              />
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/friends" component={Friends} />
               <PrivateRoute exact path="/feed" component={Posts} />
               <PrivateRoute exact path="/post/:id" component={Post} />
               <PrivateRoute exact path="/success" component={Homepage} />
