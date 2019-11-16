@@ -92,7 +92,10 @@ class PostItem extends Component {
                 >
                   unlike
                 </button>
-                <button className="btn btn-danger">
+                <button
+                  className="btn btn-danger"
+                  style={{ marginRight: "1rem" }}
+                >
                   <Link to={`/post/${post._id}`} style={{ color: "white" }}>
                     comments
                   </Link>

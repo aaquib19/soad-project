@@ -311,9 +311,11 @@ const NavBar = props => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Whizingo {userData.name}
-            </Typography>
+            <Link to="/success" style={{ color: "white" }}>
+              <Typography className={classes.title} variant="h6" noWrap>
+                Whizingo
+              </Typography>
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -327,7 +329,9 @@ const NavBar = props => {
                 inputProps={{ "aria-label": "search" }}
               />
             </div>
-
+            <Typography style={{ marginLeft: "45rem" }}>
+              Hello, {userData.name}
+            </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton aria-label="show 4 new mails" color="inherit">
@@ -368,63 +372,6 @@ const NavBar = props => {
           </Toolbar>
         </AppBar>
       </ElevationScroll>
-
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })
-        }}
-        open={open}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-
-        <List>
-          {["Feed", "Meeseges", "Friends", "Profile"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List
-          aria-labelledby="nested-list-subheader"
-          subheader={
-            <ListSubheader component="div" id="nested-list-subheader">
-              Explore
-            </ListSubheader>
-          }
-        >
-          {["Recommendations", "Chatroom", "Pages", "Groups"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
-        </List>
-      </Drawer>
 
       {renderMobileMenu}
       {renderMenu}

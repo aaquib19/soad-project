@@ -9,7 +9,7 @@ import AlignItemsList1 from "./recommend";
 import NavBar1 from "./nav";
 class Friends extends Component {
   state = {
-    friend: ["Wilson Patro", "AAquib Niaz", "Bittu Ray", "Rahul Prasad"]
+    friend: ["Aaquib Niaz", "Bittu Ray", "Rahul Prasad"]
   };
   render() {
     return (
@@ -30,10 +30,8 @@ class Friends extends Component {
           >
             <div
               style={{
-                height: "33%",
-                width: "95%",
-                backgroundImage:
-                  "linear-gradient(to left, #e36d9f, #d45980, #c24761, #ad3744, #972929)"
+                height: "13%",
+                width: "95%"
               }}
             >
               <img
@@ -70,7 +68,7 @@ class Friends extends Component {
                   color: "black"
                 }}
               >
-                <PeopleOutlineIcon /> 500 Friends
+                <PeopleOutlineIcon /> 20 Friends
               </h4>
             </div>
             <div
@@ -86,10 +84,7 @@ class Friends extends Component {
           <div
             className="col-6"
             style={{
-              marginTop: "2rem",
-
-              backgroundImage:
-                "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
+              marginTop: "2rem"
             }}
           >
             <h1

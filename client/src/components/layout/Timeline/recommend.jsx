@@ -33,7 +33,7 @@ export default function AlignItemsList1() {
           float: "left",
           fontFamily: "serif",
           fontWeight: "bold",
-          marginLeft: "1rem"
+          marginLeft: "3px"
         }}
       >
         {" "}
@@ -43,7 +43,7 @@ export default function AlignItemsList1() {
         to="/recommendations"
         style={{
           paddingTop: "10px",
-          paddingLeft: "2.3rem",
+          paddingLeft: "1.9rem",
           float: "left",
           fontSize: "17px",
           color: "#DC3545",
