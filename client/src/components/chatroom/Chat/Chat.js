@@ -62,7 +62,7 @@ const Chat = ({ location }) => {
 
   return (
     <React.Fragment>
-      <NavBar1 />
+      {/* <NavBar1 /> */}
       <div className="outerContainer1">
         <div className="container1">
           <InfoBar room={room} />

@@ -10,6 +10,7 @@ export default function SignIn() {
 
   return (
     <React.Fragment>
+      <NavBar1 />
       <div className="joinOuterContainer">
         <div className="joinInnerContainer">
           <h1 className="heading">Join</h1>
