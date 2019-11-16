@@ -11,7 +11,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link, NavLink } from "react-router-dom";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import clsx from "clsx";
 import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -30,6 +30,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -176,7 +179,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NavBar(props) {
+const NavBar = props => {
+  const { userData } = props.auth;
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -296,7 +300,7 @@ export default function NavBar(props) {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              Whizingo
+              Whizingo {userData.name}
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -414,4 +418,14 @@ export default function NavBar(props) {
       {renderMenu}
     </div>
   );
-}
+};
+
+NavBar.propTypes = {
+  // logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.registration
+});
+export default connect(mapStateToProps, null)(NavBar);
