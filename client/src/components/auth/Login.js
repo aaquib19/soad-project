@@ -133,7 +133,7 @@ class LoginForm extends Component {
 
     const redirectToReferrer = this.props.isAuthenticated;
     if (redirectToReferrer === true) {
-      return <Redirect to="/edit-profile" />;
+      return <Redirect to="/dashboard" />;
     }
 
     return (
