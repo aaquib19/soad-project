@@ -47,6 +47,7 @@ class PostItem extends Component {
             {showActions ? (
               <span>
                 <button
+                  className="btn btn-danger"
                   onClick={this.onLikeClick.bind(this, post._id)}
                   type="button"
                 >
@@ -54,6 +55,7 @@ class PostItem extends Component {
                   <span>{post.likes.length}</span>
                 </button>
                 <button
+                  className="btn btn-danger"
                   onClick={this.onUnlikeClick.bind(this, post._id)}
                   type="button"
                 >
@@ -62,6 +64,7 @@ class PostItem extends Component {
                 <Link to={`/post/${post._id}`}>comments</Link>
                 {post.user === auth.userData.id ? (
                   <button
+                    className="btn btn-danger"
                     onClick={this.onDeleteClick.bind(this, post._id)}
                     type="button"
                   >
@@ -93,7 +96,6 @@ const mapStateToProps = state => ({
   auth: state.registration
 });
 
-export default connect(
-  mapStateToProps,
-  { deletePost, addLike, removeLike }
-)(PostItem);
+export default connect(mapStateToProps, { deletePost, addLike, removeLike })(
+  PostItem
+);
