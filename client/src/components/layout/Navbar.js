@@ -1,5 +1,6 @@
 import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
+import { Redirect } from "react-router-dom";
 
 import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
@@ -198,8 +199,10 @@ const NavBar = props => {
   const onLogoutClick = e => {
     e.preventDefault();
     console.log("hello");
+    handleMenuClose();
     props.clearCurrentProfile();
     props.logoutUser();
+    // window.push("/login");
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
