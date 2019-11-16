@@ -1,5 +1,6 @@
 import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
+import { Redirect } from "react-router-dom";
 
 import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
@@ -11,7 +12,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link, NavLink } from "react-router-dom";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import clsx from "clsx";
 import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -30,6 +31,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logoutUser } from "../../actions/authAction";
+import { clearCurrentProfile } from "../../actions/profileActions";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -176,7 +182,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NavBar(props) {
+const NavBar = props => {
+  const { userData } = props.auth;
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -187,6 +194,15 @@ export default function NavBar(props) {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const onLogoutClick = e => {
+    e.preventDefault();
+    console.log("hello");
+    handleMenuClose();
+    props.clearCurrentProfile();
+    props.logoutUser();
+    // window.push("/login");
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -228,7 +244,7 @@ export default function NavBar(props) {
       </Link>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={onLogoutClick.bind(this)}>Logout</MenuItem>
     </Menu>
   );
 
@@ -295,9 +311,11 @@ export default function NavBar(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Whizingo
-            </Typography>
+            <Link to="/success" style={{ color: "white" }}>
+              <Typography className={classes.title} variant="h6" noWrap>
+                Whizingo
+              </Typography>
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -311,7 +329,9 @@ export default function NavBar(props) {
                 inputProps={{ "aria-label": "search" }}
               />
             </div>
-
+            <Typography style={{ marginLeft: "45rem" }}>
+              Hello, {userData.name}
+            </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton aria-label="show 4 new mails" color="inherit">
@@ -353,65 +373,20 @@ export default function NavBar(props) {
         </AppBar>
       </ElevationScroll>
 
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })
-        }}
-        open={open}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-
-        <List>
-          {["Feed", "Meeseges", "Friends", "Profile"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List
-          aria-labelledby="nested-list-subheader"
-          subheader={
-            <ListSubheader component="div" id="nested-list-subheader">
-              Explore
-            </ListSubheader>
-          }
-        >
-          {["Recommendations", "Chatroom", "Pages", "Groups"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )}
-        </List>
-      </Drawer>
-
       {renderMobileMenu}
       {renderMenu}
     </div>
   );
-}
+};
+
+NavBar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.registration
+});
+export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
+  NavBar
+);

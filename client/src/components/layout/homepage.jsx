@@ -9,9 +9,10 @@ import VirtualizedList from "./../common/friendList";
 import AlignItemsList from "./../common/people";
 import PostForm from "../posts/PostForm";
 import Posts from "../posts/Posts";
+import FolderList1 from "./Timeline/editProfileSideBar";
 const style = {
   height: "584px",
-  width: "60%",
+  width: "70%",
   border: "1px solid white",
   margin: "1rem",
   overflow: "auto",
@@ -21,12 +22,11 @@ const style = {
 
 const style1 = {
   backgroundColor: "#f5f5f5",
-  backgroundImage:
-    "linear-gradient(to right top,#ddd3d5, #e2dadb, #e7e1e2, #ece9e9, #f1f0f0)",
-  height: "245px",
-  width: "80%",
+
+  height: "145px",
+  width: "60%",
   borderRadius: "15px",
-  margin: "2rem",
+  margin: "3rem",
   overflow: "auto"
 };
 const style2 = {
@@ -35,7 +35,7 @@ const style2 = {
 
   backgroundColor: "#f5f5f5",
   height: "100%",
-  width: "100%",
+  width: "90%",
 
   overflow: "auto",
   paddingTop: "10px",
@@ -64,42 +64,32 @@ class Homepage extends Component {
   render() {
     return (
       <React.Fragment>
-        <div
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)"
-          }}
-        >
+        <div style={{}}>
           <NavBar />
           <br />
           <br />
 
           <div className="row">
-            <div className="col-lg-1">
-              <div className="position-fixed"></div>
+            <div className="col-lg-2">
+              <div className="position-fixed">
+                <div
+                  style={{
+                    width: "14%",
+                    marginTop: "3rem",
+
+                    position: "fixed",
+                    backgroundColor: "transparent"
+                  }}
+                >
+                  <FolderList1 />
+                </div>
+              </div>
             </div>
-            <div className="col-6">
+            <div className="col-5" style={{ float: "left" }}>
               <div style={style1}>
                 <PostForm />
-
-                <div style={{ padding: "1rem", float: "left" }}>
-                  <ResponsiveDialog />
-                </div>
-                <div style={{ padding: "1rem", float: "left" }}>
-                  <button className="btn btn-dark">
-                    <i class="fa fa-users"> Tag Friends</i>
-                  </button>
-                </div>
-                <div style={{ padding: "1rem", float: "left" }}>
-                  <button className="btn btn-dark">
-                    <i class="fa fa-map-marker"> Location</i>
-                  </button>
-                </div>
-                <br />
-                <br />
-                <br />
               </div>
-              <Posts></Posts>
+              <Posts />
               <InfiniteScroll
                 dataLength={this.state.items.length}
                 next={this.fetchMoreData}
@@ -116,9 +106,12 @@ class Homepage extends Component {
                         </i>
                       </div>
                       <div className="card-footer text-muted">2 days ago</div>
-                      <div className="card-body">
+                      <div
+                        className="card-body"
+                        style={{ backgroundColor: "#e0e0e0" }}
+                      >
                         <img
-                          src="https://source.unsplash.com/collection/190727/470x300"
+                          src="https://source.unsplash.com/collection/190727/400x300"
                           alt="..."
                         />
                         <br />
@@ -146,12 +139,12 @@ class Homepage extends Component {
                 ))}
               </InfiniteScroll>
             </div>
-            <div className="col-sm-3">
+            <div className="col-sm-3" style={{ float: "left" }}>
               <div style={style2}>
                 <AlignItemsList />
               </div>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-1">
               <div style={style2}>
                 <VirtualizedList />
               </div>

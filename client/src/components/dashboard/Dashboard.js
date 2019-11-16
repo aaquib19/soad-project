@@ -5,6 +5,9 @@ import { getCurrentProfile } from "../../actions/profileActions";
 import Spinner from "../common/Spinner";
 import { Link } from "react-router-dom";
 import ProfileActions from "./ProfileActions";
+import CreateProfile from "../create-profile/CreateProfile";
+import EditProfile from "../edit-profile/EditProfile";
+import Homepage from "../layout/homepage";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -16,10 +19,11 @@ class Dashboard extends Component {
     const { profile, loading } = this.props.profile;
 
     let dashboardContent;
-    if (profile === null || loading) {
+    if (profile === null) {
       dashboardContent = (
         <h4>
           <Spinner></Spinner>
+          hi
         </h4>
       );
     } else {
@@ -27,23 +31,18 @@ class Dashboard extends Component {
 
       if (Object.keys(profile).length > 0) {
         dashboardContent = (
-          <div>
-            <p>
-              Welcome{" "}
-              <Link to={`/profile/${profile.handle}`}> {userData.name}</Link>{" "}
-            </p>
-            <ProfileActions></ProfileActions>
-          </div>
+          // <div>
+          //   <p>
+          //     Welcome{" "}
+          //     <Link to={`/profile/${profile.handle}`}> {userData.name}</Link>{" "}
+          //   </p>
+          //   <ProfileActions></ProfileActions>
+          // </div>
+          <EditProfile></EditProfile>
         );
       } else {
         //user logged in but has no profile
-        dashboardContent = (
-          <div>
-            <p>Welcome {userData.name}</p>
-            <p>you have not yet setup a profile , add profile data</p>
-            <Link to="/create-profile">Create Profile </Link>
-          </div>
-        );
+        dashboardContent = <Homepage></Homepage>;
       }
     }
 

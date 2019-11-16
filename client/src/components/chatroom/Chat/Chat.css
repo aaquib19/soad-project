@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1A1A1D;
+  /* background-color: #1A1A1D; */
+  background-image: url("https://kbdevstorage1.blob.core.windows.net/asset-blobs/19201_en_1");
 }
 
 .container1 {
@@ -11,6 +12,7 @@
   flex-direction: column;
   justify-content: space-between;
   background: #FFFFFF;
+  opacity: 0.92;
   border-radius: 8px;
   height: 80%;
   width: 55%;

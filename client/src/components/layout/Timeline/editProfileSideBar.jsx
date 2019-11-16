@@ -40,6 +40,17 @@ export default function FolderList1() {
       <ListItem>
         <ListItemAvatar>
           <Avatar>
+            <DynamicFeedIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <Link to="/create-profile" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Create Profile" />
+        </Link>
+      </ListItem>
+      <Divider variant="inset" component="li" />
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
             <AccountCircleIcon />
           </Avatar>
         </ListItemAvatar>
