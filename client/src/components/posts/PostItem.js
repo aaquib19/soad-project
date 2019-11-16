@@ -3,7 +3,24 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
 import { Link } from "react-router-dom";
+import pic from "./pic.jpg";
+import Avatar from "@material-ui/core/Avatar";
+
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
+const bigAvatar = {
+  margin: 10,
+  width: 60,
+  height: 60
+};
+const style = {
+  height: "auto",
+  width: "60%",
+  border: "1px solid white",
+  margin: "1rem",
+  overflow: "auto",
+  borderRadius: "5%"
+  // padding: "4rem"
+};
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -32,36 +49,54 @@ class PostItem extends Component {
     const { post, auth, showActions } = this.props;
 
     return (
-      <div>
-        <div className="row">
-          <div className="col-md-2">
-            <a href="profile.html">
-              <img src={post.avatar} alt="" />
-            </a>
-            <br />
-            <p className="text-center">{post.name}</p>
-          </div>
-          <div className="col-md-10">
-            <p className="lead">{post.text}</p>
-
+      <React.Fragment>
+        <div style={style}>
+          <div className="card text-left">
+            <div className="card-header">
+              <a href="profile.html">
+                <img
+                  src={post.avatar}
+                  alt=""
+                  style={{
+                    borderRadius: "50%",
+                    height: "3rem",
+                    width: "3rem",
+                    marginRight: "2rem"
+                  }}
+                />
+              </a>
+              {post.name}
+            </div>{" "}
+            <div className="card-footer text-muted">{post.date}</div>
+            <p className="lead" style={{ margin: "1rem" }}>
+              {post.text}
+            </p>
             {showActions ? (
               <span>
                 <button
                   className="btn btn-danger"
                   onClick={this.onLikeClick.bind(this, post._id)}
                   type="button"
+                  style={{ margin: "1rem" }}
                 >
                   like
-                  <span>{post.likes.length}</span>
+                  <span style={{ marginLeft: "1rem" }}>
+                    {post.likes.length}
+                  </span>
                 </button>
                 <button
                   className="btn btn-danger"
                   onClick={this.onUnlikeClick.bind(this, post._id)}
                   type="button"
+                  style={{ marginRight: "1rem" }}
                 >
                   unlike
                 </button>
-                <Link to={`/post/${post._id}`}>comments</Link>
+                <button className="btn btn-danger">
+                  <Link to={`/post/${post._id}`} style={{ color: "white" }}>
+                    comments
+                  </Link>
+                </button>
                 {post.user === auth.userData.id ? (
                   <button
                     className="btn btn-danger"
@@ -75,7 +110,7 @@ class PostItem extends Component {
             ) : null}
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
