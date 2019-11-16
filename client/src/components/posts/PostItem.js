@@ -66,6 +66,17 @@ class PostItem extends Component {
                 />
               </a>
               {post.name}
+              {post.user === auth.userData.id ? (
+                <div style={{ float: "right" }}>
+                  <button
+                    className="btn btn-secondary"
+                    onClick={this.onDeleteClick.bind(this, post._id)}
+                    type="button"
+                  >
+                    delete post
+                  </button>
+                </div>
+              ) : null}
             </div>{" "}
             <div className="card-footer text-muted">{post.date}</div>
             <p className="lead" style={{ margin: "1rem" }}>
@@ -84,14 +95,7 @@ class PostItem extends Component {
                     {post.likes.length}
                   </span>
                 </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={this.onUnlikeClick.bind(this, post._id)}
-                  type="button"
-                  style={{ marginRight: "1rem" }}
-                >
-                  unlike
-                </button>
+
                 <button
                   className="btn btn-danger"
                   style={{ marginRight: "1rem" }}
@@ -100,15 +104,6 @@ class PostItem extends Component {
                     comments
                   </Link>
                 </button>
-                {post.user === auth.userData.id ? (
-                  <button
-                    className="btn btn-danger"
-                    onClick={this.onDeleteClick.bind(this, post._id)}
-                    type="button"
-                  >
-                    delete post
-                  </button>
-                ) : null}
               </span>
             ) : null}
           </div>
