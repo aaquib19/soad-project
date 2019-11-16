@@ -295,9 +295,12 @@ export default function NavBar1(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Whizingo
-            </Typography>
+            <Link to="/success" style={{ color: "white" }}>
+              {" "}
+              <Typography className={classes.title} variant="h6" noWrap>
+                Whizingo
+              </Typography>
+            </Link>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />

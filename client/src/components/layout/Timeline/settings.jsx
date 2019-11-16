@@ -8,8 +8,7 @@ import Divider from "@material-ui/core/Divider";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
-    backgroundImage:
-      "linear-gradient(to left, #e5c5cd, #e5abb9, #e38fa5, #e07390, #db547b)"
+    backgroundColor: "#e0e0e0"
   }
 }));
 

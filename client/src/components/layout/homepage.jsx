@@ -9,9 +9,10 @@ import VirtualizedList from "./../common/friendList";
 import AlignItemsList from "./../common/people";
 import PostForm from "../posts/PostForm";
 import Posts from "../posts/Posts";
+import FolderList1 from "./Timeline/editProfileSideBar";
 const style = {
   height: "584px",
-  width: "60%",
+  width: "70%",
   border: "1px solid white",
   margin: "1rem",
   overflow: "auto",
@@ -23,9 +24,9 @@ const style1 = {
   backgroundColor: "#f5f5f5",
 
   height: "145px",
-  width: "70%",
+  width: "60%",
   borderRadius: "15px",
-  margin: "2rem",
+  margin: "3rem",
   overflow: "auto"
 };
 const style2 = {
@@ -69,10 +70,22 @@ class Homepage extends Component {
           <br />
 
           <div className="row">
-            <div className="col-lg-1">
-              <div className="position-fixed"></div>
+            <div className="col-lg-2">
+              <div className="position-fixed">
+                <div
+                  style={{
+                    width: "14%",
+                    marginTop: "3rem",
+
+                    position: "fixed",
+                    backgroundColor: "transparent"
+                  }}
+                >
+                  <FolderList1 />
+                </div>
+              </div>
             </div>
-            <div className="col-6">
+            <div className="col-5" style={{ float: "left" }}>
               <div style={style1}>
                 <PostForm />
               </div>
@@ -126,12 +139,12 @@ class Homepage extends Component {
                 ))}
               </InfiniteScroll>
             </div>
-            <div className="col-sm-3">
+            <div className="col-sm-3" style={{ float: "left" }}>
               <div style={style2}>
                 <AlignItemsList />
               </div>
             </div>
-            <div className="col-sm-2">
+            <div className="col-sm-1">
               <div style={style2}>
                 <VirtualizedList />
               </div>
