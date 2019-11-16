@@ -8,6 +8,7 @@ const http = require('http');
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
+const sendrequest = require("./routes/api/friend_request");
 const chatroom = require('./socket/chatroom');
 
 const app = express();
@@ -44,6 +45,7 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
+app.use("/api/friends", sendrequest);
 
 const port = 5000 || process.env.PORT;
 const server = app.listen(port, () => console.log(`server is running on port ${port}`));
