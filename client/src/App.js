@@ -36,6 +36,7 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
+import Recommendations from "./components/layout/recommendations";
 //check for teken
 if (localStorage.Token) {
   console.log(localStorage.Token);
@@ -95,10 +96,15 @@ class App extends Component {
                 path="/profile/edit"
                 component={EditProfile1}
               />
+              <PrivateRoute
+                exact
+                path="/recommendations"
+                component={Recommendations}
+              />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/friends" component={Friends} />
-              <PrivateRoute exact path="/feed" component={Posts} />
-              <PrivateRoute exact path="/post/:id" component={Post} />
+              <Route exact path="/feed" component={Posts} />
+              <Route exact path="/post/:id" component={Post} />
               <PrivateRoute exact path="/success" component={Homepage} />
               <PrivateRoute exact path="/chatroom" component={Join} />
               <PrivateRoute exact path="/chatroom/chat" component={Chat} />

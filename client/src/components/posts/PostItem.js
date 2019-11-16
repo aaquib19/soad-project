@@ -5,6 +5,7 @@ import classnames from "classnames";
 import { Link } from "react-router-dom";
 import pic from "./pic.jpg";
 import Avatar from "@material-ui/core/Avatar";
+import Moment from "react-moment";
 
 import { deletePost, addLike, removeLike } from "../../actions/postActions";
 const bigAvatar = {
@@ -78,7 +79,9 @@ class PostItem extends Component {
                 </div>
               ) : null}
             </div>{" "}
-            <div className="card-footer text-muted">{post.date}</div>
+            <div className="card-footer text-muted">
+              <Moment format="YYYY/MM/DD">{post.date}</Moment>
+            </div>
             <p className="lead" style={{ margin: "1rem" }}>
               {post.text}
             </p>
@@ -90,20 +93,24 @@ class PostItem extends Component {
                   type="button"
                   style={{ margin: "1rem" }}
                 >
+                  <i
+                    class="fa fa-heart"
+                    aria-hidden="true"
+                    style={{ marginRight: "1px" }}
+                  />{" "}
                   like
                   <span style={{ marginLeft: "1rem" }}>
                     {post.likes.length}
                   </span>
                 </button>
-
-                <button
-                  className="btn btn-danger"
-                  style={{ marginRight: "1rem" }}
-                >
-                  <Link to={`/post/${post._id}`} style={{ color: "white" }}>
+                <a href={`/post/${post._id}`} style={{ color: "white" }}>
+                  <button
+                    className="btn btn-danger"
+                    style={{ marginRight: "1rem" }}
+                  >
                     comments
-                  </Link>
-                </button>
+                  </button>
+                </a>
               </span>
             ) : null}
           </div>
