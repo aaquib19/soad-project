@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const notificationSchema = new mongoose.Schema(
 {
@@ -6,7 +7,8 @@ const notificationSchema = new mongoose.Schema(
     seen: Boolean,
     post: {
         type: Schema.Types.ObjectId,
-        ref: "post"
+        ref: "post",
+        required: false
     },
     who_did: {
         type: Schema.Types.ObjectId,
@@ -18,7 +20,8 @@ const notificationSchema = new mongoose.Schema(
     },
     friend: {
         type: Schema.Types.ObjectId,
-        ref: "users"
+        ref: "users",
+        required: false
     },
     date: {
         type: Date,

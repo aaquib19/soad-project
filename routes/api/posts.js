@@ -7,6 +7,7 @@ const passport = require("passport");
 //model import
 const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
+const Notification = require("../../models/notification");
 
 const validatePostInput = require("../../validation/post");
 
@@ -107,7 +108,29 @@ router.post(
           // Add user id to likes array
           post.likes.unshift({ user: req.user.id });
 
-          post.save().then(post => res.json(post));
+          post.save().then(post => {
+            //add notification to notification
+            // console.log('---------------------------------',req.user.id,post.user);
+            const newNotification = new Notification({
+              type_of_notification: 'like',
+              seen: false,
+              post: post.id,
+              who_did: req.user.id,
+              to_whom: post.user
+            });
+            newNotification.save()
+            .then(notification => {
+              User.findById(notification.to_whom)
+              .then(user => {
+                user.notifications.push(notification);
+                user.save()
+                .then(user => res.json(post));
+              })
+              .catch(err => {
+                console.log(err);
+              })
+            });
+          });
         })
         .catch(err => res.status(404).json({ postnotfound: "No post found" }));
     });
@@ -142,7 +165,17 @@ router.post(
           post.likes.splice(removeIndex, 1);
 
           // Save
-          post.save().then(post => res.json(post));
+          post.save().then(post => {
+            Notification.findOneAndRemove({ type_of_notification: 'like', post: post.id, who_did: req.user.id})
+            .then(notification => {
+              Users.findById(notification.to_whom)
+              .then(user => {
+                user.notifications.pull(notification);
+                user.save()
+                .then(user => res.json(post));
+              })
+            });
+          });
         })
         .catch(err => res.status(404).json({ postnotfound: "No post found" }));
     });
