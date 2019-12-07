@@ -65,10 +65,8 @@ const UserSchema = new Schema({
   },
   notifications: [
     {
-      notification: {
         type: Schema.Types.ObjectId,
         ref: "Notification"
-      }
     }
   ]
   // chat_rooms: [
