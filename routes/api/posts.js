@@ -210,7 +210,27 @@ router.post(
         post.comments.unshift(newComment);
 
         // Save
-        post.save().then(post => res.json(post));
+        post.save().then(post => {
+          const newNotification = new Notification({
+            type_of_notification: 'comment',
+            seen: false,
+            post: post.id,
+            who_did: req.user.id,
+            to_whom: post.user
+          });
+          newNotification.save()
+          .then(notification => {
+            User.findById(notification.to_whom)
+            .then(user => {
+              user.notifications.push(notification);
+              user.save()
+              .then(user => res.json(post));
+            })
+            .catch(err => {
+              console.log(err);
+            })
+          });
+        });
       })
       .catch(err => res.status(404).json({ postnotfound: "No post found" }));
   }
