@@ -40,7 +40,7 @@ import Recommendations from "./components/layout/recommendations";
 import News from "./components/news/News";
 //check for teken
 if (localStorage.Token) {
-  console.log(localStorage.Token);
+  // console.log(localStorage.Token);
 
   //set auth token header
   setAuthToken(localStorage.Token);
