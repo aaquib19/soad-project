@@ -38,7 +38,7 @@ class Dashboard extends Component {
           //   </p>
           //   <ProfileActions></ProfileActions>
           // </div>
-          <EditProfile></EditProfile>
+          <Homepage></Homepage>
         );
       } else {
         //user logged in but has no profile

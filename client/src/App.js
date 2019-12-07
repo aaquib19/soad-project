@@ -37,6 +37,7 @@ import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
 import Recommendations from "./components/layout/recommendations";
+import News from "./components/news/News";
 //check for teken
 if (localStorage.Token) {
   console.log(localStorage.Token);
@@ -129,6 +130,7 @@ class App extends Component {
                 path="/add-education"
                 component={AddEducation}
               />
+              <PrivateRoute exact path="/news" component={News} />
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />
