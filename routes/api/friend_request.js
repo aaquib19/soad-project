@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
 router.post("/requestsent", passport.authenticate("jwt", { session: false }), (req, res, next) => {
   const senderId = req.body.senderid;
   const recieverId = req.body.recieverid;
-
+  console.log("in node ")
   User.findById(senderId, function (err, user) {
 
     const recieveruser = {
