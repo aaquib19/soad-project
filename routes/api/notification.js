@@ -28,4 +28,19 @@ router.get(
         });
 });
 
+router.post(
+    "/seen/:id",
+    passport.authenticate("jwt", { session: false }),
+    (req,res,next) => {
+        Notification.findById(req.params.id)
+        .then( notification => {
+            notification.seen = true;
+            notification.save()
+            .then(notification => res.json(notification));
+        })
+        .catch(err => {
+            res.status(404).json({ nonotificationfound: "no notification found for the user" });
+        });
+});
+
 module.exports = router;

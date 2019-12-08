@@ -14,6 +14,7 @@ const notificationSchema = new mongoose.Schema(
         type: Schema.Types.ObjectId,
         ref: "users"
     },
+    who_did_name: String,
     to_whom: {
         type: Schema.Types.ObjectId,
         ref: "users"
