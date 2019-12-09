@@ -6,15 +6,31 @@ class News extends Component {
   constructor(props) {
     super(props);
     this.state = { data: null, loading: "true" };
+    this.getCategory = this.getCategory.bind(this);
   }
-  async getNews() {
+
+  getCategory() {
+    console.log("hello");
+    Promise.resolve(this.getNews("1")).then(data => {
+      this.setState({ data: data, loading: false });
+    });
+  }
+
+  async getNews(value) {
     // this.setState({ loading: true });
 
     const url = "https://newsapi.org/v2/top-headlines?";
 
     const category = "country=in&category=health";
     const source = "sources=bbc-news";
-    const res = await axios.get(url + source, {
+    let endpoint = "";
+    if (value === "1") {
+      endpoint = url + category;
+    } else {
+      endpoint = url + source;
+    }
+
+    const res = await axios.get(endpoint, {
       headers: { "x-api-key": "f60f409e37364b1ab7f990a73fea2c2e" }
     });
 
@@ -23,7 +39,7 @@ class News extends Component {
   }
 
   componentDidMount() {
-    Promise.resolve(this.getNews()).then(data => {
+    Promise.resolve(this.getNews("2")).then(data => {
       this.setState({ data: data, loading: false });
     });
   }
@@ -56,7 +72,20 @@ class News extends Component {
       );
     }
     // console.log(loading);
-    return <div>{displayElement}</div>;
+    return (
+      <div>
+        <button
+          onClick={() => {
+            this.getCategory();
+          }}
+        >
+          Health
+        </button>
+        {/* <button onClick={this.getCategory()}>Health</button> */}
+
+        <div>{displayElement}</div>
+      </div>
+    );
   }
 }
 export default News;
