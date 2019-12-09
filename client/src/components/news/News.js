@@ -19,14 +19,17 @@ class News extends Component {
     //     console.log(res.data);
     //   });
     const data = await res;
-    console.log("in function", data.data.articles);
+    // console.log("in function", data.data.articles);
     return data.data.articles;
   }
 
   componentDidMount() {
-    const data = this.getNews();
-    // console.log(data);
-    this.setState({ data: data, loading: false });
+    Promise.resolve(this.getNews()).then(data => {
+      this.setState({ data: data, loading: false });
+    });
+    // const data = this.getNews();
+    // // console.log(data);
+    // this.setState({ data: data, loading: false });
   }
   componentWillReceiveProps(nextprops) {
     console.log(nextprops);
@@ -37,9 +40,26 @@ class News extends Component {
     if (loading) {
       displayElement = <Spinner></Spinner>;
     } else {
-      displayElement = <h1>news</h1>;
+      console.log(data);
+      const articleData = data.map((item, key) => (
+        <div key={key}>
+          {item.source.name}
+          <div>
+            <h6>{item.title}></h6>
+            <div>{item.content}</div>
+            <hr></hr>
+          </div>
+        </div>
+      ));
+      const name = data[0].source.name;
+      displayElement = (
+        <div>
+          <h1>news</h1>
+          {articleData}
+        </div>
+      );
     }
-    console.log(loading);
+    // console.log(loading);
     return <div>{displayElement}</div>;
   }
 }
