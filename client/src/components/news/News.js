@@ -9,17 +9,16 @@ class News extends Component {
   }
   async getNews() {
     // this.setState({ loading: true });
-    const res = await axios.get(
-      "https://newsapi.org/v2/top-headlines?country=in&category=health",
-      {
-        headers: { "x-api-key": "f60f409e37364b1ab7f990a73fea2c2e" }
-      }
-    );
-    //   .then(res => {
-    //     console.log(res.data);
-    //   });
+
+    const url = "https://newsapi.org/v2/top-headlines?";
+
+    const category = "country=in&category=health";
+    const source = "sources=bbc-news";
+    const res = await axios.get(url + source, {
+      headers: { "x-api-key": "f60f409e37364b1ab7f990a73fea2c2e" }
+    });
+
     const data = await res;
-    // console.log("in function", data.data.articles);
     return data.data.articles;
   }
 
@@ -27,9 +26,6 @@ class News extends Component {
     Promise.resolve(this.getNews()).then(data => {
       this.setState({ data: data, loading: false });
     });
-    // const data = this.getNews();
-    // // console.log(data);
-    // this.setState({ data: data, loading: false });
   }
   componentWillReceiveProps(nextprops) {
     console.log(nextprops);
