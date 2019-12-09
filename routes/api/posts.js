@@ -79,7 +79,7 @@ router.delete(
           }
 
           // Delete
-          post.remove().then(() => res.json({ success: true }));
+          post.remove().then(post => res.json({ success: true }));
         })
         .catch(err => res.status(404).json({ postnotfound: "No post found" }));
     });
@@ -116,6 +116,7 @@ router.post(
               seen: false,
               post: post.id,
               who_did: req.user.id,
+              who_did_name: req.user.name,
               to_whom: post.user
             });
             newNotification.save()
@@ -216,6 +217,7 @@ router.post(
             seen: false,
             post: post.id,
             who_did: req.user.id,
+            who_did_name: req.user.name,
             to_whom: post.user
           });
           newNotification.save()
@@ -264,7 +266,7 @@ router.delete(
         // Splice comment out of array
         post.comments.splice(removeIndex, 1);
 
-        post.save().then(post => res.json(post));
+        post.save().then(post => {res.json(post)});
       })
       .catch(err => res.status(404).json({ postnotfound: "No post found" }));
   }
