@@ -12,19 +12,45 @@ const validatePostInput = require("../../validation/post");
 
 router.get("/test", (req, res, next) => {
   res.json({ msg: "hello workds" });
-  console.log("hiiiiiiis");
 });
 
 router.get(
-    "/:id",
+    "/received/:id",
     passport.authenticate("jwt", { session: false }),
     (req,res,next) => {
-        Message.find({ to: req.user.id,from: User.findById(req.params.id) })
-        .then( messages => {
-            res.json(messages);
+        
+        User.findById(req.params.id)
+        .then(user => {
+            Message.find({ to: req.user.id,from: user.id })
+            .then( messages => {
+                res.json(messages);
+            })
+            .catch(err => {
+                res.status(404).json({ nomessagefound: "no message found for the user" });
+            });
         })
         .catch(err => {
-            res.status(404).json({ nomessagefound: "no message found for the user" });
+            res.status(404).json({ notouserfound: "no user with id in params found for the user" });
+        });
+});
+
+router.get(
+    "/sent/:id",
+    passport.authenticate("jwt", { session: false }),
+    (req,res,next) => {
+        console.log('entered');
+        User.findById(req.params.id)
+        .then(user => {
+            Message.find({ to: user.id,from: req.user.id })
+            .then( messages => {
+                res.json(messages);
+            })
+            .catch(err => {
+                res.status(404).json({ nomessagefound: "no message found for the user" });
+            });
+        })
+        .catch(err => {
+            res.status(404).json({ notouserfound: "no user with id in params found for the user" });
         });
 });
 
@@ -37,7 +63,6 @@ router.post(
         // if (!isValid) {
         //     return res.status(400).json(errors);
         // }
-        console.log('hiiiiiiiiiiiiiiiii');
         User.findById(req.params.id)
         .then(user =>{
             console.log(user);
@@ -50,7 +75,21 @@ router.post(
                 to_seen: false,
                 content: req.body.content
             });
-            newMessage.save().then(message => res.json(message));
+            newMessage.save().then(message => {
+                User.findById(req.user.id)
+                .then(user1 => {
+                    user1.messages.push(message);
+                    user1.save()
+                    .then(user2 => {
+                        user.messages.push(message);
+                        user.save()
+                        .then(user3 => res.json(message))
+                        .catch(err => console.log(err));
+                    })
+                    .catch(err => console.log(err));
+                })
+                .catch(err => console.log(err));
+            });
         })
         .catch(err => {
             console.log(err);
