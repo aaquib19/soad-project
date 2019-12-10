@@ -4,13 +4,14 @@ import NavBar1 from "./nav";
 import CenteredTabs from "./tabs";
 import FolderList1 from "./editProfileSideBar";
 import EditForm1 from "./passwordChangeForm";
+import Navbar from "../Navbar";
 
 class ChangePassword extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
-        <NavBar1 />
+        <Navbar />
         <br />
         <br />
         <br />

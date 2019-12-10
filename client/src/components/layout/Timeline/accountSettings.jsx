@@ -4,12 +4,13 @@ import NavBar1 from "./nav";
 import CenteredTabs from "./tabs";
 import FolderList1 from "./editProfileSideBar";
 import PaperSheet from "./settings";
+import Navbar from "../Navbar";
 class Settings extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
-        <NavBar1 />
+        <Navbar />
         <br />
         <br />
         <br />

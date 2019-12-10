@@ -62,13 +62,15 @@ ElevationScroll.propTypes = {
   window: PropTypes.func
 };
 
-const drawerWidth = 240;
+const drawerWidth = 0;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    backgroundColor: "#116466"
   },
   appBar: {
+    backgroundColor: "#116466",
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -297,20 +299,8 @@ const NavBar = props => {
           className={clsx(classes.appBar, {
             [classes.appBarShift]: open
           })}
-          color="secondary"
         >
           <Toolbar>
-            <IconButton
-              edge="start"
-              onClick={handleDrawerOpen}
-              className={clsx(classes.menuButton, {
-                [classes.hide]: open
-              })}
-              color="inherit"
-              aria-label="open drawer"
-            >
-              <MenuIcon />
-            </IconButton>
             <Link to="/success" style={{ color: "white" }}>
               <Typography className={classes.title} variant="h6" noWrap>
                 Whizingo

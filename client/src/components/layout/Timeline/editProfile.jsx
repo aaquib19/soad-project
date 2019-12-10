@@ -5,13 +5,14 @@ import FolderList from "./lists";
 import CenteredTabs from "./tabs";
 import FolderList1 from "./editProfileSideBar";
 import EditForm from "./editform";
+import Navbar from "../Navbar";
 
 class EditProfile1 extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
-        <NavBar1 />
+        <Navbar />
         <br />
         <br />
         <br />
