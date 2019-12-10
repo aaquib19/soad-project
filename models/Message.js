@@ -18,7 +18,8 @@ const messageSchema = new mongoose.Schema(
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    content: String
 });
 
 module.exports = mongoose.model("Message", messageSchema);
