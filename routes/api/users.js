@@ -96,14 +96,14 @@ router.post("/login", (req, res, next) => {
         const paylod = {
           id: user._id,
           name: user.name,
-	  email: user.email,
+          email: user.email,
           avatar: user.avatar
         };
         //sign token
         jwt.sign(
           paylod,
           keys.secretOrKer,
-          { expiresIn: 3600 },
+          { expiresIn: 18000 },
           (err, token) => {
             res.json({
               success: true,

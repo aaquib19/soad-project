@@ -13,27 +13,27 @@ class News extends Component {
     this.getCategory = this.getCategory.bind(this);
   }
 
-  getCategory() {
+  getCategory(category) {
     console.log("hello");
-    Promise.resolve(this.getNews("1")).then(data => {
+    Promise.resolve(this.getNews(category)).then(data => {
       this.setState({ data: data, loading: false });
     });
   }
 
   async getNews(value) {
     // this.setState({ loading: true });
-
+    console.log(value);
     const url = "https://newsapi.org/v2/top-headlines?";
 
-    const category = "country=in&category=health";
+    let category = "country=in&category=";
     const source = "sources=bbc-news";
     let endpoint = "";
-    if (value === "1") {
-      endpoint = url + category;
-    } else {
-      endpoint = url + source;
-    }
-
+    // if (value === "health") {
+    category = category + value;
+    // } else {
+    //   endpoint = url + source;
+    // }
+    endpoint = url + category;
     const res = await axios.get(endpoint, {
       headers: { "x-api-key": "f60f409e37364b1ab7f990a73fea2c2e" }
     });
@@ -43,7 +43,7 @@ class News extends Component {
   }
 
   componentDidMount() {
-    Promise.resolve(this.getNews("2")).then(data => {
+    Promise.resolve(this.getNews("general")).then(data => {
       this.setState({ data: data, loading: false });
     });
   }
@@ -58,21 +58,11 @@ class News extends Component {
     } else {
       console.log(data);
       const articleData = data.map((item, key) => (
-        <React.Fragment>
-          <div
-            key={key}
-            className="card-header"
-            style={{
-              fontSize: "25px",
-              fontWeight: "bold",
-              fontFamily: "sans",
-              textDecoration: "underline"
-            }}
-          >
-            {item.source.name}
-          </div>
+        <React.Fragment key={key}>
           <div className="card-footer text-muted">
-            <h6>{item.title}></h6>
+            <a href={item.url}>
+              <h6>{item.title}</h6>
+            </a>
           </div>
           <div className="card-body">
             <div>{item.content}</div>
@@ -81,7 +71,6 @@ class News extends Component {
           <Divider />
         </React.Fragment>
       ));
-      const name = data[0].source.name;
       displayElement = (
         <div
           style={{
@@ -158,7 +147,7 @@ class News extends Component {
                   style={{ margin: "1rem", float: "left" }}
                   className="btn btn-info"
                   onClick={() => {
-                    this.getCategory();
+                    this.getCategory("health");
                   }}
                 >
                   Health
@@ -167,19 +156,37 @@ class News extends Component {
                   style={{ margin: "1rem", float: "left" }}
                   className="btn btn-info"
                   onClick={() => {
-                    this.getCategory();
+                    this.getCategory("sports");
                   }}
                 >
                   Sports
+                </button>
+                {/* <button
+                  style={{ margin: "1rem", float: "left" }}
+                  className="btn btn-info"
+                  onClick={() => {
+                    this.getCategory("general");
+                  }}
+                >
+                  Genral
+                </button> */}
+                <button
+                  style={{ margin: "1rem", float: "left" }}
+                  className="btn btn-info"
+                  onClick={() => {
+                    this.getCategory("entertainment");
+                  }}
+                >
+                  entertainment
                 </button>
                 <button
                   style={{ margin: "1rem", float: "left" }}
                   className="btn btn-info"
                   onClick={() => {
-                    this.getCategory();
+                    this.getCategory("technology");
                   }}
                 >
-                  Politics
+                  technology
                 </button>
               </div>
             </div>
