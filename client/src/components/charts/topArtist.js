@@ -10,14 +10,6 @@ class TopArtist extends Component {
   constructor(props) {
     super(props);
     this.state = { data: null, loading: "true" };
-    this.getCategory = this.getCategory.bind(this);
-  }
-
-  getCategory(category) {
-    console.log("hello");
-    Promise.resolve(this.getNews(category)).then(data => {
-      this.setState({ data: data, loading: false });
-    });
   }
 
   async getTopArtist() {

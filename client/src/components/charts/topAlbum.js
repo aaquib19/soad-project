@@ -10,26 +10,18 @@ class TopAlbum extends Component {
   constructor(props) {
     super(props);
     this.state = { data: null, loading: "true" };
-    this.getCategory = this.getCategory.bind(this);
-  }
-
-  getCategory(category) {
-    console.log("hello");
-    Promise.resolve(this.getNews(category)).then(data => {
-      this.setState({ data: data, loading: false });
-    });
   }
 
   async getTopAlbum() {
     // this.setState({ loading: true });
     const url =
-      "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=disco&api_key=4bd1cce243708554bea3c36f4a43f88b";
+      "http://ws.audioscrobbler.com/2.0/?method=tag.gettopalbums&tag=rap&api_key=4bd1cce243708554bea3c36f4a43f88b&format=json";
 
     const res = await axios.get(url);
 
     const data = await res;
-    // console.log("helloo ", res.data.artists.artist);
-    return data.data.artists.artist;
+    console.log("helloo ", res.data.albums.album);
+    return data.data.albums.album;
   }
 
   componentDidMount() {
@@ -49,10 +41,13 @@ class TopAlbum extends Component {
       console.log("inside render ", data);
       displayElement = data.map((item, key) => (
         <div key={key}>
-          {item.name} <br></br>
-          {item.playcount} <br></br>
-          {item.listeners} <br></br>
-          {item.url}
+          album = {item.name} <br></br>
+          artist= {item.artist.name}
+          <br></br>
+          {/* {item.image[0]} */}
+          <img src={item.image[3]["#text"]}></img>
+          <a href={item.url}>Play {item.name}</a>
+          <br></br>
           <hr></hr>
         </div>
       ));
