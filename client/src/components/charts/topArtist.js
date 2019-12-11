@@ -10,7 +10,7 @@ import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 class TopArtist extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: null, loading: "true" };
+    this.state = { data: null, loading: true };
   }
 
   async getTopArtist() {
