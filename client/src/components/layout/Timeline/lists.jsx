@@ -106,12 +106,6 @@ export default function FolderList() {
               <ListItemText primary="Top Albums" style={{ color: "#DC3545" }} />
             </Link>
           </ListItem>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Top Tracks" style={{ color: "#DC3545" }} />
-          </ListItem>
         </List>
       </Collapse>
       <ListItem>

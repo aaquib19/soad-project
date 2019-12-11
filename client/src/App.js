@@ -44,7 +44,6 @@ import AddEducation from "./components/add-credentials/AddEducation";
 import News from "./components/news/News";
 import TopArtist from "./components/charts/topArtist";
 import TopAlbum from "./components/charts/topAlbum";
-import TopTracks from "./components/charts/topTracks";
 
 //check for teken
 if (localStorage.Token) {
@@ -144,11 +143,6 @@ class App extends Component {
                 path="/charts/top-album"
                 component={TopAlbum}
               />{" "}
-              <PrivateRoute
-                exact
-                path="/charts/top-track"
-                component={TopTracks}
-              />
               <PrivateRoute
                 exact
                 path="/notifications"

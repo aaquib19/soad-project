@@ -16,22 +16,18 @@ class Notifications extends Component {
       console.log("Working", res.data);
       const notifications = res.data;
       this.setState({ notifications: notifications });
-
     });
   }
 
-  render()    
-  {
-    const count="";
-    
-    
+  render() {
+    const count = "";
 
     return (
       <React.Fragment>
         <Navbar />
         <br />
         <br />
-
+        <br />
         <div className="row" style={{ backgroundColor: "#e9ebee" }}>
           <div className="col-lg-2">
             <div className="position-fixed">
@@ -50,20 +46,28 @@ class Notifications extends Component {
           </div>
           <div className="col-5" style={{ backgroundColor: "#e9ebee" }}>
             <div>
-              
               {this.state.notifications.map((notification, key) => (
-                
                 <React.Fragment>
-                  <div className="card" key={key} style={{ boxShadow: "3px 3px 3px #fff" }}>
-              
+                  <div
+                    className="card"
+                    key={key}
+                    style={{ boxShadow: "3px 3px 3px #fff" }}
+                  >
+                    <a href={`/post/${notification.post}`}>
+                      {notification.type_of_notification === "like" ? (
+                        <p>{notification.who_did_name} liked your post</p>
+                      ) : (
+                        count
+                      )}
+                    </a>
 
-                  <a href={`/post/${notification.post}`}>
-                    {notification.type_of_notification==="like" ? <p>{notification.who_did_name} liked your post</p>:count}
-                  </a>
-
-                  <a href={`/post/${notification.post}`}>
-                  {notification.type_of_notification==="comment" ?<p>{notification.who_did_name} commented your post</p>:count}
-                  </a>
+                    <a href={`/post/${notification.post}`}>
+                      {notification.type_of_notification === "comment" ? (
+                        <p>{notification.who_did_name} commented your post</p>
+                      ) : (
+                        count
+                      )}
+                    </a>
                   </div>
                   <br />
                 </React.Fragment>
