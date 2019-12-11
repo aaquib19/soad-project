@@ -66,6 +66,7 @@ class News extends Component {
             <a href={item.url}>
               <h6>{item.title}</h6>
             </a>
+            <img src={item.urlToImage}></img>
           </div>
           <div
             className="card"
