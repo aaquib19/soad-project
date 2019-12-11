@@ -3,10 +3,11 @@ import logo from "./404.jpg";
 import NavBar1 from "./Timeline/nav";
 import { Link } from "react-router-dom";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import Navbar from "./Navbar";
 const ErrorPage = () => {
   return (
     <React.Fragment>
-      <NavBar1 />
+      <Navbar />
       <br />
       <br />
       <br />
