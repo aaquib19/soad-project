@@ -44,7 +44,7 @@ class Notifications extends Component {
               </div>
             </div>
           </div>
-          <div className="col-5" style={{ backgroundColor: "#e9ebee" }}>
+          <div className="col-5">
             <div>
               {this.state.notifications.map((notification, key) => (
                 <React.Fragment>
@@ -55,7 +55,9 @@ class Notifications extends Component {
                   >
                     <a href={`/post/${notification.post}`}>
                       {notification.type_of_notification === "like" ? (
-                        <p>{notification.who_did_name} liked your post</p>
+                        <p style={{ fontFamily: "sans", fontSize: "30px" }}>
+                          {notification.who_did_name} liked your post
+                        </p>
                       ) : (
                         count
                       )}
@@ -63,7 +65,9 @@ class Notifications extends Component {
 
                     <a href={`/post/${notification.post}`}>
                       {notification.type_of_notification === "comment" ? (
-                        <p>{notification.who_did_name} commented your post</p>
+                        <p style={{ fontFamily: "sans", fontSize: "30px" }}>
+                          {notification.who_did_name} commented your post
+                        </p>
                       ) : (
                         count
                       )}
