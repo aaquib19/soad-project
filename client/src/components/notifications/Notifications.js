@@ -55,8 +55,15 @@ class Notifications extends Component {
                 
                 <React.Fragment>
                   <div className="card" key={key} style={{ boxShadow: "3px 3px 3px #fff" }}>
-                  {notification.type_of_notification==="like" ? <p>{notification.who_did_name} liked your post</p>:count}
+              
+
+                  <a href={`/post/${notification.post}`}>
+                    {notification.type_of_notification==="like" ? <p>{notification.who_did_name} liked your post</p>:count}
+                  </a>
+
+                  <a href={`/post/${notification.post}`}>
                   {notification.type_of_notification==="comment" ?<p>{notification.who_did_name} commented your post</p>:count}
+                  </a>
                   </div>
                   <br />
                 </React.Fragment>

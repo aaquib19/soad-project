@@ -42,6 +42,7 @@ import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
 // import Recommendations from "./components/layout/recommendations";
 import News from "./components/news/News";
+import TopArtist from "./components/charts/topArtist";
 
 //check for teken
 if (localStorage.Token) {
@@ -136,6 +137,11 @@ class App extends Component {
                 component={AddEducation}
               />
               <PrivateRoute exact path="/news" component={News} />
+              <PrivateRoute
+                exact
+                path="/charts/top-artist"
+                component={TopArtist}
+              />
               <PrivateRoute
                 exact
                 path="/notifications"
