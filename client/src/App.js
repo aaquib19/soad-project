@@ -44,7 +44,6 @@ import AddEducation from "./components/add-credentials/AddEducation";
 import News from "./components/news/News";
 import TopArtist from "./components/charts/topArtist";
 import TopAlbum from "./components/charts/topAlbum";
-import TopTracks from "./components/charts/topTracks";
 
 //check for teken
 if (localStorage.Token) {
@@ -100,11 +99,16 @@ class App extends Component {
                 path="/profile/settings"
                 component={Settings}
               />
-              {/* <PrivateRoute
+              <PrivateRoute
+                exact
+                path="/profile/edit"
+                component={EditProfile1}
+              />
+              <PrivateRoute
                 exact
                 path="/recommendations"
                 component={Recommendations}
-              /> */}
+              />
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/friends" component={Friends} />
               <Route exact path="/feed" component={Posts} />
@@ -144,11 +148,6 @@ class App extends Component {
                 path="/charts/top-album"
                 component={TopAlbum}
               />{" "}
-              <PrivateRoute
-                exact
-                path="/charts/top-track"
-                component={TopTracks}
-              />
               <PrivateRoute
                 exact
                 path="/notifications"
