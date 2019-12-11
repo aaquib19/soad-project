@@ -2,11 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import BasicTextFields from "./../common/textField";
-import TextField from "@material-ui/core/TextField";
-import { ImageUploader } from "react-images-upload";
-import ImageUpload from "./../common/imageUploader";
+
 class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +41,7 @@ class PostForm extends Component {
     newPost.append("text", this.state.text);
     newPost.append("name", userData.name);
     newPost.append("avatar", userData.avatar);
+    console.log("helooooo");
     this.props.addPost(newPost);
     this.setState({ text: " " });
   }
@@ -75,7 +73,7 @@ class PostForm extends Component {
           <button type="submit" className="btn btn-info btn-lg">
             <i class="fa fa-upload"> Post</i>
           </button>
-        </form>{" "}
+        </form>
       </div>
     );
   }
@@ -83,8 +81,8 @@ class PostForm extends Component {
 
 PostForm.propTypes = {
   addPost: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired
+  // errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

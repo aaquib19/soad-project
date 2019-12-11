@@ -13,8 +13,13 @@ import {
 //add post
 
 export const addPost = postData => dispatch => {
+  console.log("helloooooooohukh");
   axios
-    .post("/api/posts", postData)
+    .post("/api/posts", postData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
     .then(res =>
       dispatch({
         type: ADD_POST,
