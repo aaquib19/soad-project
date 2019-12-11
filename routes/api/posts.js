@@ -3,7 +3,31 @@ const router = express.Router();
 
 const mongoose = require("mongoose");
 const passport = require("passport");
+const multer = require("multer");
 
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "./uploads/");
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname);
+  }
+});
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
 //model import
 const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
@@ -44,7 +68,9 @@ router.get("/:id", (req, res, next) => {
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
+  upload.single("postImage"),
   (req, res, next) => {
+    console.log(req.file.path);
     const { errors, isValid } = validatePostInput(req.body);
 
     if (!isValid) {
@@ -55,7 +81,8 @@ router.post(
       text: req.body.text,
       name: req.body.name,
       avatar: req.body.avatar, //name and avatar  is logged in we will fetch name and avatar from redux (user state)
-      user: req.user.id
+      user: req.user.id,
+      img: req.file.path
     });
     newPost.save().then(post => res.json(post));
   }
@@ -112,24 +139,22 @@ router.post(
             //add notification to notification
             // console.log('---------------------------------',req.user.id,post.user);
             const newNotification = new Notification({
-              type_of_notification: 'like',
+              type_of_notification: "like",
               seen: false,
               post: post.id,
               who_did: req.user.id,
               who_did_name: req.user.name,
               to_whom: post.user
             });
-            newNotification.save()
-            .then(notification => {
+            newNotification.save().then(notification => {
               User.findById(notification.to_whom)
-              .then(user => {
-                user.notifications.push(notification);
-                user.save()
-                .then(user => res.json(post));
-              })
-              .catch(err => {
-                console.log(err);
-              })
+                .then(user => {
+                  user.notifications.push(notification);
+                  user.save().then(user => res.json(post));
+                })
+                .catch(err => {
+                  console.log(err);
+                });
             });
           });
         })
@@ -167,14 +192,15 @@ router.post(
 
           // Save
           post.save().then(post => {
-            Notification.findOneAndRemove({ type_of_notification: 'like', post: post.id, who_did: req.user.id})
-            .then(notification => {
-              Users.findById(notification.to_whom)
-              .then(user => {
+            Notification.findOneAndRemove({
+              type_of_notification: "like",
+              post: post.id,
+              who_did: req.user.id
+            }).then(notification => {
+              Users.findById(notification.to_whom).then(user => {
                 user.notifications.pull(notification);
-                user.save()
-                .then(user => res.json(post));
-              })
+                user.save().then(user => res.json(post));
+              });
             });
           });
         })
@@ -213,24 +239,22 @@ router.post(
         // Save
         post.save().then(post => {
           const newNotification = new Notification({
-            type_of_notification: 'comment',
+            type_of_notification: "comment",
             seen: false,
             post: post.id,
             who_did: req.user.id,
             who_did_name: req.user.name,
             to_whom: post.user
           });
-          newNotification.save()
-          .then(notification => {
+          newNotification.save().then(notification => {
             User.findById(notification.to_whom)
-            .then(user => {
-              user.notifications.push(notification);
-              user.save()
-              .then(user => res.json(post));
-            })
-            .catch(err => {
-              console.log(err);
-            })
+              .then(user => {
+                user.notifications.push(notification);
+                user.save().then(user => res.json(post));
+              })
+              .catch(err => {
+                console.log(err);
+              });
           });
         });
       })
@@ -266,7 +290,9 @@ router.delete(
         // Splice comment out of array
         post.comments.splice(removeIndex, 1);
 
-        post.save().then(post => {res.json(post)});
+        post.save().then(post => {
+          res.json(post);
+        });
       })
       .catch(err => res.status(404).json({ postnotfound: "No post found" }));
   }
