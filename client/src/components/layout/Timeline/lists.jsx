@@ -90,7 +90,7 @@ export default function FolderList() {
             <ListItemIcon>
               <AlbumIcon />
             </ListItemIcon>
-            <Link to="charts/top-artist">
+            <Link to="/charts/top-artist">
               <ListItemText
                 primary="Top Artists"
                 style={{ color: "#DC3545" }}
@@ -101,7 +101,7 @@ export default function FolderList() {
             <ListItemIcon>
               <LibraryMusicIcon />
             </ListItemIcon>
-            <Link to="charts/top-album">
+            <Link to="/charts/top-album">
               {" "}
               <ListItemText primary="Top Albums" style={{ color: "#DC3545" }} />
             </Link>
