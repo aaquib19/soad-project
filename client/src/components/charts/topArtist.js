@@ -5,7 +5,6 @@ import { classnames } from "classnames";
 import Navbar from "../layout/Navbar";
 import FolderList from "../layout/Timeline/lists";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 
 class TopArtist extends Component {

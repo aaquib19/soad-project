@@ -101,7 +101,10 @@ export default function FolderList() {
             <ListItemIcon>
               <LibraryMusicIcon />
             </ListItemIcon>
-            <ListItemText primary="Top Albums" style={{ color: "#DC3545" }} />
+            <Link to="charts/top-album">
+              {" "}
+              <ListItemText primary="Top Albums" style={{ color: "#DC3545" }} />
+            </Link>
           </ListItem>
           <ListItem button className={classes.nested}>
             <ListItemIcon>
