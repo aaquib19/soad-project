@@ -10,11 +10,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
     height: "100%",
-    backgroundImage:
-      "linear-gradient(to left, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
-
-    postion: "fixed",
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: "#e9ebee",
+    postion: "fixed"
   }
 }));
 

@@ -16,6 +16,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { Redirect } from "react-router-dom";
 import NavBar1 from "../layout/Timeline/nav";
+import Navbar from "../layout/Navbar";
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -138,7 +139,7 @@ class LoginForm extends Component {
 
     return (
       <React.Fragment>
-        <NavBar1 />
+        <Navbar />
         <br />
         <br />
         <Grid container component="main" className={classes.image}>

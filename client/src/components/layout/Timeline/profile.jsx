@@ -11,19 +11,18 @@ import { Timeline, Event } from "react-timeline-scribble";
 import VirtualizedList from "./../../common/friendList";
 import NavBar1 from "./nav";
 import FolderList from "./lists";
+import Navbar from "../Navbar";
 
 const style = {
   height: "585px",
   width: "90%",
-  border: "1px solid",
+  border: "1px solid white",
   margin: "2rem",
   overflow: "auto",
   borderRadius: "5%"
   // padding: "4rem"
 };
 const style2 = {
-  backgroundImage:
-    "linear-gradient(to left, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
   height: "100%",
   width: "100%",
   border: "1px solid white",
@@ -46,11 +45,11 @@ class Profile extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar1 />
+        <Navbar />
         <br />
         <br />
         <br />
-        <div className="row">
+        <div className="row" style={{ backgroundColor: "#e9ebee" }}>
           <div className="col-2">
             {" "}
             <div
@@ -58,8 +57,7 @@ class Profile extends Component {
                 width: "14%",
                 marginTop: "3rem",
 
-                position: "fixed",
-                backgroundColor: "transparent"
+                position: "fixed"
               }}
             >
               <FolderList />
@@ -70,8 +68,6 @@ class Profile extends Component {
             className="col-8"
             style={{
               borderRadius: "40px",
-              backgroundImage:
-                "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
 
               zIndex: "+2"
             }}
@@ -110,13 +106,13 @@ class Profile extends Component {
             <div
               style={{
                 marginTop: "5rem",
-                marginLeft: "50rem"
+                marginLeft: "40rem"
               }}
             >
               <button
                 className="btn btn-danger"
                 style={{
-                  MarginTop: "15rem",
+                  MarginTop: "10rem",
                   marginRight: "1rem"
                 }}
               >
@@ -128,7 +124,8 @@ class Profile extends Component {
               style={{
                 left: 0,
                 textAlign: "left",
-                margin: "1rem"
+                marginLeft: "2rem",
+                marginTop: "2rem"
               }}
             >
               Wilson Patro

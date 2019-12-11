@@ -9,8 +9,7 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     flexWrap: "wrap",
-    backgroundImage:
-      "linear-gradient(to right, #e5c5cd, #e5abb9, #e38fa5, #e07390, #db547b)",
+    backgroundColor: "#e9ebee",
     borderRadius: "2%"
   },
   textField: {

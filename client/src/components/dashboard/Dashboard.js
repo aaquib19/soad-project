@@ -21,10 +21,9 @@ class Dashboard extends Component {
     let dashboardContent;
     if (profile === null) {
       dashboardContent = (
-        <h4>
+        <h5>
           <Spinner></Spinner>
-          hi
-        </h4>
+        </h5>
       );
     } else {
       // dashboardContent = <h1>hello </h1>;
@@ -48,7 +47,6 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard</h1>
         <div>{dashboardContent}</div>
       </div>
     );

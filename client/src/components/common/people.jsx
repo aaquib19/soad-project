@@ -8,15 +8,15 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 
 import { Link } from "react-router-dom";
+import { borderRadius } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: "70%",
     maxWidth: 300,
     backgroundColor: theme.palette.background.paper,
-    backgroundImage:
-      "linear-gradient(to right, #918789, #a8a0a1, #c0babb, #d8d5d5, #f1f0f0)",
-    margin: "2rem"
+    margin: "2rem",
+    borderRadius: "8px"
   },
   inline: {
     display: "inline"

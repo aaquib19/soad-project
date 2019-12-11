@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
-    backgroundColor: "#e0e0e0"
+    backgroundColor: "#e9ebee"
   }
 }));
 
