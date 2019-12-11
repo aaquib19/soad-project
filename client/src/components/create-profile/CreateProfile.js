@@ -230,7 +230,7 @@ class CreateProfile extends Component {
                 fontFamily: "Times, Times New Roman, serif"
               }}
             >
-              Wilson Patro
+              {this.props.auth.userData.name}
             </h1>
             <div>
               <h2
@@ -411,6 +411,7 @@ CreateProfile.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  auth: state.registration,
   profile: state.profile,
   errors: state.errors
 });

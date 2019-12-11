@@ -88,7 +88,10 @@ class Homepage extends Component {
               </div>
             </div>
           </div>
-          <div className="col-5" style={{ float: "left" }}>
+          <div
+            className="col-5"
+            style={{ height: "30%", width: "50%", float: "left" }}
+          >
             <div style={style1}>
               <PostForm />
             </div>

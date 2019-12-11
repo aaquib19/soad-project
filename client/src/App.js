@@ -99,11 +99,6 @@ class App extends Component {
                 path="/profile/settings"
                 component={Settings}
               />
-              <PrivateRoute
-                exact
-                path="/profile/edit"
-                component={EditProfile1}
-              />
               {/* <PrivateRoute
                 exact
                 path="/recommendations"

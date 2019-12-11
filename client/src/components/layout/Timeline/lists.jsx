@@ -59,7 +59,7 @@ export default function FolderList() {
             <AccountCircleIcon />
           </Avatar>
         </ListItemAvatar>
-        <Link to="/profile/edit" style={{ color: "#DC3545" }}>
+        <Link to="/edit-profile" style={{ color: "#DC3545" }}>
           <ListItemText primary="Profile" />
         </Link>
       </ListItem>{" "}
