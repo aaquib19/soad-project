@@ -59,14 +59,27 @@ class News extends Component {
       console.log(data);
       const articleData = data.map((item, key) => (
         <React.Fragment key={key}>
+          <div className="card-header">
+            {" "}
+            <a href={item.url}>
+              <h6
+                style={{
+                  fontSize: "25px",
+                  color: "#00695c"
+                }}
+              >
+                {item.title}
+              </h6>
+            </a>
+          </div>
           <div
             className="card-footer text-muted"
             style={{ boxShadow: "3px 3px 3px 3px #e0e0e0" }}
           >
-            <a href={item.url}>
-              <h6>{item.title}</h6>
-            </a>
-            <img src={item.urlToImage}></img>
+            <img
+              src={item.urlToImage}
+              style={{ width: "100%", height: "40%" }}
+            ></img>
           </div>
           <div
             className="card"
@@ -89,7 +102,13 @@ class News extends Component {
             marginTop: "3rem"
           }}
         >
-          <h1 style={{ marginBottom: "3rem", textDecoration: "underline" }}>
+          <h1
+            style={{
+              fontSize: "60px",
+              marginBottom: "3rem",
+              textDecoration: "underline"
+            }}
+          >
             News
           </h1>
           {articleData}
@@ -100,7 +119,6 @@ class News extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <br />
         <br />
         <br />
 
@@ -156,6 +174,15 @@ class News extends Component {
                   style={{ margin: "1rem", float: "left" }}
                   className="btn btn-info"
                   onClick={() => {
+                    this.getCategory("entertainment");
+                  }}
+                >
+                  Entertainment
+                </button>
+                <button
+                  style={{ margin: "1rem", float: "left" }}
+                  className="btn btn-info"
+                  onClick={() => {
                     this.getCategory("health");
                   }}
                 >
@@ -170,24 +197,6 @@ class News extends Component {
                 >
                   Sports
                 </button>
-                {/* <button
-                  style={{ margin: "1rem", float: "left" }}
-                  className="btn btn-info"
-                  onClick={() => {
-                    this.getCategory("general");
-                  }}
-                >
-                  Genral
-                </button> */}
-                <button
-                  style={{ margin: "1rem", float: "left" }}
-                  className="btn btn-info"
-                  onClick={() => {
-                    this.getCategory("entertainment");
-                  }}
-                >
-                  entertainment
-                </button>
                 <button
                   style={{ margin: "1rem", float: "left" }}
                   className="btn btn-info"
@@ -195,7 +204,7 @@ class News extends Component {
                     this.getCategory("technology");
                   }}
                 >
-                  technology
+                  Technology
                 </button>
               </div>
             </div>
