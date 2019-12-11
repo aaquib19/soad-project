@@ -5,6 +5,8 @@ import { addPost } from "../../actions/postActions";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import BasicTextFields from "./../common/textField";
 import TextField from "@material-ui/core/TextField";
+import { ImageUploader } from "react-images-upload";
+import ImageUpload from "./../common/imageUploader";
 class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +49,7 @@ class PostForm extends Component {
 
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit} enctype="multipart/form-data">
           <div className="form-group">
             <BasicTextFields
               placeholder="Create a post"
@@ -58,7 +60,7 @@ class PostForm extends Component {
               // error={errors.text}
             />
           </div>
-
+          <ImageUpload></ImageUpload>
           <button type="submit" className="btn btn-secondary btn-lg btn-block">
             <i class="fa fa-upload"> Post</i>
           </button>

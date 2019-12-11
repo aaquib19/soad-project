@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Spinner from "../common/Spinner";
+import { classnames } from "classnames";
+import Navbar from "../layout/Navbar";
+import FolderList from "../layout/Timeline/lists";
+import Divider from "@material-ui/core/Divider";
 
 class News extends Component {
   constructor(props) {
@@ -54,37 +58,134 @@ class News extends Component {
     } else {
       console.log(data);
       const articleData = data.map((item, key) => (
-        <div key={key}>
-          {item.source.name}
-          <div>
+        <React.Fragment>
+          <div
+            key={key}
+            className="card-header"
+            style={{
+              fontSize: "25px",
+              fontWeight: "bold",
+              fontFamily: "sans",
+              textDecoration: "underline"
+            }}
+          >
+            {item.source.name}
+          </div>
+          <div className="card-footer text-muted">
             <h6>{item.title}></h6>
+          </div>
+          <div className="card-body">
             <div>{item.content}</div>
             <hr></hr>
           </div>
-        </div>
+          <Divider />
+        </React.Fragment>
       ));
       const name = data[0].source.name;
       displayElement = (
-        <div>
-          <h1>news</h1>
+        <div
+          style={{
+            fontFamily: "sans",
+            float: "left",
+            marginBottom: "2rem",
+            marginTop: "3rem"
+          }}
+        >
+          <h1 style={{ marginBottom: "3rem", textDecoration: "underline" }}>
+            News
+          </h1>
           {articleData}
         </div>
       );
     }
     // console.log(loading);
     return (
-      <div>
-        <button
-          onClick={() => {
-            this.getCategory();
-          }}
-        >
-          Health
-        </button>
-        {/* <button onClick={this.getCategory()}>Health</button> */}
+      <React.Fragment>
+        <Navbar />
+        <br />
+        <br />
+        <br />
 
-        <div>{displayElement}</div>
-      </div>
+        <div className="row" style={{ backgroundColor: "#e9ebee" }}>
+          <div className="col-lg-3">
+            <div className="position-fixed">
+              <div
+                style={{
+                  width: "14%",
+                  marginTop: "3rem",
+                  marginTop: "4rem",
+                  position: "fixed",
+                  backgroundColor: "transparent"
+                }}
+              >
+                <FolderList />
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-5">
+            {/* <button onClick={this.getCategory()}>Health</button> */}
+            <div>{displayElement}</div>
+          </div>
+          <div className="col-lg-3">
+            <div
+              className="card"
+              style={{
+                marginLeft: "2rem",
+                marginTop: "2rem",
+                backgroundColor: "#e9ebee",
+                width: "100%"
+              }}
+            >
+              <div
+                className="card-body"
+                style={{ boxShadow: "5px 5px 5px 5px #e0e0e0" }}
+              >
+                {" "}
+                <h3
+                  style={{
+                    marginTop: "2rem",
+                    marginLeft: "3rem",
+                    marginRight: "40rem",
+                    fontSize: "35px",
+                    float: "left",
+                    textDecoration: "underline",
+                    fontFamily: "sans "
+                  }}
+                >
+                  Categories
+                </h3>
+                <button
+                  style={{ margin: "1rem", float: "left" }}
+                  className="btn btn-info"
+                  onClick={() => {
+                    this.getCategory();
+                  }}
+                >
+                  Health
+                </button>
+                <button
+                  style={{ margin: "1rem", float: "left" }}
+                  className="btn btn-info"
+                  onClick={() => {
+                    this.getCategory();
+                  }}
+                >
+                  Sports
+                </button>
+                <button
+                  style={{ margin: "1rem", float: "left" }}
+                  className="btn btn-info"
+                  onClick={() => {
+                    this.getCategory();
+                  }}
+                >
+                  Politics
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
