@@ -65,7 +65,6 @@ router.post(
         // }
         User.findById(req.params.id)
         .then(user =>{
-            console.log(user);
             const newMessage = new Message({
                 from: req.user.id,
                 from_name: req.user.name,
@@ -95,5 +94,44 @@ router.post(
             console.log(err);
         });
 });
+
+router.delete(
+    "/:id",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+        User.findById(req.user.id)
+        .then(user => {
+            user.messages.pull(req.params.id);
+            user.save()
+            .then(user1 => {
+                Message.findById(req.params.id)
+                .then(message => {
+                    // console.log(message.from.toString(),req.user.id,message.to,message.from);
+                    User.findById(message.from.toString() === req.user.id?message.to:message.from)
+                    .then(user2 => {
+                        var found = user2.messages.find(function(element) { 
+                            // console.log(element.toString(),req.params.id);
+                            return element.toString() === req.params.id; 
+                        });
+                        if(!found)
+                        {
+                            Message.findByIdAndRemove(req.params.id)
+                            .then(message1 => res.json({ success: true }))
+                            .catch(err => console.log(err));
+                        }
+                        else
+                        {
+                            res.json({ success: true });
+                        }
+                    })
+                    .catch(err => {console.log(err)});
+                })
+                .catch(err => console.log(err));
+            })
+            .catch(err => console.log(err));
+        })
+        .catch(err => res.status(404).json({ messagenotfound: "No message found" }));
+    }
+  );
 
 module.exports = router;
