@@ -7,6 +7,41 @@ const User = require("../../models/User");
 const Notification = require("../../models/notification");
 const Schema = mongoose.Schema;
 
+router.get(
+  "/all",
+  passport.authenticate("jwt", { session: false }),
+  (req,res,next) => {
+      User.findById(req.user.id)
+      .then( user => {
+          res.json(user.freinds);
+      })
+      .catch(err => {
+          res.status(404).json({ nofriendfound: "no friend found for the user" });
+      });
+});
+
+// router.get(
+//   "/all/recommendations",
+//   passport.authenticate("jwt", { session: false }),
+//   (req,res,next) => {
+//       User.findById(req.user.id)
+//       .then( user => {
+//           const recs = user.recommendations;
+//           const updatedId = [];
+//           console.log(recs[0][0])
+//           recs.map(rec => {
+//             for (let i = 0; i <= 23; i++) {
+//               // console.log(rec[1]);
+//               // console.log(i.toString());
+//             }
+//             // updatedId.push(Object.values(rec).join(""));
+//           })
+//           // console.log(updatedId);
+//       })
+//       .catch(err => {
+//           res.status(404).json({ norecommendationfound: "no recommendation found for the user" });
+//       });
+// });
 
 router.post("/requestsent", passport.authenticate("jwt", { session: false }), (req, res, next) => {
   const senderId = req.body.senderid;

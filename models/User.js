@@ -27,10 +27,8 @@ const UserSchema = new Schema({
   },
   freinds: [
     {
-      user: {
         type: Schema.Types.ObjectId,
         ref: "users"
-      }
     }
   ],
   pending: [
@@ -51,7 +49,13 @@ const UserSchema = new Schema({
       }
     }
   ],
-  recommendations: [mongoose.Schema.Types.ObjectId],
+  recommendations: [
+    //recommendations of friend
+    {
+        type: Schema.Types.ObjectId,
+        ref: "users"
+    }
+  ],
   lastlogin: {
     type: String
   },
