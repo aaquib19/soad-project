@@ -22,7 +22,7 @@ const Recommendations = () => {
             </div>
           </div>
         </div>
-        <div className="col-6"><div style={{marginTop:'10rem'}}>hi hi hi
+        <div className="col-6"><div style={{marginTop:'10rem'}}>
         
         <RecommendedPersonList></RecommendedPersonList>
         
