@@ -54,8 +54,8 @@ export default function FolderList() {
             <ImageIcon />
           </Avatar>
         </ListItemAvatar>
-        <Link to="/posts" style={{ color: "#DC3545" }}>
-          <ListItemText primary="Posts" />
+        <Link to="/news" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Subscriptions" />
         </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
