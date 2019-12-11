@@ -8,7 +8,7 @@ import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 
 import "./Chat.css";
-import NavBar1 from "../../layout/Timeline/nav";
+import NavBar from "../../layout/Navbar";
 
 let socket;
 
@@ -62,7 +62,7 @@ const Chat = ({ location }) => {
 
   return (
     <React.Fragment>
-      {/* <NavBar1 /> */}
+      <NavBar />
       <div className="outerContainer1">
         <div className="container1">
           <InfoBar room={room} />

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./Join.css";
 import NavBar from "./../../layout/Navbar";
+import Particles from 'react-particles-js';
 
 export default function SignIn() {
   // const [name, setName] = useState('');
