@@ -312,19 +312,23 @@ const NavBar = props => {
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={0} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                aria-label="show 15 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={5} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+              <Link to="/chatroom" style={{ color: "white" }}>
+                <IconButton aria-label="show 4 new mails" color="inherit">
+                  <Badge badgeContent={0} color="secondary">
+                    <MailIcon />
+                  </Badge>
+                </IconButton>
+              </Link>
+              <Link to="/notifications" style={{ color: "white" }}>
+                <IconButton
+                  aria-label="show 15 new notifications"
+                  color="inherit"
+                >
+                  <Badge badgeContent={5} color="secondary">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+              </Link>
               <IconButton
                 edge="end"
                 aria-label="account of current user"
