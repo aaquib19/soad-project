@@ -53,26 +53,30 @@ const UserSchema = new Schema({
   ],
   recommendations: [
     //recommendations of friend
-    {
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: "users"
-      }
-    }
+    // {
+    //   user: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "users"
+    //   }
+    // }
+    // {
+    //   type: String
+    // }
+    mongoose.Schema.Types.ObjectId
   ],
   lastlogin: {
     type: String
   },
   notifications: [
     {
-        type: Schema.Types.ObjectId,
-        ref: "Notification"
+      type: Schema.Types.ObjectId,
+      ref: "Notification"
     }
   ],
   messages: [
     {
-        type: Schema.Types.ObjectId,
-        ref: "Message"
+      type: Schema.Types.ObjectId,
+      ref: "Message"
     }
   ]
   // chat_rooms: [
