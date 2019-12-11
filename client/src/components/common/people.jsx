@@ -58,7 +58,6 @@ class AlignItemsList extends Component {
                     <button className="btn btn-sm btn-danger">
                       {addFriend}
                     </button>{" "}
-                    <button className="btn btn-sm btn-danger">{remove}</button>
                   </React.Fragment>
                 }
               />
