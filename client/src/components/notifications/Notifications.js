@@ -19,9 +19,16 @@ class Notifications extends Component {
     });
   }
 
+<<<<<<< Updated upstream
   render() {
     const count = "";
 
+=======
+  render()    
+  {
+    const count="";
+    
+>>>>>>> Stashed changes
     return (
       <React.Fragment>
         <Navbar />
@@ -48,6 +55,7 @@ class Notifications extends Component {
             <div>
               {this.state.notifications.map((notification, key) => (
                 <React.Fragment>
+<<<<<<< Updated upstream
                   <div
                     className="card"
                     key={key}
@@ -62,6 +70,13 @@ class Notifications extends Component {
                         count
                       )}
                     </a>
+=======
+                  <div className="card" key={key} style={{ boxShadow: "3px 3px 3px #fff" }}>
+              
+                  <a href={`/post/${notification.post}`}>
+                    {notification.type_of_notification==="like" ? <p>{notification.who_did_name} liked your post</p>:count}
+                  </a>
+>>>>>>> Stashed changes
 
                     <a href={`/post/${notification.post}`}>
                       {notification.type_of_notification === "comment" ? (

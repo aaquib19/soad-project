@@ -16,23 +16,25 @@ router.get("/test", (req, res, next) => {
 // @access  Private
 
 router.get(
-  "/recommendations",
-  passport.authenticate("jwt", { session: false }),
-  (req, res, next) => {
-    console.log("hellooo", req.user.id);
+    "/",
+    passport.authenticate("jwt", { session: false }),
+    (req, res, next) => {
+    
+    console.log("User to be recommend", req.user.id);
     User.findById(req.user.id)
-      .then(user => {
-        console.log("hdasjhskl", user.recommendations);
-        res.json(user.recommendations);
-      })
-      .catch(err => {
-        // console.log("wqekjfadfa");
-
-        res
-          .status(404)
-          .json({ norecommendationfound: "No recommendation found!!!" });
-      });
-  }
+    .then(user => {
+        //console.log("recommends", user.recommendations);
+        User.find({ _id: { $in: user.recommendations } })
+            .select("name avatar")
+            .then(data => {
+                //console.log(data);
+                res.json(data);
+            });
+    })
+    .catch(err => {
+        res.status(404).json({ norecommendationfound: "No recommendation found!!!" });
+    });
+    }
 );
 
 module.exports = router;
