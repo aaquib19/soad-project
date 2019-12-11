@@ -13,6 +13,7 @@ import CenteredTabs from "../layout/Timeline/tabs";
 import FolderList1 from "../layout/Timeline/editProfileSideBar";
 import NavBar1 from "../layout/Timeline/nav";
 import RadioButtonsGroup from "../layout/Timeline/radio";
+import Navbar from "../layout/Navbar";
 // import createProfile from "../../actions/profileActions";
 // createProfile
 const container = {
@@ -168,7 +169,7 @@ class CreateProfile extends Component {
 
     return (
       <React.Fragment>
-        <NavBar1 />
+        <Navbar />
         <br />
         <br />
         <br />

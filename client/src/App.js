@@ -10,6 +10,10 @@ import {
 import Chat from "./components/chatroom/Chat/Chat";
 import Join from "./components/chatroom/Join/Join";
 //--------------------------chatroom
+// ---------------------notifications ----
+import Notifications from "./components/notifications/Notifications";
+// ------------------------recommendations (For testing only - connect properly)
+import Recommendations from "./components/recommendations/Recommendations";
 import Registration from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
@@ -36,7 +40,7 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
-import Recommendations from "./components/layout/recommendations";
+// import Recommendations from "./components/layout/recommendations";
 import News from "./components/news/News";
 //check for teken
 if (localStorage.Token) {
@@ -97,11 +101,11 @@ class App extends Component {
                 path="/profile/edit"
                 component={EditProfile1}
               />
-              <PrivateRoute
+              {/* <PrivateRoute
                 exact
                 path="/recommendations"
                 component={Recommendations}
-              />
+              /> */}
               <PrivateRoute exact path="/profile" component={Profile} />
               <PrivateRoute exact path="/friends" component={Friends} />
               <Route exact path="/feed" component={Posts} />
@@ -131,6 +135,8 @@ class App extends Component {
                 component={AddEducation}
               />
               <PrivateRoute exact path="/news" component={News} />
+              <PrivateRoute exact path="/notifications" component={Notifications}/>
+              <PrivateRoute exact path="/recommendations" component={Recommendations}/>
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />

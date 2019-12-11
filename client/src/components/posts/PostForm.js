@@ -72,7 +72,7 @@ class PostForm extends Component {
             />
           </div>
           <input type="file" name="postImage" onChange={this.onUpload} />
-          <button type="submit" className="btn btn-secondary btn-lg btn-block">
+          <button type="submit" className="btn btn-info btn-lg">
             <i class="fa fa-upload"> Post</i>
           </button>
         </form>{" "}

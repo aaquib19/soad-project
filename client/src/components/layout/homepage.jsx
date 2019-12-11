@@ -9,9 +9,8 @@ import VirtualizedList from "./../common/friendList";
 import AlignItemsList from "./../common/people";
 import PostForm from "../posts/PostForm";
 import Posts from "../posts/Posts";
-import FolderList1 from "./Timeline/editProfileSideBar";
+
 import FolderList from "./Timeline/lists";
-import AlignItemsList1 from "../common/subscribe";
 const style = {
   height: "584px",
   width: "70%",
@@ -54,6 +53,7 @@ const useStyles = {
 class Homepage extends Component {
   state = {
     people1: ["Aaquib Niaz", "Bittu Kumar Ray", "Ankur", "Rahul"],
+    people3: ["BBC", "CCN", "BBC"],
     items: Array.from({ length: 20 })
   };
   fetchMoreData = () => {
@@ -148,14 +148,16 @@ class Homepage extends Component {
                 title="people you may know"
                 addFriend="Add Friend"
                 remove="Remove"
-                peopl1={this.state.people1}
+                people1={this.state.people1}
               />
             </div>
+
             <div style={{ borderRadius: "4rem" }}>
-              <AlignItemsList1
+              <AlignItemsList
                 title="Subscriptions"
                 addFriend="Subscribe"
                 remove="remove"
+                people1={this.state.people3}
               />
             </div>
           </div>
