@@ -99,16 +99,12 @@ class App extends Component {
                 path="/profile/settings"
                 component={Settings}
               />
-<<<<<<< Updated upstream
-              {/* <PrivateRoute
-=======
               <PrivateRoute
                 exact
                 path="/profile/edit"
                 component={EditProfile1}
               />
               <PrivateRoute
->>>>>>> Stashed changes
                 exact
                 path="/recommendations"
                 component={Recommendations}
