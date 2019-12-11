@@ -24,8 +24,8 @@ const style = {
 const style1 = {
   backgroundColor: "#f5f5f5",
 
-  height: "145px",
-  width: "60%",
+  height: "200px",
+  width: "70%",
   borderRadius: "15px",
   margin: "3rem",
   overflow: "auto"
@@ -93,54 +93,6 @@ class Homepage extends Component {
               <PostForm />
             </div>
             <Posts />
-            <InfiniteScroll
-              dataLength={this.state.items.length}
-              next={this.fetchMoreData}
-              hasMore={true}
-              loader={<h4>Loading...</h4>}
-            >
-              {this.state.items.map(index => (
-                <div style={style} key={index}>
-                  <div className="card text-left">
-                    <div className="card-header">
-                      <i class="fa fa-user-circle" aria-hidden="true">
-                        {" "}
-                        Wilson Patro
-                      </i>
-                    </div>
-                    <div className="card-footer text-muted">2 days ago</div>
-                    <div
-                      className="card-body"
-                      style={{ backgroundColor: "fff" }}
-                    >
-                      <img
-                        src="https://source.unsplash.com/collection/190727/400x300"
-                        alt="..."
-                      />
-                      <br />
-                      <br />
-                      <button
-                        className="btn btn-danger"
-                        style={{ boxShadow: "2px" }}
-                      >
-                        <i class="fa fa-heart" aria-hidden="true">
-                          {" "}
-                          Like
-                        </i>
-                      </button>
-                      {"       "}
-                      <button className="btn btn-danger">
-                        <i class="fa fa-heart" aria-hidden="true">
-                          {" "}
-                          Comment
-                        </i>
-                      </button>
-                      <BasicTextField placeholder="Write a Comment" label="" />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </InfiniteScroll>
           </div>
           <div className="col-sm-3" style={{ float: "left" }}>
             <div style={{ borderRadius: "4rem" }}>

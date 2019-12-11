@@ -15,7 +15,7 @@ const bigAvatar = {
 };
 const style = {
   height: "auto",
-  width: "60%",
+  width: "80%",
   border: "1px solid white",
   margin: "1rem",
   overflow: "auto",
@@ -84,11 +84,8 @@ class PostItem extends Component {
             </div>
             <p className="lead" style={{ margin: "1rem" }}>
               {post.text}
-              <img
-                src={post.img}
-                style={{ height: "40%", width: "100%" }}
-              ></img>
             </p>
+            <img src={post.img} style={{ height: "100%", width: "100%" }}></img>
             {showActions ? (
               <span>
                 <button

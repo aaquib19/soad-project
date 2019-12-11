@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
 import BasicTextFields from "./../common/textField";
+import { AddAPhotoTwoToneIcon } from "@material-ui/icons/AddAPhotoTwoTone";
 
 class PostForm extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class PostForm extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
+      <div style={{ width: "100%" }}>
         <form onSubmit={this.onSubmit} enctype="multipart/form-data">
           <div className="form-group">
             <BasicTextFields
@@ -69,8 +70,19 @@ class PostForm extends Component {
               // error={errors.text}
             />
           </div>
-          <input type="file" name="postImage" onChange={this.onUpload} />
-          <button type="submit" className="btn btn-info btn-lg">
+
+          <input
+            type="file"
+            name="postImage"
+            onChange={this.onUpload}
+            style={{ marginRight: "7rem", marginLeft: "1rem" }}
+          />
+
+          <button
+            type="submit"
+            className="btn btn-info btn-lg"
+            style={{ marginTop: "1rem" }}
+          >
             <i class="fa fa-upload"> Post</i>
           </button>
         </form>

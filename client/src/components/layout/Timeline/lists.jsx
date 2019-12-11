@@ -12,7 +12,10 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
 import { Link } from "react-router-dom";
-
+import EqualizerIcon from "@material-ui/icons/Equalizer";
+import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
+import ListAltRoundedIcon from "@material-ui/icons/ListAltRounded";
+import ChatRoundedIcon from "@material-ui/icons/ChatRounded";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
@@ -51,18 +54,29 @@ export default function FolderList() {
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <FeaturedPlayListIcon />
           </Avatar>
         </ListItemAvatar>
         <Link to="/news" style={{ color: "#DC3545" }}>
-          <ListItemText primary="Subscriptions" />
+          <ListItemText primary="News" />
         </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <PeopleAltIcon />
+            <EqualizerIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <Link to="/news" style={{ color: "#DC3545" }}>
+          <ListItemText primary="Charts" />
+        </Link>
+      </ListItem>
+      <Divider variant="inset" component="li" />
+      <ListItem>
+        <ListItemAvatar>
+          <Avatar>
+            <ListAltRoundedIcon />
           </Avatar>
         </ListItemAvatar>
         <Link to="/recommendations" style={{ color: "#DC3545" }}>
@@ -84,18 +98,7 @@ export default function FolderList() {
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <PeopleAltIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <Link to="/messeges" style={{ color: "#DC3545" }}>
-          <ListItemText primary="Messeges" />
-        </Link>
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <PeopleAltIcon />
+            <ChatRoundedIcon />
           </Avatar>
         </ListItemAvatar>
         <Link to="/chatroom" style={{ color: "#DC3545" }}>
