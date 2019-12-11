@@ -11,6 +11,7 @@ import PostForm from "../posts/PostForm";
 import Posts from "../posts/Posts";
 import FolderList1 from "./Timeline/editProfileSideBar";
 import FolderList from "./Timeline/lists";
+import AlignItemsList1 from "../common/subscribe";
 const style = {
   height: "584px",
   width: "70%",
@@ -51,7 +52,10 @@ const useStyles = {
   }
 };
 class Homepage extends Component {
-  state = { items: Array.from({ length: 20 }) };
+  state = {
+    people1: ["Aaquib Niaz", "Bittu Kumar Ray", "Ankur", "Rahul"],
+    items: Array.from({ length: 20 })
+  };
   fetchMoreData = () => {
     // a fake async api call like which sends
     // 20 more records in 1.5 secs
@@ -140,7 +144,19 @@ class Homepage extends Component {
           </div>
           <div className="col-sm-3" style={{ float: "left" }}>
             <div style={{ borderRadius: "4rem" }}>
-              <AlignItemsList />
+              <AlignItemsList
+                title="people you may know"
+                addFriend="Add Friend"
+                remove="Remove"
+                peopl1={this.state.people1}
+              />
+            </div>
+            <div style={{ borderRadius: "4rem" }}>
+              <AlignItemsList1
+                title="Subscriptions"
+                addFriend="Subscribe"
+                remove="remove"
+              />
             </div>
           </div>
           <div>

@@ -17,8 +17,8 @@ const root = {
   borderRadius: "8px"
 };
 
-class AlignItemsList extends Component {
-  state = { people1: ["aaquib", "Bittu", "Rahul"] };
+class AlignItemsList1 extends Component {
+  state = { people1: ["BBC", "Billboards", "CCN"] };
   render() {
     const { title, addFriend, remove } = this.props;
     return (
@@ -65,4 +65,4 @@ class AlignItemsList extends Component {
   }
 }
 
-export default AlignItemsList;
+export default AlignItemsList1;
