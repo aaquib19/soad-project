@@ -20,6 +20,7 @@ router.get(
     passport.authenticate("jwt", { session: false }),
     (req,res,next) => {
         Notification.find({ to_whom: req.user.id })
+        .sort({ date: -1 })
         .then( notifications => {
             res.json(notifications);
         })
