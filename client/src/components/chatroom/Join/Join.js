@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Join.css";
-import NavBar1 from "./../../layout/Timeline/nav";
+import NavBar from "./../../layout/Navbar";
 
 export default function SignIn() {
   // const [name, setName] = useState('');
@@ -10,7 +10,7 @@ export default function SignIn() {
 
   return (
     <React.Fragment>
-      <NavBar1 />
+      <NavBar />
       <div className="joinOuterContainer">
         <div className="joinInnerContainer">
           <h1 className="heading">Join</h1>
