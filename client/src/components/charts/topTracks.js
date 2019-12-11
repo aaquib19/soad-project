@@ -6,34 +6,26 @@ import Navbar from "../layout/Navbar";
 import FolderList from "../layout/Timeline/lists";
 import Divider from "@material-ui/core/Divider";
 
-class TopArtist extends Component {
+class TopTracks extends Component {
   constructor(props) {
     super(props);
     this.state = { data: null, loading: "true" };
-    this.getCategory = this.getCategory.bind(this);
   }
 
-  getCategory(category) {
-    console.log("hello");
-    Promise.resolve(this.getNews(category)).then(data => {
-      this.setState({ data: data, loading: false });
-    });
-  }
-
-  async getTopArtist() {
+  async getTopTracks() {
     // this.setState({ loading: true });
     const url =
-      "http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=4bd1cce243708554bea3c36f4a43f88b&format=json";
+      "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=4bd1cce243708554bea3c36f4a43f88b&format=json";
 
     const res = await axios.get(url);
 
     const data = await res;
-    // console.log("helloo ", res.data.artists.artist);
-    return data.data.artists.artist;
+    console.log("helloo ", res.data.tracks.track);
+    return data.data.tracks.track;
   }
 
   componentDidMount() {
-    Promise.resolve(this.getTopArtist()).then(data => {
+    Promise.resolve(this.getTopTracks()).then(data => {
       this.setState({ data: data, loading: false });
     });
   }
@@ -53,6 +45,7 @@ class TopArtist extends Component {
           {item.playcount} <br></br>
           {item.listeners} <br></br>
           {item.url}
+          <img src={item.image[3]["#text"]}></img>
           <hr></hr>
         </div>
       ));
@@ -66,4 +59,4 @@ class TopArtist extends Component {
     );
   }
 }
-export default TopArtist;
+export default TopTracks;
