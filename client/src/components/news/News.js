@@ -59,16 +59,24 @@ class News extends Component {
       console.log(data);
       const articleData = data.map((item, key) => (
         <React.Fragment key={key}>
-          <div className="card-footer text-muted">
+          <div
+            className="card-footer text-muted"
+            style={{ boxShadow: "3px 3px 3px 3px #e0e0e0" }}
+          >
             <a href={item.url}>
               <h6>{item.title}</h6>
             </a>
           </div>
-          <div className="card-body">
+          <div
+            className="card"
+            style={{ boxShadow: "3px 3px 3px 3px #e0e0e0" }}
+          >
             <div>{item.content}</div>
             <hr></hr>
           </div>
-          <Divider />
+
+          <br />
+          <br />
         </React.Fragment>
       ));
       displayElement = (

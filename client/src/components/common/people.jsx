@@ -20,7 +20,10 @@ const root = {
 class AlignItemsList extends Component {
   state = { people1: ["aaquib", "Bittu", "Rahul"] };
   render() {
-    const { title, addFriend, remove } = this.props;
+    const { title, addFriend, remove, people1 } = this.props;
+
+    console.log(people1 && people1);
+
     return (
       <List style={root}>
         <h5 style={{ paddingTop: "10px", float: "left", paddingLeft: "10px" }}>
@@ -38,28 +41,29 @@ class AlignItemsList extends Component {
         >
           See All
         </Link>
-        {this.state.people1.map((peopl2, index) => (
-          <ListItem alignItems="flex-start" key={index}>
-            <ListItemAvatar>
-              <Avatar
-                alt="Remy Sharp"
-                src="https://source.unsplash.com/random"
+        {people1 &&
+          people1.map((peopl2, index) => (
+            <ListItem alignItems="flex-start" key={index}>
+              <ListItemAvatar>
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://source.unsplash.com/random"
+                />
+              </ListItemAvatar>
+              <ListItemText
+                primary={peopl2}
+                secondary={
+                  <React.Fragment>
+                    <br />
+                    <button className="btn btn-sm btn-danger">
+                      {addFriend}
+                    </button>{" "}
+                    <button className="btn btn-sm btn-danger">{remove}</button>
+                  </React.Fragment>
+                }
               />
-            </ListItemAvatar>
-            <ListItemText
-              primary={peopl2}
-              secondary={
-                <React.Fragment>
-                  <br />
-                  <button className="btn btn-sm btn-danger">
-                    {addFriend}
-                  </button>{" "}
-                  <button className="btn btn-sm btn-danger">{remove}</button>
-                </React.Fragment>
-              }
-            />
-          </ListItem>
-        ))}
+            </ListItem>
+          ))}
       </List>
     );
   }

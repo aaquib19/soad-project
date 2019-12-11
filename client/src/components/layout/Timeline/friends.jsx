@@ -7,6 +7,7 @@ import FolderList from "./lists";
 import AlignItemsList from "./../../common/people";
 import AlignItemsList1 from "./recommend";
 import NavBar1 from "./nav";
+import Navbar from "../Navbar";
 class Friends extends Component {
   state = {
     friend: ["Aaquib Niaz", "Bittu Ray", "Rahul Prasad"]
@@ -16,7 +17,7 @@ class Friends extends Component {
       <React.Fragment>
         <div style={{ backgroundColor: "#e9ebee" }}>
           {" "}
-          <NavBar1 />
+          <Navbar />
           <br />
           <br />
           <br />
