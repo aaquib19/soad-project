@@ -4,6 +4,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const User = require("../../models/User");
+const Notification = require("../../models/notification");
 const Schema = mongoose.Schema;
 
 
@@ -12,7 +13,7 @@ router.post("/requestsent", passport.authenticate("jwt", { session: false }), (r
   const recieverId = req.body.recieverid;
   console.log("in node ")
   User.findById(senderId, function (err, user) {
-
+    console.log(err,user,senderId,"fsdfatttttttsdf");
     const recieveruser = {
       "user": mongoose.Types.ObjectId(recieverId)
     }
@@ -31,12 +32,32 @@ router.post("/requestsent", passport.authenticate("jwt", { session: false }), (r
 
     // user.recommendations = deleterecomend;
     // console.log("recom ", deleterecomend);
+
     user.pending.push(recieveruser.user);
     user.save();
+    const newNotification = new Notification({
+      type_of_notification: "friend_req_sent",
+      seen: false,
+      who_did: req.user.id,
+      who_did_name: req.user.name,
+      to_whom: req.body.recieverid
+    });
+    console.log('------------------------',newNotification);
+    newNotification.save()
+    .then(notification => {
+      User.findById(notification.to_whom)
+        .then(user1 => {
+          user1.notifications.push(notification);
+          user1.save();
+        })
+        .catch(err => console.log(err));
+    })
   })
     .then(user =>
-      User.findById(recieverId, function (err, user) {
-
+      {
+        console.log(user);
+        User.findById(recieverId, function (err, user) {
+        
         const senderuser = {
           "user": mongoose.Types.ObjectId(senderId)
         }
@@ -54,11 +75,9 @@ router.post("/requestsent", passport.authenticate("jwt", { session: false }), (r
           "success": true
         }
         ))
-        .catch(err => res.status(404).json({ "success": false }))
-
+        .catch(err => res.status(404).json({ "success": false }))}
     )
     .catch(err => res.status(404).json({ "success": false }));
-
 });
 
 
