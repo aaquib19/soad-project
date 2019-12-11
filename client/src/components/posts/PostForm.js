@@ -10,9 +10,11 @@ class PostForm extends Component {
     super(props);
     this.state = {
       text: "",
+      file: null,
       errors: {}
     };
     this.onChange = this.onChange.bind(this);
+    this.onUpload = this.onUpload.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -28,19 +30,28 @@ class PostForm extends Component {
 
     const { userData } = this.props.auth;
     console.log(userData);
-    const newPost = {
-      text: this.state.text,
-      name: userData.name,
-      avatar: userData.avatar
-    };
-    console.log(newPost);
+    // const newPost = {
+    //   text: this.state.text,
+    //   name: userData.name,
+    //   avatar: userData.avatar
+    // };
+    // console.log(newPost);
+
+    const newPost = new FormData();
+    newPost.append("postImage", this.state.file);
+    newPost.append("text", this.state.text);
+    newPost.append("name", userData.name);
+    newPost.append("avatar", userData.avatar);
     this.props.addPost(newPost);
     this.setState({ text: " " });
   }
 
   onChange(e) {
-    console.log(e.target.value);
+    console.log(e.target.name, "asdfads");
     this.setState({ [e.target.name]: e.target.value });
+  }
+  onUpload(e) {
+    this.setState({ file: e.target.files[0] });
   }
   render() {
     const { errors } = this.state;
@@ -58,7 +69,7 @@ class PostForm extends Component {
               // error={errors.text}
             />
           </div>
-
+          <input type="file" name="postImage" onChange={this.onUpload} />
           <button type="submit" className="btn btn-secondary btn-lg btn-block">
             <i class="fa fa-upload"> Post</i>
           </button>
