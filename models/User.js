@@ -51,19 +51,7 @@ const UserSchema = new Schema({
       }
     }
   ],
-  recommendations: [
-    //recommendations of friend
-    // {
-    //   user: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "users"
-    //   }
-    // }
-    // {
-    //   type: String
-    // }
-    mongoose.Schema.Types.ObjectId
-  ],
+  recommendations: [mongoose.Schema.Types.ObjectId],
   lastlogin: {
     type: String
   },
