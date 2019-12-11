@@ -185,7 +185,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
-  const { userData } = props.auth;
+  const { userData, isAuthenticated } = props.auth;
+  // console.log("navbar", props.auth);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -320,7 +321,8 @@ const NavBar = props => {
               />
             </div>
             <Typography style={{ marginLeft: "45rem" }}>
-              Hello, {userData.name}
+              {isAuthenticated ? "Hello " + userData.name : ""}
+              {/* Hello, {userData.name} */}
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
