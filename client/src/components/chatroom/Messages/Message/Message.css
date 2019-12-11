@@ -13,6 +13,7 @@
   float: left;
   font-size: 1.1em;
   word-wrap: break-word;
+  padding-top: 11px;
 }
 
 .messageText img {
@@ -59,7 +60,7 @@
 }
 
 .backgroundBlue {
-  background: #2979FF;
+  background: #206466;
 }
 
 .backgroundLight {
