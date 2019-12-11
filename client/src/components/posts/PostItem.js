@@ -84,6 +84,7 @@ class PostItem extends Component {
             </div>
             <p className="lead" style={{ margin: "1rem" }}>
               {post.text}
+              <img src={post.img}></img>
             </p>
             {showActions ? (
               <span>
