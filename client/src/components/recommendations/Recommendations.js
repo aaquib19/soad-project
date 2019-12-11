@@ -10,9 +10,9 @@ class RecommendedPersonList extends Component {
   componentDidMount() {
     console.log('working');
 
-    axios.get(`/api/recommendations/recommendations`)
+    axios.get("/api/recommendations/recommendations")
       .then(res => {
-        console.log("Working", res.data);
+        console.log("Working-------", res);
         const persons = res.data;
         this.setState({ persons:persons });
       })
