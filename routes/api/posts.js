@@ -71,6 +71,7 @@ router.post(
   upload.single("postImage"),
   (req, res, next) => {
     console.log(req.file.path);
+    console.log(req.user.name);
     const { errors, isValid } = validatePostInput(req.body);
 
     if (!isValid) {
@@ -82,6 +83,7 @@ router.post(
       name: req.body.name,
       avatar: req.body.avatar, //name and avatar  is logged in we will fetch name and avatar from redux (user state)
       user: req.user.id,
+      name: req.user.name,
       img: req.file.path
     });
     newPost.save().then(post => res.json(post));
@@ -230,7 +232,8 @@ router.post(
           text: req.body.text,
           name: req.body.name,
           avatar: req.body.avatar,
-          user: req.user.id
+          user: req.user.id,
+          name: req.user.name
         };
 
         // Add to comments array
