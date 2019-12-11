@@ -15,11 +15,11 @@ const messageSchema = new mongoose.Schema(
     to_name: String,
     from_seen: Boolean,
     to_seen: Boolean,
+    content: String,
     date: {
         type: Date,
         default: Date.now
-    },
-    content: String
+    }
 });
 
 module.exports = mongoose.model("Message", messageSchema);
