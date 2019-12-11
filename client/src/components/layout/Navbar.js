@@ -241,11 +241,15 @@ const NavBar = props => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <Link to="/profile">
+      <Link to="/profile" style={{ color: "black" }}>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+      <Link to="/profile" style={{ color: "black" }}>
+        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      </Link>
+      <Link to="/profile/settings" style={{ color: "black" }}>
+        <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+      </Link>
       <MenuItem onClick={onLogoutClick.bind(this)}>Logout</MenuItem>
     </Menu>
   );
@@ -261,22 +265,6 @@ const NavBar = props => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4}>
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications">
-          <Badge badgeContent={11}>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -325,7 +313,7 @@ const NavBar = props => {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={0} color="secondary">
                   <MailIcon />
                 </Badge>
               </IconButton>
@@ -333,7 +321,7 @@ const NavBar = props => {
                 aria-label="show 15 new notifications"
                 color="inherit"
               >
-                <Badge badgeContent={15} color="secondary">
+                <Badge badgeContent={5} color="secondary">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
