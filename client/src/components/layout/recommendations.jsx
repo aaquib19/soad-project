@@ -22,11 +22,11 @@ const Recommendations = () => {
             </div>
           </div>
         </div>
-        <div className="col-6"><div style={{marginTop:'10rem'}}>
-        
-        <RecommendedPersonList></RecommendedPersonList>
-        
-         </div></div>
+        <div className="col-6">
+          <div style={{ marginTop: "10rem" }}>
+            <RecommendedPersonList />
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );

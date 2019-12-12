@@ -19,7 +19,7 @@ const root = {
 
 class AlignItemsList extends Component {
   state = { people1: ["aaquib", "Bittu", "Rahul"] };
-  
+
   render() {
     const { title, addFriend, remove, people1 } = this.props;
 
