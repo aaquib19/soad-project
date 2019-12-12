@@ -15,7 +15,7 @@ router.get(
       .then(user => {
         console.log("wiiiiw", user.freinds);
         User.find({ _id: { $in: user.freinds } })
-          .select("name ")
+          .select("name avatar")
           .then(data => {
             console.log(data);
             res.json(data);
