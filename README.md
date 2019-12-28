@@ -31,15 +31,15 @@
 
    ### demo
 
-   ![img1](/home/bittu/Whizingo-The-Social-Network/demo/landing_page1.png) <br>
-   ![img2](/home/bittu/Whizingo-The-Social-Network/demo/landing_page2.png) <br>
-   ![img3](/home/bittu/Whizingo-The-Social-Network/demo/landing_page3.png) <br>
-   ![img4](/home/bittu/Whizingo-The-Social-Network/demo/profile_page.png)  <br>
-   ![img5](/home/bittu/Whizingo-The-Social-Network/demo/news_feed.png)     <br>
-   ![img5](/home/bittu/Whizingo-The-Social-Network/demo/chatroom1.png)     <br>
-   ![img6](/home/bittu/Whizingo-The-Social-Network/demo/chatroom2.png)     <br>
-   ![img7](/home/bittu/Whizingo-The-Social-Network/demo/chatroom3.png)     <br>
-   ![img8](/home/bittu/Whizingo-The-Social-Network/demo/chatroom4.png)     
+   ![img1](./demo/landing_page1.png) <br>
+   ![img2](./demo/landing_page2.png) <br>
+   ![img3](./demo/landing_page3.png) <br>
+   ![img4](./demo/profile_page.png)  <br>
+   ![img5](./demo/news_feed.png)     <br>
+   ![img5](./demo/chatroom1.png)     <br>
+   ![img6](./demo/chatroom2.png)     <br>
+   ![img7](./demo/chatroom3.png)     <br>
+   ![img8](./demo/chatroom4.png)     
 
    <br>
 
