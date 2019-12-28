@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import BasicTextFields from "./../common/textField";
-import TextField from "@material-ui/core/TextField";
-import { ImageUploader } from "react-images-upload";
-import ImageUpload from "./../common/imageUploader";
+import { AddAPhotoTwoToneIcon } from "@material-ui/icons/AddAPhotoTwoTone";
+
 class PostForm extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +42,7 @@ class PostForm extends Component {
     newPost.append("text", this.state.text);
     newPost.append("name", userData.name);
     newPost.append("avatar", userData.avatar);
+    console.log("helooooo");
     this.props.addPost(newPost);
     this.setState({ text: " " });
   }
@@ -59,7 +58,7 @@ class PostForm extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
+      <div style={{ width: "100%" }}>
         <form onSubmit={this.onSubmit} enctype="multipart/form-data">
           <div className="form-group">
             <BasicTextFields
@@ -71,11 +70,22 @@ class PostForm extends Component {
               // error={errors.text}
             />
           </div>
-          <input type="file" name="postImage" onChange={this.onUpload} />
-          <button type="submit" className="btn btn-secondary btn-lg btn-block">
+
+          <input
+            type="file"
+            name="postImage"
+            onChange={this.onUpload}
+            style={{ marginRight: "7rem", marginLeft: "1rem" }}
+          />
+
+          <button
+            type="submit"
+            className="btn btn-info btn-lg"
+            style={{ marginTop: "1rem" }}
+          >
             <i class="fa fa-upload"> Post</i>
           </button>
-        </form>{" "}
+        </form>
       </div>
     );
   }
@@ -83,8 +93,8 @@ class PostForm extends Component {
 
 PostForm.propTypes = {
   addPost: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired
+  // errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

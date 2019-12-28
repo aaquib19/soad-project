@@ -10,6 +10,10 @@ import {
 import Chat from "./components/chatroom/Chat/Chat";
 import Join from "./components/chatroom/Join/Join";
 //--------------------------chatroom
+// ---------------------notifications ----
+import Notifications from "./components/notifications/Notifications";
+// ------------------------recommendations (For testing only - connect properly)
+import Recommendations from "./components/recommendations/Recommendations";
 import Registration from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import store from "./store";
@@ -36,8 +40,11 @@ import CreateProfile from "./components/create-profile/CreateProfile";
 import EditProfile from "./components/edit-profile/EditProfile";
 import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
-import Recommendations from "./components/layout/recommendations";
+// import Recommendations from "./components/layout/recommendations";
 import News from "./components/news/News";
+import TopArtist from "./components/charts/topArtist";
+import TopAlbum from "./components/charts/topAlbum";
+
 //check for teken
 if (localStorage.Token) {
   // console.log(localStorage.Token);
@@ -131,6 +138,21 @@ class App extends Component {
                 component={AddEducation}
               />
               <PrivateRoute exact path="/news" component={News} />
+              <PrivateRoute
+                exact
+                path="/charts/top-artist"
+                component={TopArtist}
+              />{" "}
+              <PrivateRoute
+                exact
+                path="/charts/top-album"
+                component={TopAlbum}
+              />{" "}
+              <PrivateRoute
+                exact
+                path="/notifications"
+                component={Notifications}
+              />
               <Route path="/not-found" component={ErrorPage} />
               <Redirect from="/" exact to="/landing" />
               <Redirect to="/not-found" />

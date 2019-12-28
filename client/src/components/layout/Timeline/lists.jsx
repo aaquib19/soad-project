@@ -5,6 +5,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import Collapse from "@material-ui/core/Collapse";
+import AlbumIcon from "@material-ui/icons/Album";
+import StarBorder from "@material-ui/icons/StarBorder";
 import ImageIcon from "@material-ui/icons/Image";
 import Divider from "@material-ui/core/Divider";
 import DynamicFeedIcon from "@material-ui/icons/DynamicFeed";
@@ -12,7 +15,15 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import VideoCallIcon from "@material-ui/icons/VideoCall";
 import { Link } from "react-router-dom";
-
+import EqualizerIcon from "@material-ui/icons/Equalizer";
+import FeaturedPlayListIcon from "@material-ui/icons/FeaturedPlayList";
+import ListAltRoundedIcon from "@material-ui/icons/ListAltRounded";
+import ChatRoundedIcon from "@material-ui/icons/ChatRounded";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import LibraryMusicIcon from "@material-ui/icons/LibraryMusic";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "100%",
@@ -23,6 +34,11 @@ const useStyles = makeStyles(theme => ({
 
 export default function FolderList() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   return (
     <List className={classes.root}>
@@ -43,7 +59,7 @@ export default function FolderList() {
             <AccountCircleIcon />
           </Avatar>
         </ListItemAvatar>
-        <Link to="/profile/edit" style={{ color: "#DC3545" }}>
+        <Link to="/edit-profile" style={{ color: "#DC3545" }}>
           <ListItemText primary="Profile" />
         </Link>
       </ListItem>{" "}
@@ -51,18 +67,51 @@ export default function FolderList() {
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <ImageIcon />
+            <FeaturedPlayListIcon />
           </Avatar>
         </ListItemAvatar>
         <Link to="/news" style={{ color: "#DC3545" }}>
-          <ListItemText primary="Subscriptions" />
+          <ListItemText primary="News" />
         </Link>
       </ListItem>
       <Divider variant="inset" component="li" />
+      <ListItem button onClick={handleClick}>
+        <ListItemIcon>
+          <Avatar>
+            <InboxIcon />
+          </Avatar>
+        </ListItemIcon>
+        <ListItemText primary="Charts" style={{ color: "#DC3545" }} />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <AlbumIcon />
+            </ListItemIcon>
+            <Link to="/charts/top-artist">
+              <ListItemText
+                primary="Top Artists"
+                style={{ color: "#DC3545" }}
+              />
+            </Link>
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <LibraryMusicIcon />
+            </ListItemIcon>
+            <Link to="/charts/top-album">
+              {" "}
+              <ListItemText primary="Top Albums" style={{ color: "#DC3545" }} />
+            </Link>
+          </ListItem>
+        </List>
+      </Collapse>
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <PeopleAltIcon />
+            <ListAltRoundedIcon />
           </Avatar>
         </ListItemAvatar>
         <Link to="/recommendations" style={{ color: "#DC3545" }}>
@@ -84,18 +133,7 @@ export default function FolderList() {
       <ListItem>
         <ListItemAvatar>
           <Avatar>
-            <PeopleAltIcon />
-          </Avatar>
-        </ListItemAvatar>
-        <Link to="/messeges" style={{ color: "#DC3545" }}>
-          <ListItemText primary="Messeges" />
-        </Link>
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem>
-        <ListItemAvatar>
-          <Avatar>
-            <PeopleAltIcon />
+            <ChatRoundedIcon />
           </Avatar>
         </ListItemAvatar>
         <Link to="/chatroom" style={{ color: "#DC3545" }}>

@@ -27,10 +27,8 @@ const UserSchema = new Schema({
   },
   freinds: [
     {
-      user: {
         type: Schema.Types.ObjectId,
         ref: "users"
-      }
     }
   ],
   pending: [
@@ -54,10 +52,8 @@ const UserSchema = new Schema({
   recommendations: [
     //recommendations of friend
     {
-      user: {
         type: Schema.Types.ObjectId,
         ref: "users"
-      }
     }
   ],
   lastlogin: {
@@ -65,14 +61,14 @@ const UserSchema = new Schema({
   },
   notifications: [
     {
-        type: Schema.Types.ObjectId,
-        ref: "Notification"
+      type: Schema.Types.ObjectId,
+      ref: "Notification"
     }
   ],
   messages: [
     {
-        type: Schema.Types.ObjectId,
-        ref: "Message"
+      type: Schema.Types.ObjectId,
+      ref: "Message"
     }
   ]
   // chat_rooms: [

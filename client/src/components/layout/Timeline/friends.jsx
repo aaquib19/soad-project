@@ -1,22 +1,109 @@
 import React, { Component } from "react";
 
 import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
+import axios from "axios";
 
 import CustomizedMenus from "./FriendsMenu";
 import FolderList from "./lists";
 import AlignItemsList from "./../../common/people";
 import AlignItemsList1 from "./recommend";
 import NavBar1 from "./nav";
+import Navbar from "../Navbar";
+import Spinner from "../../common/Spinner";
 class Friends extends Component {
   state = {
-    friend: ["Aaquib Niaz", "Bittu Ray", "Rahul Prasad"]
+    friend: ["Aaquib Niaz", "Bittu Ray", "Rahul Prasad"],
+    data: null,
+    loading: true
   };
+  async getFriends() {
+    const url = "/api/friends/all";
+
+    const res = await axios.get(url);
+
+    const data = await res;
+    console.log("helloo ", res.data);
+    return data.data;
+  }
+
+  componentDidMount() {
+    Promise.resolve(this.getFriends()).then(data => {
+      this.setState({ data: data, loading: false });
+    });
+  }
   render() {
+    const { loading, data } = this.state;
+    console.log(data);
+    let displayElement;
+    if (loading) {
+      displayElement = <Spinner></Spinner>;
+    } else {
+      displayElement = data.map((item, key) => (
+        // <div key={key}>
+        //   <hr></hr>
+        //   {item.name}
+        //   <hr></hr>
+        //   {item.avatar}
+        // </div>
+
+        <div className="row" style={{ marginTop: "3rem", zIndex: "+2" }}>
+          <div className="col-3" style={{ zIndex: "+2" }}>
+            <img
+              src={item.avatar}
+              alt=""
+              style={{
+                height: "5rem",
+                width: "5rem",
+                color: "white",
+                marginTop: "9rem",
+                marginLeft: "4rem",
+                position: "absolute",
+                left: 0,
+                borderRadius: "50%",
+                border: "5px solid #fff"
+              }}
+            />
+            <img
+              src={item.avatar}
+              alt=".."
+              style={{
+                position: "absolute",
+                zIndex: "-1",
+                left: 1,
+                height: "200px",
+                marginLeft: "3rem",
+                width: "300px"
+              }}
+            />
+            <h5
+              style={{
+                left: 0,
+                textAlign: "left",
+                marginTop: "15rem",
+                marginLeft: "3rem",
+                fontFamily: "Sans-Serif"
+              }}
+            >
+              {item.name}
+            </h5>
+          </div>
+          <div
+            style={{
+              marginTop: "14rem",
+              marginLeft: "2rem"
+            }}
+          >
+            <CustomizedMenus />
+          </div>
+        </div>
+      ));
+    }
+
     return (
       <React.Fragment>
         <div style={{ backgroundColor: "#e9ebee" }}>
           {" "}
-          <NavBar1 />
+          <Navbar />
           <br />
           <br />
           <br />
@@ -98,109 +185,7 @@ class Friends extends Component {
               >
                 Friends List
               </h1>
-              {this.state.friend.map((friend1, index) => (
-                <div
-                  className="row"
-                  style={{ marginTop: "3rem", zIndex: "+2" }}
-                >
-                  <div className="col-3" style={{ zIndex: "+2" }}>
-                    <img
-                      src="https://source.unsplash.com/collection/190727/470x300"
-                      alt=""
-                      style={{
-                        height: "5rem",
-                        width: "5rem",
-                        color: "white",
-                        marginTop: "9rem",
-                        marginLeft: "4rem",
-                        position: "absolute",
-                        left: 0,
-                        borderRadius: "50%",
-                        border: "5px solid #fff"
-                      }}
-                    />
-                    <img
-                      src="https://source.unsplash.com/random"
-                      alt=".."
-                      style={{
-                        position: "absolute",
-                        zIndex: "-1",
-                        left: 1,
-                        height: "200px",
-                        marginLeft: "3rem",
-                        width: "300px"
-                      }}
-                    />
-                    <h5
-                      style={{
-                        left: 0,
-                        textAlign: "left",
-                        marginTop: "15rem",
-                        marginLeft: "3rem",
-                        fontFamily: "Sans-Serif"
-                      }}
-                    >
-                      {friend1}
-                    </h5>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "14rem",
-                      marginLeft: "2rem"
-                    }}
-                  >
-                    <CustomizedMenus />
-                  </div>
-                  <div
-                    className="col-3"
-                    style={{ marginLeft: "5rem", zIndex: "+2" }}
-                  >
-                    <img
-                      src="https://source.unsplash.com/collection/190727/470x300"
-                      alt=""
-                      style={{
-                        height: "5rem",
-                        width: "5rem",
-                        color: "white",
-                        marginTop: "9rem",
-                        marginLeft: "1rem",
-                        position: "absolute",
-                        left: 0,
-                        borderRadius: "50%",
-                        border: "5px solid #fff"
-                      }}
-                    />
-                    <img
-                      src="https://source.unsplash.com/random"
-                      alt=".."
-                      style={{
-                        position: "absolute",
-                        zIndex: "-1",
-                        left: 1,
-                        height: "200px",
-                        width: "300px"
-                      }}
-                    />
-                    <h5
-                      style={{
-                        left: 0,
-                        textAlign: "left",
-                        marginTop: "15rem",
-                        fontFamily: "Sans-Serif"
-                      }}
-                    >
-                      {friend1}
-                    </h5>
-                  </div>
-                  <div
-                    style={{
-                      marginTop: "14rem"
-                    }}
-                  >
-                    <CustomizedMenus />
-                  </div>
-                </div>
-              ))}
+              {displayElement}
             </div>
             <div
               className="col-2"

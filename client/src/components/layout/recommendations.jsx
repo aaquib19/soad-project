@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NavBar1 from "./Timeline/nav";
 import FolderList1 from "./Timeline/editProfileSideBar";
+import RecommendedPersonList from "../recommendations/Recommendations";
 const Recommendations = () => {
   return (
     <React.Fragment>
@@ -21,7 +22,11 @@ const Recommendations = () => {
             </div>
           </div>
         </div>
-        <div className="col-6"></div>
+        <div className="col-6">
+          <div style={{ marginTop: "10rem" }}>
+            <RecommendedPersonList />
+          </div>
+        </div>
       </div>
     </React.Fragment>
   );

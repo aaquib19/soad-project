@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addComment } from "../../actions/postActions";
+import Navbar from "../layout/Navbar";
 
 class CommentForm extends Component {
   constructor(props) {
@@ -43,22 +44,29 @@ class CommentForm extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <textarea
-              placeholder="replyy to post"
-              name="text"
-              value={this.state.text}
-              onChange={this.onChange}
-            />
+      <React.Fragment>
+        <Navbar />
+
+        <div className="row" style={{ backgroundColor: "#e9ebee" }}>
+          <div className="col-3"></div>
+          <div className="col-5">
+            <form onSubmit={this.onSubmit}>
+              <div className="form-group">
+                <textarea
+                  placeholder="replyy to post"
+                  name="text"
+                  value={this.state.text}
+                  onChange={this.onChange}
+                />
+              </div>
+              {errors.text}
+              <button type="submit" className="btn btn-dark">
+                Submit
+              </button>
+            </form>{" "}
           </div>
-          {errors.text}
-          <button type="submit" className="btn btn-dark">
-            Submit
-          </button>
-        </form>{" "}
-      </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
@@ -75,7 +83,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(
-  mapStateToProps,
-  { addComment }
-)(CommentForm);
+export default connect(mapStateToProps, { addComment })(CommentForm);

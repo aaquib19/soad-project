@@ -6,12 +6,14 @@ import BasicTextField from "./../../common/textField";
 import GroupAddTwoToneIcon from "@material-ui/icons/GroupAddTwoTone";
 import LocationOnTwoToneIcon from "@material-ui/icons/LocationOnTwoTone";
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import { connect } from "react-redux";
 import { Timeline, Event } from "react-timeline-scribble";
 import VirtualizedList from "./../../common/friendList";
 import NavBar1 from "./nav";
 import FolderList from "./lists";
 import Navbar from "../Navbar";
+import Post from "../../post/Post";
+import Posts from "./../../posts/Posts";
 
 const style = {
   height: "585px",
@@ -31,7 +33,20 @@ const style2 = {
   position: "fixed"
 };
 class Profile extends Component {
-  state = { items: Array.from({ length: 20 }) };
+  constructor(props) {
+    super(props);
+    this.state = {
+      errors: {}
+    };
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.errors) {
+      this.setState({ errors: newProps.errors });
+    }
+  }
+
+  // state = { items: Array.from({ length: 20 }) };
   fetchMoreData = () => {
     // a fake async api call like which sends
     // 20 more records in 1.5 secs
@@ -128,7 +143,7 @@ class Profile extends Component {
                 marginTop: "2rem"
               }}
             >
-              Wilson Patro
+              {this.props.auth.userData.name}
             </h1>
 
             <div
@@ -302,52 +317,14 @@ class Profile extends Component {
                 <br />
               </Timeline>
             </div>
-            <div style={{ float: "left", marginLeft: "15rem" }}>
-              <InfiniteScroll
-                dataLength={this.state.items.length}
-                next={this.fetchMoreData}
-                hasMore={true}
-                loader={<h4>Loading...</h4>}
-              >
-                {this.state.items.map((i, index) => (
-                  <div style={style} key={index}>
-                    <div className="card text-left">
-                      <div className="card-header">
-                        <i class="fa fa-user-circle" aria-hidden="true">
-                          {" "}
-                          Wilson Patro
-                        </i>
-                      </div>
-                      <div className="card-footer text-muted">2 days ago</div>
-                      <div className="card-body">
-                        <img
-                          src="https://source.unsplash.com/collection/190727/470x300"
-                          alt="..."
-                        />
-                        <br />
-                        <br />
-                        <button className="btn btn-danger">
-                          <i class="fa fa-heart" aria-hidden="true">
-                            {" "}
-                            Like
-                          </i>
-                        </button>
-                        {"       "}
-                        <button className="btn btn-danger">
-                          <i class="fa fa-heart" aria-hidden="true">
-                            {" "}
-                            Comment
-                          </i>
-                        </button>
-                        <BasicTextField
-                          placeholder="Write a Comment"
-                          label=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </InfiniteScroll>
+            <div
+              style={{
+                float: "left",
+                marginLeft: "10rem",
+                width: "60%"
+              }}
+            >
+              <Posts />
             </div>
           </div>
 
@@ -361,5 +338,8 @@ class Profile extends Component {
     );
   }
 }
-
-export default Profile;
+const mapStateToProps = state => ({
+  auth: state.registration,
+  errors: state.errors
+});
+export default connect(mapStateToProps)(Profile);

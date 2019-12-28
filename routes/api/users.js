@@ -88,7 +88,9 @@ router.post("/login", (req, res, next) => {
       errors.email = "user not foud";
       return res.status(404).json(errors);
     }
-    console.log(user);
+    user.recommendations.map(recc => {
+      console.log(recc);
+    })
     //check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
