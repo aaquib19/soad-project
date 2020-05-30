@@ -31,6 +31,7 @@ router.post("/register", (req, res, next) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
   //check validation
+  console.log("email is ", req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }

@@ -4,12 +4,13 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 const multer = require("multer");
+var AWS = require("aws-sdk");
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
+  destination: function (req, file, cb) {
     cb(null, "uploads/");
   },
-  filename: function(req, file, cb) {
+  filename: function (req, file, cb) {
     cb(null, file.originalname);
   }
 });
@@ -38,6 +39,47 @@ const validatePostInput = require("../../validation/post");
 router.get("/test", (req, res, next) => {
   res.json({ msg: "hello workds" });
 });
+
+
+
+
+
+var storageS3 = multer.memoryStorage();
+var uploads3 = multer({ storage: storageS3 });
+
+// router.post("/upload-ons3", uploads3.single("file"), function (req, res) {
+//   const file = req.file;
+
+//   s3 = new AWS.S3({ apiVersion: '2006-03-01' });
+
+//   var params = {
+//     Bucket: 'lambdabucket-12345',
+//     Key: file.originalname,
+//     Body: file.buffer,
+//     ContentType: file.mimetype,
+//     ACL: "public-read"
+//   };
+
+//   s3.upload(params, function (err, data) {
+//     if (err) {
+//       res.send(err);
+//     } if (data) {
+//       res.send(data.Location);
+//     }
+//   });
+
+// })
+
+
+
+
+
+
+
+
+
+
+
 
 //@route get api/posts
 //@acces public
@@ -68,25 +110,47 @@ router.get("/:id", (req, res, next) => {
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
-  upload.single("postImage"),
+  uploads3.single("postImage"),
   (req, res, next) => {
-    console.log(req.file.path);
-    console.log(req.user.name);
+    // console.log(req.file.path);
+    // console.log(req.user.name);
     const { errors, isValid } = validatePostInput(req.body);
 
     if (!isValid) {
       return res.status(400).json(errors);
     }
 
-    const newPost = new Post({
-      text: req.body.text,
-      name: req.body.name,
-      avatar: req.body.avatar, //name and avatar  is logged in we will fetch name and avatar from redux (user state)
-      user: req.user.id,
-      name: req.user.name,
-      img: req.file.path
+    // console.log("request is ", req);
+    const file = req.file;
+
+    s3 = new AWS.S3({ apiVersion: '2006-03-01' });
+
+    var params = {
+      Bucket: 'ccbucket-12345',
+      Key: file.originalname,
+      Body: file.buffer,
+      ContentType: file.mimetype,
+      ACL: "public-read"
+    };
+
+    s3.upload(params, function (err, data) {
+      if (err) {
+        console.log("in s3 err ");
+        res.send(err);
+      } if (data) {
+        const newPost = new Post({
+          text: req.body.text,
+          name: req.body.name,
+          avatar: req.body.avatar, //name and avatar  is logged in we will fetch name and avatar from redux (user state)
+          user: req.user.id,
+          name: req.user.name,
+          img: data.Location
+        });
+        newPost.save().then(post => res.json(post));
+      }
     });
-    newPost.save().then(post => res.json(post));
+
+
   }
 );
 
