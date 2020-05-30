@@ -85,7 +85,7 @@ class PostItem extends Component {
             <p className="lead" style={{ margin: "1rem" }}>
               {post.text}
             </p>
-            <img src={`/${post.img}`} style={{ height: "100%" }}></img>
+            <img src={post.img} style={{ height: "100px", width:"100px" }}></img>
             {showActions ? (
               <span>
                 <button
