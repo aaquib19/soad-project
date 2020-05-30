@@ -62,7 +62,7 @@ class PostForm extends Component {
         <form onSubmit={this.onSubmit} enctype="multipart/form-data">
           <div className="form-group">
             <BasicTextFields
-              placeholder="Create a post"
+              placeholder="Create a post with minimum 9 characters and photo both"
               name="text"
               label="Write Something"
               value={this.state.text}
